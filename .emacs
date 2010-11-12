@@ -43,6 +43,7 @@
 (line-number-mode t)
 (column-number-mode t)
 (if (not (eq window-system 'nil)) (scroll-bar-mode nil))
+(if (not (eq system-type 'darwin)) (tool-bar-mode nil))
 
 ;; Theme
 (require 'zenburn)
