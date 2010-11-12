@@ -69,6 +69,11 @@
 ;; Python Customizations
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Erlang Customizations
+(setq exec-path (cons "/usr/local/bin" exec-path))
+(require 'erlang-start)
+(require 'erlang-flymake)
+
 ;; Snippets
 (yas/initialize)
 (yas/load-directory "~/.elisp/snippets/")
