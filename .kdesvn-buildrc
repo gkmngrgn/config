@@ -1,0 +1,107 @@
+# ~/.kdesvn-buildrc (Gökmen Görgen, <gkmngrgn_gmail.com>)
+
+global
+    source-dir /mnt/archive/kdesvn
+    build-dir build
+    kdedir /usr
+    qtdir /usr
+    kde-languages tr
+    purge-old-logs true
+    make-options -j3
+    cmake-options -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    binpath /usr/qt/4/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/bin:/opt/sun-jre/bin
+    cxxflags -mtune=generic -march=i686 -O2 -pipe -fomit-frame-pointer -fstack-protector -D_FORTIFY_SOURCE=2
+    set-env LDFLAGS -Wl,-O1 -Wl,-z,relro -Wl,--hash-style=gnu -Wl,--as-needed -Wl,--sort-common
+    set-env PKG_CONFIG_PATH /usr/bin/pkg-config
+    make-install-prefix /usr
+    make-install-prefix sudo -S
+end global
+
+module qt-copy
+    configure-flags \
+        -largefile \
+        -system-sqlite \
+        -xmlpatterns \
+        -no-phonon \
+        -svg \
+        -webkit \
+        -scripttools \
+        -system-zlib \
+        -system-libtiff \
+        -system-libpng \
+        -system-libmng \
+        -system-libjpeg \
+        -openssl-linked \
+        -nomake demos \
+        -nomake examples \
+        -no-rpath \
+        -silent \
+        -optimized-qmake \
+        -dbus \
+        -reduce-relocations \
+        -no-separate-debug-info \
+        -gtkstyle \
+        -opengl \
+        -glib
+    repository git://gitorious.org/+kde-developers/qt/kde-qt.git
+    branch master
+end module
+
+module kdesupport
+    cmake-options -DBUILD_phonon=ON
+end module
+
+module qca
+    module-base-path trunk/kdesupport/qca
+end module
+
+module kdelibs
+end module
+
+module kdepimlibs
+end module
+
+#module kdebindings
+#end module
+
+module kdebase
+end module
+
+module kdeplasma-addons
+end module
+
+module kdeutils
+end module
+
+module kdevplatform
+    module-base-path trunk/extragear/sdk/kdevplatform
+end module
+
+module kdevelop
+    module-base-path trunk/extragear/sdk/kdevelop
+end module
+
+module kdemultimedia
+end module
+
+module kdegraphics
+end module
+
+module kdenetwork
+end module
+
+module amarok
+    repository git://gitorious.org/amarok/amarok.git
+end module
+
+module konversation
+    repository git://gitorious.org/konversation/konversation.git
+end module
+
+module webkitkde
+    module-base-path trunk/playground/libs/webkitkde
+end module
+
+module kdepim
+end module
+
