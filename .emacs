@@ -6,7 +6,6 @@
 (progn (cd "~/.elisp") (normal-top-level-add-subdirs-to-load-path))
 
 ;; Requirements
-(require 'magit)
 (require 'python-mode)
 (require 'python-pep8)
 (require 'ipython)
