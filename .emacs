@@ -83,13 +83,6 @@
   (use-anything-show-completion 'anything-ipython-complete
                                 '(length initial-pattern)))
 
-;; Lambda
-(font-lock-add-keywords 'emacs-lisp-mode
-                        '(("(\\(lambda\\)\\>" (0 (prog1 ()
-                                                   (compose-region (match-beginning 1)
-                                                                   (match-end 1)
-                                                                   ?λ))))))
-
 ;; File Extensions
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
