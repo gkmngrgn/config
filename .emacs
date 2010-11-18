@@ -12,6 +12,7 @@
 (require 'anything)
 (require 'anything-ipython)
 (require 'yasnippet-bundle)
+(require 'color-theme)
 
 ;; Environment
 (setq default-directory "~/Repositories/")
@@ -45,8 +46,10 @@
 (tool-bar-mode -1)
 
 ;; Theme
-(require 'zenburn)
-(zenburn)
+(color-theme-initialize)
+(color-theme-taylor)
+;(require 'zenburn)
+;(zenburn)
 
 ;; Major Mode Customization
 (setq-default fill-column 80)
