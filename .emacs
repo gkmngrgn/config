@@ -48,8 +48,6 @@
 ;; Theme
 (color-theme-initialize)
 (color-theme-taylor)
-;(require 'zenburn)
-;(zenburn)
 
 ;; Major Mode Customization
 (setq-default fill-column 80)
@@ -70,6 +68,7 @@
 
 ;; Python Customizations
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(if (eq system-type 'darwin) (setenv "PYTHONPATH" "/usr/local/bin/python3"))
 
 ;; Erlang Customizations
 (setq exec-path (cons "/usr/local/bin" exec-path))
