@@ -68,7 +68,9 @@
 
 ;; Python Customizations
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(if (eq system-type 'darwin) (setenv "PYTHONPATH" "/usr/local/bin/python3"))
+(if (eq system-type 'darwin)
+    (progn (setenv "PYTHONPATH" "/usr/local/bin/python3")
+           (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))))
 
 ;; Erlang Customizations
 (setq exec-path (cons "/usr/local/bin" exec-path))
