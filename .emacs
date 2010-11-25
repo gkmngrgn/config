@@ -5,15 +5,6 @@
 (setq load-path (cons "~/.elisp" load-path))
 (progn (cd "~/.elisp") (normal-top-level-add-subdirs-to-load-path))
 
-;; Requirements
-(require 'python-mode)
-(require 'python-pep8)
-(require 'ipython)
-(require 'anything)
-(require 'anything-ipython)
-(require 'yasnippet-bundle)
-(require 'color-theme)
-
 ;; Environment
 (setq default-directory "~/Repositories/")
 (set-language-environment 'turkish)
@@ -45,7 +36,16 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Code Completions
+(require 'anything)
+
+(when (require 'anything-show-completion nil t)
+  (use-anything-show-completion 'anything-ipython-complete
+                                '(length initial-pattern)))
+
 ;; Theme
+(require 'color-theme)
+
 (color-theme-initialize)
 (color-theme-taylor)
 
@@ -66,28 +66,39 @@
 (setq auto-save-list-file-prefix autosave-dir)
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
-;; Python Customizations
+;; Remove White Spaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Python Customizations
+(require 'python-mode)
+(require 'python-pep8)
+(require 'ipython)
+(require 'anything-ipython)
+
 (if (eq system-type 'darwin) (setenv "PYTHONPATH" "/usr/local/bin/python3"))
+
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; Erlang Customizations
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'erlang-start)
 (require 'erlang-flymake)
 
+;; Scala Customizations
+(require 'scala-mode)
+
+(add-hook 'scala-mode-hook '(lambda () (yas/minor-mode-on)))
+(autoload 'scala-mode "scala-mode" "Scala Mode." t)
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
+(add-to-list 'interpreter-mode-alist '("scala" . scala-mode))
+
 ;; Snippets
+(require 'yasnippet-bundle)
+
 (yas/initialize)
 (yas/load-directory "~/.elisp/snippets/")
-
-;; Code Completions
-(when (require 'anything-show-completion nil t)
-  (use-anything-show-completion 'anything-ipython-complete
-                                '(length initial-pattern)))
-
-;; File Extensions
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; Apple Keyboard Fixes
 (if (eq system-type 'darwin)
