@@ -105,14 +105,15 @@
 ;; Apple Keyboard Fixes
 (if (eq system-type 'darwin)
     (progn
-      (global-set-key "\M-3" '(lambda () (interactive) (insert "#")))
-      (global-set-key "\M-4" '(lambda () (interactive) (insert "$")))
-      (global-set-key "\M-7" '(lambda () (interactive) (insert "{")))
-      (global-set-key "\M-8" '(lambda () (interactive) (insert "[")))
-      (global-set-key "\M-9" '(lambda () (interactive) (insert "]")))
-      (global-set-key "\M-0" '(lambda () (interactive) (insert "}")))
-      (global-set-key "\M--" '(lambda () (interactive) (insert "|")))
-      (global-set-key "\M-*" '(lambda () (interactive) (insert "\\")))
+      (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#")))
+      (global-set-key (kbd "M-4") (lambda () (interactive) (insert "$")))
+      (global-set-key (kbd "M-7") (lambda () (interactive) (insert "{")))
+      (global-set-key (kbd "M-8") (lambda () (interactive) (insert "[")))
+      (global-set-key (kbd "M-9") (lambda () (interactive) (insert "]")))
+      (global-set-key (kbd "M-0") (lambda () (interactive) (insert "}")))
+      (global-set-key (kbd "M--") (lambda () (interactive) (insert "|")))
+      (global-set-key (kbd "M-q") (lambda () (interactive) (insert "@")))
+      (global-set-key (kbd "M-*") (lambda () (interactive) (insert "\\")))
       (global-set-key (kbd "M-ü") (lambda () (interactive) (insert "~")))))
 
 ;; General Keyboard Fixes
