@@ -125,3 +125,7 @@
 (autoload 'rm-exchange-point-and-mark "rect-mark" "Exchange point and mark for rectangle." t)
 (autoload 'rm-kill-region "rect-mark" "Kill a rectangular region and save it in the kill ring." t)
 (autoload 'rm-kill-ring-save "rect-mark" "Copy a rectangular region to the kill ring." t)
+
+;; Speedbar Customization
+(require 'sr-speedbar)
+(sr-speedbar-open)
