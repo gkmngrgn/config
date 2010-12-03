@@ -33,8 +33,6 @@
  scroll-preserve-screen-position 1)
 (line-number-mode t)
 (column-number-mode t)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
 
 ;; Code Completions
 (require 'anything)
@@ -43,11 +41,16 @@
   (use-anything-show-completion 'anything-ipython-complete
                                 '(length initial-pattern)))
 
-;; Theme
+;; Theme and ScrollBar
 (require 'color-theme)
-
 (color-theme-initialize)
-(color-theme-taylor)
+
+(if window-system
+    (progn
+      (color-theme-tango)
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1))
+  (color-theme-tty-dark))
 
 ;; Major Mode Customization
 (setq-default fill-column 80)
@@ -105,6 +108,11 @@
 ;; Apple Keyboard Fixes
 (if (eq system-type 'darwin)
     (progn
+      (setq mac-option-key-is-meta nil)
+      (setq mac-command-key-is-meta t)
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier nil)
+
       (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#")))
       (global-set-key (kbd "M-4") (lambda () (interactive) (insert "$")))
       (global-set-key (kbd "M-7") (lambda () (interactive) (insert "{")))
