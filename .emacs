@@ -47,7 +47,7 @@
 
 (if window-system
     (progn
-      (color-theme-tango)
+      (color-theme-railscasts)
       (scroll-bar-mode -1)
       (tool-bar-mode -1))
   (color-theme-tty-dark))
@@ -72,15 +72,13 @@
 ;; Remove White Spaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Yaml Mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 ;; Python Customizations
 (require 'python-mode)
 (require 'python-pep8)
-(require 'ipython)
-(require 'anything-ipython)
-
-(if (eq system-type 'darwin)
-    (progn (setenv "PYTHONPATH" "/usr/local/bin/python3")
-           (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))))
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -129,6 +127,7 @@
 (global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
 (global-set-key (kbd "C-x r C-w") 'rm-kill-region)
 (global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
+(global-set-key (kbd "C-c c") 'sr-speedbar-toggle)
 (autoload 'rm-set-mark "rect-mark" "Set mark for rectangle." t)
 (autoload 'rm-exchange-point-and-mark "rect-mark" "Exchange point and mark for rectangle." t)
 (autoload 'rm-kill-region "rect-mark" "Kill a rectangular region and save it in the kill ring." t)
@@ -137,3 +136,5 @@
 ;; Speedbar Customization
 (require 'sr-speedbar)
 (sr-speedbar-open)
+(speedbar-toggle-images)
+(speedbar-toggle-show-all-files)
