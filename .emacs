@@ -137,6 +137,7 @@
 
 ;; Speedbar Customization
 (require 'sr-speedbar)
-(sr-speedbar-open)
-(speedbar-toggle-images)
-(speedbar-toggle-show-all-files)
+(setq speedbar-mode-hook '(lambda ()
+                            (speedbar-toggle-images)
+                            (speedbar-toggle-show-all-files)
+                            ))
