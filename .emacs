@@ -14,6 +14,10 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; Chromium Extension
+(require 'edit-server)
+(edit-server-start)
+
 ;; Emacs Window Geometry
 (add-to-list 'default-frame-alist '(height . 40))
 (add-to-list 'default-frame-alist '(width . 130))
