@@ -50,7 +50,7 @@
       (color-theme-railscasts)
       (scroll-bar-mode -1)
       (tool-bar-mode -1))
-  (color-theme-tty-dark))
+  (color-theme-ld-dark))
 
 ;; Major Mode Customization
 (setq-default fill-column 80)
