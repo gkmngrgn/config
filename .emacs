@@ -5,6 +5,9 @@
 (setq load-path (cons "~/.elisp" load-path))
 (progn (cd "~/.elisp") (normal-top-level-add-subdirs-to-load-path))
 
+;; Font Size
+(set-face-attribute 'default (selected-frame) :height 105)
+
 ;; Environment
 (setq default-directory "~/Repositories/")
 (set-language-environment 'turkish)
