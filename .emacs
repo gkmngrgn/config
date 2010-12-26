@@ -50,7 +50,8 @@
 
 (if window-system
     (progn
-      (color-theme-railscasts)
+      ;(color-theme-railscasts)
+      (color-theme-arjen)
       (scroll-bar-mode -1)
       (tool-bar-mode -1))
   (color-theme-ld-dark))
@@ -74,6 +75,12 @@
 
 ;; Remove White Spaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Snippets
+(require 'yasnippet-bundle)
+
+(yas/initialize)
+(yas/load-directory "~/.elisp/snippets/")
 
 ;; Yaml Mode
 (require 'yaml-mode)
@@ -99,12 +106,6 @@
 (autoload 'scala-mode "scala-mode" "Scala Mode." t)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'interpreter-mode-alist '("scala" . scala-mode))
-
-;; Snippets
-(require 'yasnippet-bundle)
-
-(yas/initialize)
-(yas/load-directory "~/.elisp/snippets/")
 
 ;; Apple Keyboard Fixes
 (if (eq system-type 'darwin)
