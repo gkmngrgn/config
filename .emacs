@@ -50,8 +50,7 @@
 
 (if window-system
     (progn
-      ;(color-theme-railscasts)
-      (color-theme-arjen)
+      (color-theme-railscasts)
       (scroll-bar-mode -1)
       (tool-bar-mode -1))
   (color-theme-ld-dark))
