@@ -98,6 +98,11 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
+;; Java Customizations
+(require 'java-mode-indent-annotations)
+(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
+
+
 ;; Erlang Customizations
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'erlang-start)
