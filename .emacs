@@ -85,6 +85,11 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+;; Html Customizations
+(add-hook 'html-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-basic-offset) 4)))
+
 ;; Python Customizations
 (require 'python-mode)
 (require 'python-pep8)
