@@ -89,6 +89,13 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;; nXhtml Mode
+(load "nxhtml/autostart.el")
+(add-to-list 'auto-mode-alist '("\\.php$" . nxhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . nxhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.shtml$" . nxhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.htm$" . nxhtml-mode))
+
 ;; Html Customizations
 (add-hook 'html-mode-hook
           (lambda ()
