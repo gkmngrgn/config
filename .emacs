@@ -88,9 +88,11 @@
 ;; nXhtml Mode
 (load "nxhtml/autostart.el")
 (add-to-list 'auto-mode-alist '("\\.php$" . nxhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.html$" . nxhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.shtml$" . nxhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.htm$" . nxhtml-mode))
+
+;; Html Mode
+(add-to-list 'auto-mode-alist '("\\.shtml$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
 
 ;; Javascript Mode
 (autoload 'js2-mode "js2" nil t)
