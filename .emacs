@@ -38,7 +38,8 @@
 (column-number-mode t)
 
 ;; Code Completions
-(require 'anything)
+(require 'auto-complete)
+(global-auto-complete-mode t)
 
 (when (require 'anything-show-completion nil t)
   (use-anything-show-completion 'anything-ipython-complete
@@ -129,6 +130,9 @@
 (autoload 'scala-mode "scala-mode" "Scala Mode." t)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'interpreter-mode-alist '("scala" . scala-mode))
+
+;; Git Extension
+(require 'magit)
 
 ;; Apple Keyboard Fixes
 (if (eq system-type 'darwin)
