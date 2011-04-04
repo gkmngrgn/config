@@ -75,6 +75,7 @@
 
 ;; magit core
 (require 'magit-key-mode)
+(require 'magit-bisect)
 
 (eval-when-compile (require 'cl))
 (require 'log-edit)
@@ -444,6 +445,7 @@ Many Magit faces inherit from this one by default."
     (define-key map (kbd "P") 'magit-key-mode-popup-pushing)
     (define-key map (kbd "f") 'magit-key-mode-popup-fetching)
     (define-key map (kbd "b") 'magit-key-mode-popup-branching)
+    (define-key map (kbd "B") 'magit-key-mode-popup-bisecting)
     (define-key map (kbd "F") 'magit-key-mode-popup-pulling)
     (define-key map (kbd "l") 'magit-key-mode-popup-logging)
     (define-key map (kbd "$") 'magit-display-process)
@@ -509,6 +511,7 @@ Many Magit faces inherit from this one by default."
     (define-key map (kbd "A") 'magit-cherry-pick-item)
     (define-key map (kbd "v") 'magit-revert-item)
     (define-key map (kbd "b") 'magit-key-mode-popup-branching)
+    (define-key map (kbd "B") 'magit-key-mode-popup-bisecting)
     (define-key map (kbd "m") 'magit-key-mode-popup-merging)
     (define-key map (kbd "x") 'magit-reset-head)
     (define-key map (kbd "e") 'magit-log-show-more-entries)
@@ -2802,7 +2805,7 @@ PREPEND-REMOTE-NAME is non-nil."
 	(when remote-string
 	  (insert "Remote:   " remote-string "\n"))
 	(insert (format "Local:    %s %s\n"
-			(propertize (or branch "(detached)")
+			(propertize (magit--bisect-info-for-status branch)
 				    'face 'magit-branch)
 			(abbreviate-file-name default-directory)))
 	(insert (format "Head:     %s\n"
@@ -3339,8 +3342,8 @@ Uncomitted changes in both working tree and staging area are lost.
 
 (magit-define-command fetch (remote)
   "Fetch from REMOTE."
-  (interactive (magit-read-remote))
-  (magit-run-git-async "fetch" (or remote)))
+  (interactive (list (magit-read-remote)))
+  (magit-run-git-async "fetch" remote))
 
 (magit-define-command fetch-current ()
   "Run fetch for default remote.
@@ -3582,6 +3585,9 @@ toggled on.  When it's toggled on for the first time, return
 	 (tag-rev (cdr (assq 'tag-rev fields)))
 	 (tag-name (cdr (assq 'tag-name fields)))
 	 (author (cdr (assq 'author fields))))
+    (if (or (not (or allow-empty commit-all amend tag-name (magit-anything-staged-p)))
+            (not (or allow-empty (not commit-all) amend (not (magit-everything-clean-p)))))
+        (error "Refusing to create empty commit. Maybe you want to amend or allow-empty?"))
     (magit-log-edit-push-to-comment-ring (buffer-string))
     (magit-log-edit-setup-author-env author)
     (magit-log-edit-set-fields nil)
@@ -3592,9 +3598,6 @@ toggled on.  When it's toggled on for the first time, return
       (with-current-buffer (magit-find-buffer 'status default-directory)
 	(cond (tag-name
 	       (magit-run-git-with-input commit-buf "tag" tag-name "-a" "-F" "-" tag-rev))
-	      ((or (not (or allow-empty commit-all amend (magit-anything-staged-p)))
-		   (not (or allow-empty (not commit-all) amend (not (magit-everything-clean-p)))))
-	       (error "Refusing to create empty commit. Maybe you want to amend or allow-empty?"))
 	      (t
 	       (apply #'magit-run-async-with-input commit-buf
 		      magit-git-executable
