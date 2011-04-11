@@ -90,6 +90,10 @@
 (load "nxhtml/autostart.el")
 (add-to-list 'auto-mode-alist '("\\.php$" . nxhtml-mode))
 
+;; Css Mode
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+
 ;; Html Mode
 (add-to-list 'auto-mode-alist '("\\.shtml$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
