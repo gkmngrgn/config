@@ -53,7 +53,8 @@
     (progn
       (scroll-bar-mode nil)
       (tool-bar-mode -1)
-      (color-theme-sunburst))
+      ;; (color-theme-sunburst))
+      (color-theme-twilight))
   (color-theme-railscasts))
 
 ;; Major Mode Customization
@@ -88,6 +89,7 @@
 
 ;; nXhtml Mode
 (load "nxhtml/autostart.el")
+(setq mumamo-background-colors nil)
 (add-to-list 'auto-mode-alist '("\\.php$" . nxhtml-mode))
 
 ;; Css Mode
