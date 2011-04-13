@@ -18,8 +18,8 @@
 (prefer-coding-system 'utf-8)
 
 ;; Emacs Window Geometry
-(add-to-list 'default-frame-alist '(height . 40))
-(add-to-list 'default-frame-alist '(width . 130))
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 140))
 
 ;; Disable emacs splash screen
 (setq inhibit-startup-message t)
@@ -98,18 +98,12 @@
 
 ;; Html Mode
 (add-to-list 'auto-mode-alist '("\\.shtml$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
 
 ;; Javascript Mode
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq js2-use-ast-for-indentation-p 'non-nil)
-
-;; Html Customizations
-(add-hook 'html-mode-hook
-          (lambda ()
-            (set (make-local-variable 'sgml-basic-offset) 4)))
 
 ;; Python Customizations
 (require 'python-mode)
@@ -118,6 +112,12 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; Django Mode
+(require 'django-html-mode)
+(require 'django-mode)
+(yas/load-directory "~/.elisp/django-mode/snippets")
+(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
 
 ;; Java Customizations
 (require 'java-mode-indent-annotations)
