@@ -87,11 +87,6 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-;; nXhtml Mode
-(load "nxhtml/autostart.el")
-(setq mumamo-background-colors nil)
-(add-to-list 'auto-mode-alist '("\\.php$" . nxhtml-mode))
-
 ;; Css Mode
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
