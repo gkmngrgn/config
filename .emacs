@@ -76,6 +76,22 @@
 ;; Remove White Spaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Google Translate
+(require 'gtranslate)
+(autoload 'gtranslate-translate "gtranslate" nil t)
+(autoload 'gtranslate-translate-auto "gtranslate" nil t)
+
+(defun translate-en-tr ()
+  (interactive)
+  (gtranslate-translate (gtranslate-region-or-input) "en"  "tr"))
+
+(defun translate-tr-en ()
+  (interactive)
+  (gtranslate-translate (gtranslate-region-or-input) "tr" "en"))
+
+(global-set-key "\M-1" 'translate-en-tr)
+(global-set-key "\M-2" 'translate-tr-en)
+
 ;; Snippets
 (require 'yasnippet-bundle)
 
