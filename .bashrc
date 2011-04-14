@@ -5,6 +5,7 @@ alias ls='ls --color=auto'
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
+alias emc="emacs -nw"
 
 export SDL_AUDIODRIVER="pulse"
 export EDITOR="vim"
