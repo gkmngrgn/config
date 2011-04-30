@@ -38,12 +38,9 @@
 (column-number-mode t)
 
 ;; Code Completions
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
-(when (require 'anything-show-completion nil t)
-  (use-anything-show-completion 'anything-ipython-complete
-                                '(length initial-pattern)))
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.elisp/auto-complete/ac-dict")
+(ac-config-default)
 
 ;; Theme and ScrollBar
 (require 'color-theme)
