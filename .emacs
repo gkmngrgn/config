@@ -48,7 +48,7 @@
 
 (if window-system
     (progn
-      (scroll-bar-mode nil)
+      (scroll-bar-mode -1)
       (tool-bar-mode -1)
       ;; (color-theme-sunburst))
       (color-theme-twilight))
