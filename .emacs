@@ -104,9 +104,22 @@
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
 
+;; Django Mode
+(require 'django-html-mode)
+(require 'django-mode)
+(yas/load-directory "~/.elisp/django-mode/snippets")
+
 ;; Html Mode
 (add-to-list 'auto-mode-alist '("\\.shtml$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
+(add-hook 'html-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-basic-offset) 4)))
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-basic-offset) 4)
+            (sgml-guess-indent)))
 
 ;; PHP Mode
 (require 'php-mode)
@@ -123,12 +136,6 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-;; Django Mode
-(require 'django-html-mode)
-(require 'django-mode)
-(yas/load-directory "~/.elisp/django-mode/snippets")
-(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
 
 ;; Java Customizations
 (require 'java-mode-indent-annotations)
