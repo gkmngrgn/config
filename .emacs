@@ -44,15 +44,13 @@
 
 ;; Theme and ScrollBar
 (require 'color-theme)
-(color-theme-initialize)
+(require 'color-theme-solarized)
+(color-theme-solarized-dark)
 
 (if window-system
     (progn
       (scroll-bar-mode -1)
-      (tool-bar-mode -1)
-      ;; (color-theme-sunburst))
-      (color-theme-twilight))
-  (color-theme-railscasts))
+      (tool-bar-mode -1)))
 
 ;; Major Mode Customization
 (setq-default fill-column 80)
