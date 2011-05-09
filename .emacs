@@ -36,6 +36,10 @@
  scroll-preserve-screen-position 1)
 (line-number-mode t)
 (column-number-mode t)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
 
 ;; Code Completions
 (require 'auto-complete-config)
