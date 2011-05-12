@@ -1,7 +1,7 @@
 ;; erlang.el --- Major modes for editing and running Erlang
 ;; %CopyrightBegin%
 ;;
-;; Copyright Ericsson AB 1996-2010. All Rights Reserved.
+;; Copyright Ericsson AB 1996-2011. All Rights Reserved.
 ;;
 ;; The contents of this file are subject to the Erlang Public License,
 ;; Version 1.1, (the "License"); you may not use this file except in
@@ -466,14 +466,17 @@ To activate the workaround, place the following in your `~/.emacs' file:
 
 (defvar erlang-indent-level 4
   "*Indentation of Erlang calls/clauses within blocks.")
+(put 'erlang-indent-level 'safe-local-variable 'integerp)
 
 (defvar erlang-indent-guard 2
   "*Indentation of Erlang guards.")
+(put 'erlang-indent-guard 'safe-local-variable 'integerp)
 
 (defvar erlang-argument-indent 2
   "*Indentation of the first argument in a function call.
 When nil, indent to the column after the `(' of the
 function.")
+(put 'erlang-argument-indent 'safe-local-variable '(lambda (val) (or (null val) (integerp val))))
 
 (defvar erlang-tab-always-indent t
   "*Non-nil means TAB in Erlang mode should always re-indent the current line,
@@ -1481,7 +1484,23 @@ Other commands:
 				    erlang-font-lock-keywords-3 
 				    erlang-font-lock-keywords-4)
 	 nil nil ((?_ . "w")) erlang-beginning-of-clause
-	 (font-lock-mark-block-function . erlang-mark-clause))))
+	 (font-lock-mark-block-function . erlang-mark-clause)
+         (font-lock-syntactic-keywords
+          ;; A dollar sign right before the double quote that ends a
+          ;; string is not a character escape.
+          ;;
+          ;; And a "string" has with a double quote not escaped by a
+          ;; dollar sign, any number of non-backslash non-newline
+          ;; characters or escaped backslashes, a dollar sign
+          ;; (otherwise we wouldn't care) and a double quote.  This
+          ;; doesn't match multi-line strings, but this is probably
+          ;; the best we can get, since while font-locking we don't
+          ;; know whether matching started inside a string: limiting
+          ;; search to a single line keeps things sane.
+          . (("\\(?:^\\|[^$]\\)\"\\(?:[^\"\n]\\|\\\\\"\\)*\\(\\$\\)\"" 1 "w")
+             ;; And the dollar sign in $\" escapes two characters, not
+             ;; just one.
+             ("\\(\\$\\)\\\\\\\"" 1 "'"))))))
 
 
 
