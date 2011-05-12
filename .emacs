@@ -190,6 +190,7 @@
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-c t") 'sr-speedbar-toggle)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 (autoload 'rm-set-mark "rect-mark" "Set mark for rectangle." t)
 (autoload 'rm-exchange-point-and-mark "rect-mark" "Exchange point and mark for rectangle." t)
 (autoload 'rm-kill-region "rect-mark" "Kill a rectangular region and save it in the kill ring." t)
