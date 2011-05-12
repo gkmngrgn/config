@@ -149,6 +149,9 @@
 (require 'erlang-start)
 (require 'erlang-flymake)
 
+;; Go Customizations
+(require 'go-mode-load)
+
 ;; Scala Customizations
 (require 'scala-mode)
 
