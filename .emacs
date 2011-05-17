@@ -102,9 +102,10 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-;; Css Mode
+;; Css / Less Mode
+(require 'less-mode)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . less-mode))
 
 ;; Django Mode
 (require 'django-html-mode)
