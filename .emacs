@@ -162,9 +162,10 @@
 ;; Git Extension
 (require 'magit)
 
-;; Apple Keyboard Fixes
+;; Mac Customizations
 (if (eq system-type 'darwin)
     (progn
+      ;; Apple Keyboard Fixes
       (setq mac-option-key-is-meta nil)
       (setq mac-command-key-is-meta t)
       (setq mac-command-modifier 'meta)
@@ -179,7 +180,12 @@
       (global-set-key (kbd "M--") (lambda () (interactive) (insert "|")))
       (global-set-key (kbd "M-q") (lambda () (interactive) (insert "@")))
       (global-set-key (kbd "M-*") (lambda () (interactive) (insert "\\")))
-      (global-set-key (kbd "M-ü") (lambda () (interactive) (insert "~")))))
+      (global-set-key (kbd "M-ü") (lambda () (interactive) (insert "~")))
+
+      ;; Fix paths
+      (setenv "PATH" (concat "/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin:" (getenv "PATH")))
+      )
+  )
 
 ;; General Keyboard Fixes
 (global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
