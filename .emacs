@@ -76,6 +76,13 @@
 ;; Remove White Spaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Environments
+(setenv "PATH"
+        (concat (getenv "HOME") "/local/node/bin:"
+                (getenv "HOME") "/local/node/lib/node_modules/.bin:"
+                (getenv "PATH")))
+
+
 ;; Google Translate
 (require 'gtranslate)
 (autoload 'gtranslate-translate "gtranslate" nil t)
