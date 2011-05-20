@@ -147,26 +147,10 @@
 (setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
-;; Java Customizations
-(require 'java-mode-indent-annotations)
-(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
-
-
 ;; Erlang Customizations
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'erlang-start)
 (require 'erlang-flymake)
-
-;; Go Customizations
-(require 'go-mode-load)
-
-;; Scala Customizations
-(require 'scala-mode)
-
-(add-hook 'scala-mode-hook '(lambda () (yas/minor-mode-on)))
-(autoload 'scala-mode "scala-mode" "Scala Mode." t)
-(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
-(add-to-list 'interpreter-mode-alist '("scala" . scala-mode))
 
 ;; Git Extension
 (require 'magit)
