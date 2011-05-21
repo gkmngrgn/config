@@ -9,6 +9,7 @@ if [ -f /home ]; then
 else
     source /usr/local/Cellar/coreutils/8.12/aliases
     alias ls='ls -G'
+    export PATH=$HOME/Library/Environments/python/bin:$PATH
 fi
 
 if [ "$TERM" != "dumb" ]; then
