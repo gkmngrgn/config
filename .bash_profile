@@ -21,3 +21,5 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias emc="emacs -nw"
+
+source ~/.bash_completion.d/*
