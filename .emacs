@@ -104,10 +104,9 @@
 (global-set-key "\M-2" 'translate-tr-en)
 
 ;; Snippets
-(require 'yasnippet-bundle)
-
+(require 'yasnippet)
 (yas/initialize)
-(yas/load-directory "~/.elisp/snippets/")
+(yas/load-directory "~/.elisp/yasnippet/snippets/")
 
 ;; Yaml Mode
 (require 'yaml-mode)
