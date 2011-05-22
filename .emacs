@@ -29,6 +29,10 @@
 (setq standart-indent 4)
 (setq-default indent-tabs-mode nil)
 
+;; Autopair
+(require 'autopair)
+(autopair-global-mode)
+
 ;; Scrolling
 (setq
  scroll-margin 0
