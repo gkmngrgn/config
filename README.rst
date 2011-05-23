@@ -1,7 +1,1 @@
-Emacs Configuration Components
-==============================
-
-My Emacs configuration file requires some external dependencies:
-
-- Magit: https://github.com/magit/magit
-- Auto-complete: https://github.com/m2ym/auto-complete
+You can find my emacs configuration files in this url: https://github.com/gkmngrgn/emacs-config
