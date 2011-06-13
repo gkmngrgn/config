@@ -1,9 +1,11 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
+unamestr=`uname`
+
 export EDITOR="nano"
 
-if [ -f /home ]; then
+if [[ "$unamestr" == 'Linux' ]]; then
     alias ls='ls --color=auto'
     export SDL_AUDIODRIVER="pulse"
 else
