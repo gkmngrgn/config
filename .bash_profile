@@ -11,7 +11,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
 else
     source /usr/local/Cellar/coreutils/8.12/aliases
     alias ls='ls -G'
-    export PATH=$HOME/Library/Environments/python/bin:/usr/local/bin:$PATH
+    export PATH=$HOME/Library/Environments/python/bin:/usr/local/bin:/usr/local/sbin:$PATH
 fi
 
 if [ "$TERM" != "dumb" ]; then
