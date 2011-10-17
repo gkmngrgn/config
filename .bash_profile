@@ -11,7 +11,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
 else
     source /usr/local/Cellar/coreutils/8.12/aliases
     alias ls='ls -G'
-    export PATH=/usr/local/bin:/usr/local/sbin:$HOME/Repositories/juju/node_modules/.bin:$PATH
+    export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$HOME/Repositories/juju/node_modules/.bin:$PATH
     export PYTHONPATH=/usr/local/Cellar/xapian/1.2.6/lib/python:$PYTHONPATH
 fi
 
