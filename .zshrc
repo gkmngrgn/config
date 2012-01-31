@@ -11,7 +11,7 @@ ZSH_THEME="pygmalion"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emc="emacsclient"
+alias emc="emacsclient -t"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -38,3 +38,5 @@ source virtualenvwrapper.sh
 
 # Customize to your needs...
 export PATH=/home/gokmen/.local/komodo/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
