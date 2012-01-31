@@ -33,10 +33,8 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git django debian lol nyan pip)
 
-source $ZSH/oh-my-zsh.sh
-source virtualenvwrapper.sh
-
 # Customize to your needs...
 export PATH=/home/gokmen/.local/komodo/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+source $ZSH/oh-my-zsh.sh
+source virtualenvwrapper.sh
