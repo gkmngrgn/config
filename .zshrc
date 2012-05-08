@@ -1,40 +1,46 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+autoload -U promptinit && promptinit
+autoload -U colors && colors
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="pygmalion"
+PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emc="emacsclient -t"
+alias ls="ls -G"
+alias emc="emacs -nw"
 
-# Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git django debian lol nyan pip)
+# emacs style key binding
+bindkey -e
 
 # Customize to your needs...
-export PATH=/home/gokmen/.local/komodo/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/share/python
 
-source $ZSH/oh-my-zsh.sh
-source virtualenvwrapper.sh
+# enable virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+source `which virtualenvwrapper.sh`
+
+# set LANG
+export CC='/usr/bin/clang'
+export CFLAGS='-Os -w -pipe -march=native -Qunused-arguments -arch x86_64'
+export CXX='/usr/bin/clang++'
+export CXXFLAGS='-Os -w -pipe -march=native -Qunused-arguments'
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export LD='/usr/bin/clang'
+export LDFLAGS='-arch x86_64'
+export MAKEFLAGS='-j4'
+
+# android sdk
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r18
+
+# history
+## Command history configuration
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
