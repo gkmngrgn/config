@@ -1,0 +1,8 @@
+set autoindent
+set tabsize 4
+set tabstospaces
+set mouse
+set nowrap
+set nohelp
+set morespace
+set smooth
