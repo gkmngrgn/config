@@ -1,12 +1,19 @@
-# General configuration
-URxvt.font: xft:Ubuntu Mono:size=12:antialias=true
+URxvt.font: xft:Monospace:size=12:antialias=true
 URxvt.scrollBar: false
 URxvt.title: Terminal
-URxvt.perl-ext-common: default,matcher,tabbed
-URxvt.urlLauncher: /usr/bin/google-chrome
+URxvt.perl-lib: /usr/lib/urxvt/perl/
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher,tabbed
+URxvt.keysym.M-u: perl:url-select:select next
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-c: perl:clipboard:paste_escaped
+URxvt.url-select.launcher: chromium
+URxvt.url-select.underline: true
 URxvt.matcher.button: 1
-
-# Solarized theme
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
 *fading: 40
 *fadeColor: #002b36
 *foreground: #839496
