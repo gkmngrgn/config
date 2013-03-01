@@ -1,8 +1,10 @@
-alias ls="ls -G"
+alias ls="ls --color"
 alias n="nano"
+alias emc="emacsclient -c"
+alias emt="emacsclient -t"
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/share/python:/usr/local/Cellar/gettext/0.18.1.1/bin:/usr/local/Cellar/clamav/0.97.4/bin:/usr/local/Cellar/ruby/1.9.3-p194/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/bin/vendor_perl
 
 # set LANG
 export CC='/usr/bin/clang'
