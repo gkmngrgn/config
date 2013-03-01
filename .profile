@@ -14,3 +14,12 @@ export LC_ALL='en_US.UTF-8'
 export LD='/usr/bin/clang'
 export LDFLAGS='-arch x86_64'
 export MAKEFLAGS='-j4'
+
+# set default editor
+export EDITOR='emacsclient -t'
+
+# virtualenvwrapper
+source `which virtualenvwrapper.sh`
+
+# java fonts
+export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
