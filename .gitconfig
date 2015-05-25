@@ -20,6 +20,7 @@
     interactive = auto
     status = auto
 [core]
-    editor = emacsclient -t
+    autocrlf = input
+    editor = vim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /home/gokmen/.global_ignore
+    excludesfile = /home/gokmen/.global_ignore
