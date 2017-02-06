@@ -1,0 +1,35 @@
+// MY CONFIGURATION DOES NOT WORK PROPERLY IF YOU DON'T
+// INSTALL EDITORCONFIG.
+//
+// Other packages are:
+// - Django Template
+// - erlang
+// - Python
+// - SCSS Intellisense
+// - Vagrantfile Support
+{
+  "editor.fontFamily": "Fira Code Medium",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "editor.rulers": [120],
+  "explorer.openEditors.visible": 0,
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/.idea": true,
+    "**/.vagrant": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/__pycache__": true,
+    "*.beam": true
+  },
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "c:/Users/gokmen/AppData/Local/Programs/Python/Python35-32/Scripts/pylint.exe",
+  "python.linting.pylintArgs": [
+    "--disable", "E0401,E1101",
+    "--max-line-length", "119"
+  ]
+}
