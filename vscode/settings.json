@@ -35,5 +35,6 @@
     "--max-line-length", "119"
   ],
   "window.menuBarVisibility": "toggle",
-  "workbench.welcome.enabled": true
+"workbench.welcome.enabled": true,
+"workbench.iconTheme": "vs-seti"
 }
