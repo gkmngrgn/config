@@ -1,19 +1,21 @@
-// MY CONFIGURATION DOES NOT WORK PROPERLY IF YOU DON'T
-// INSTALL EDITORCONFIG.
-//
-// Other packages are:
+// Dependencies:
 // - Django Template
 // - erlang
 // - Python
 // - SCSS Intellisense
 // - Vagrantfile Support
 {
+  "editor.detectIndentation": false,
   "editor.fontFamily": "Fira Code Medium",
   "editor.fontSize": 13,
   "editor.fontLigatures": true,
+  "editor.insertSpaces": true,
   "editor.rulers": [120],
+  "editor.tabSize": 2,
   "explorer.openEditors.visible": 0,
   "files.autoSave": "off",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
   "files.exclude": {
     "**/.idea": true,
     "**/.vagrant": true,
@@ -28,6 +30,8 @@
     "**/.sass-cache": true,
     "frontend/dist": true
   },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "c:/Users/gokmen/AppData/Local/Programs/Python/Python35-32/Scripts/pylint.exe",
   "python.linting.pylintArgs": [
@@ -35,6 +39,9 @@
     "--max-line-length", "119"
   ],
   "window.menuBarVisibility": "toggle",
-"workbench.welcome.enabled": true,
-"workbench.iconTheme": "vs-seti"
+  "workbench.welcome.enabled": true,
+  "workbench.iconTheme": "vs-seti",
+  "[python]": {
+    "editor.tabSize": 4
+  }
 }
