@@ -7,7 +7,7 @@
 {
   "editor.detectIndentation": false,
   "editor.fontFamily": "Fira Code Medium",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": true,
