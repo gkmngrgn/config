@@ -21,6 +21,7 @@
   "files.exclude": {
     "**/.idea": true,
     "**/.vagrant": true,
+    "**/.vscode": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
@@ -44,6 +45,7 @@
   "workbench.welcome.enabled": true,
   "workbench.iconTheme": "vs-seti",
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false
   }
 }
