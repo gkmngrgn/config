@@ -36,7 +36,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.pylintPath": "c:/Users/gokmen/AppData/Local/Programs/Python/Python35-32/Scripts/pylint.exe",
+  "python.linting.pylintPath": "c:/Users/gokmen/Anaconda3/Scripts/pylint.exe",
   "python.linting.pylintArgs": [
     "--disable", "E0401,E1101,C0103,C0111",
     "--max-line-length", "119"
