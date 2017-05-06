@@ -7,10 +7,10 @@
 {
   "editor.detectIndentation": false,
   "editor.fontFamily": "Fira Code Medium",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "editor.insertSpaces": true,
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
   "editor.rulers": [120],
   "editor.tabSize": 2,
@@ -54,5 +54,8 @@
   "[csharp]": {
     "editor.tabSize": 4,
     "editor.detectIndentation": false
-  }
+  },
+  "workbench.colorTheme": "Monokai",
+  "workbench.sideBar.location": "right",
+  "window.zoomLevel": 0
 }
