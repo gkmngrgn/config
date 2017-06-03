@@ -1,16 +1,11 @@
-// Dependencies:
-// - Django Template
-// - erlang
-// - Python
-// - SCSS Intellisense
-// - Vagrantfile Support
 {
+  "diffEditor.renderSideBySide": false,
   "editor.detectIndentation": false,
   "editor.fontFamily": "Fira Code Medium",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "editor.insertSpaces": true,
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.renderWhitespace": "all",
   "editor.rulers": [120],
   "editor.tabSize": 2,
