@@ -37,6 +37,7 @@
     "--max-line-length", "119"
   ],
   "window.menuBarVisibility": "toggle",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
   "workbench.welcome.enabled": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.editor.enablePreviewFromQuickOpen": false,
