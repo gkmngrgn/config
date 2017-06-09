@@ -6,7 +6,7 @@
   "editor.fontLigatures": true,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.rulers": [120],
   "editor.tabSize": 2,
   "explorer.openEditors.visible": 0,
