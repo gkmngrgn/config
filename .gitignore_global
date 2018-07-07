@@ -1,3 +1,7 @@
+.vscode
+.idea
+.vs
+
 *.elc
 .elisp/auto-complete
 .elisp/magit
