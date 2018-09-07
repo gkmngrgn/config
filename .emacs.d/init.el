@@ -14,6 +14,7 @@
 (when (not package-archive-contents) (package-refresh-contents))
 (defvar my-packages
   '(auto-complete
+    editorconfig
     flx-ido
     helm
     helm-ag
@@ -112,3 +113,7 @@
 (setq sublimity-scroll-weight 10
       sublimity-scroll-drift-length 5)
 (setq sublimity-attractive-centering-width 120)
+
+;; editorconfig
+(require 'editorconfig)
+(editorconfig-mode 1)
