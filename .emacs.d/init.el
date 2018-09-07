@@ -24,6 +24,7 @@
     markdown-mode+
     scss-mode
     spacemacs-theme
+    sublimity
     web-mode)
   "A list of packages to ensure are installed at launch.")
 
@@ -102,3 +103,12 @@
 ;; text file settings
 (add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
+
+;; sublimity
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-attractive)
+(sublimity-mode 1)
+(setq sublimity-scroll-weight 10
+      sublimity-scroll-drift-length 5)
+(setq sublimity-attractive-centering-width 120)
