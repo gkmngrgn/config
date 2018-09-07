@@ -19,9 +19,11 @@
     helm-ag
     helm-ls-git
     js2-mode
+    magit
     markdown-mode
     markdown-mode+
     scss-mode
+    spacemacs-theme
     web-mode)
   "A list of packages to ensure are installed at launch.")
 
@@ -42,6 +44,7 @@
 (tool-bar-mode -1)
 (setq visible-bell 1)
 (column-number-mode t)
+(load-theme 'spacemacs-dark t)
 
 (set-face-attribute 'default nil :font "Consolas" :height 105 :weight 'normal :width 'normal)
 (ido-mode 1)
@@ -65,7 +68,7 @@
 ;; place all backup files in one directory
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(setq default-directory (concat "/users/" (getenv "USERNAME") "/Documents/Workspace"))
+(setq default-directory (concat "/users/" (getenv "USERNAME") "/Desktop/Workspace"))
 
 ;; web
 (require 'web-mode)
@@ -99,17 +102,3 @@
 ;; text file settings
 (add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (markdown-mode+ web-mode scss-mode markdown-mode js2-mode helm-ls-git helm-ag helm flx-ido auto-complete))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(markdown-code-face ((t (:inherit consolas)))))
