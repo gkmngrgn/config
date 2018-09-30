@@ -10,7 +10,7 @@
 ;; packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+(when (version< emacs-version "27.0") (package-initialize))
 (when (not package-archive-contents) (package-refresh-contents))
 (defvar my-packages
   '(auto-complete
