@@ -64,6 +64,7 @@
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; major mode customizations
 (defalias 'yes-or-no-p 'y-or-n-p)
