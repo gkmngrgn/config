@@ -71,7 +71,7 @@
 ;; place all backup files in one directory
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(setq default-directory (concat "/users/" (getenv "USERNAME") "/Workspace"))
+(setq default-directory (concat (getenv "HOME") "/Workspace"))
 
 ;; web
 (require 'web-mode)
