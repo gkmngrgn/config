@@ -25,7 +25,6 @@
     markdown-mode+
     scss-mode
     spacemacs-theme
-    sublimity
     web-mode)
   "A list of packages to ensure are installed at launch.")
 
@@ -42,11 +41,13 @@
 (setq-default truncate-lines t)
 (setq inhibit-splash-screen t)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      (scroll-bar-mode -1)
+      (setq visible-bell 1)
+      (load-theme 'spacemacs-dark t)))
 (tool-bar-mode -1)
-(setq visible-bell 1)
 (column-number-mode t)
-(load-theme 'spacemacs-dark t)
 
 (set-face-attribute 'default nil :font "Consolas" :height 105 :weight 'normal :width 'normal)
 (ido-mode 1)
@@ -104,15 +105,6 @@
 ;; text file settings
 (add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
-
-;; sublimity
-(require 'sublimity)
-(require 'sublimity-scroll)
-(require 'sublimity-attractive)
-(sublimity-mode 1)
-(setq sublimity-scroll-weight 10
-      sublimity-scroll-drift-length 5)
-(setq sublimity-attractive-centering-width 120)
 
 ;; editorconfig
 (require 'editorconfig)
