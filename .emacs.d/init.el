@@ -23,6 +23,7 @@
     magit
     markdown-mode
     markdown-mode+
+    neotree
     scss-mode
     spacemacs-theme
     web-mode)
@@ -65,6 +66,7 @@
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; major mode customizations
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -73,6 +75,12 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq default-directory (concat (getenv "HOME") "/Workspace"))
+
+;; sidebar
+(require 'neotree)
+(setq neo-theme 'arrow)
+(setq neo-window-fixed-size 0)
+(setq neo-window-width '30)
 
 ;; web
 (require 'web-mode)
