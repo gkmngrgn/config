@@ -1,6 +1,10 @@
+set atblanks
+set autoindent
+set linenumbers
+set morespace
+set nohelp
+set nowrap
+set smooth
 set tabsize 4
 set tabstospaces
-set nowrap
-set nohelp
-set morespace
-set smooth
+set titlecolor white,red
