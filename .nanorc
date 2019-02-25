@@ -5,6 +5,7 @@ set morespace
 set nohelp
 set nowrap
 set smooth
+set softwrap
 set tabsize 4
 set tabstospaces
 set titlecolor white,red
