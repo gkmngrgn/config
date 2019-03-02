@@ -13,53 +13,58 @@
 (when (version< emacs-version "27.0") (package-initialize))
 (when (not package-archive-contents) (package-refresh-contents))
 (defvar my-packages
-  '(auto-complete
-    editorconfig
-    flx-ido
-    helm
-    helm-ag
-    helm-ls-git
-    js2-mode
-    magit
-    markdown-mode
-    markdown-mode+
-    neotree
-    scss-mode
-    spacemacs-theme
-    web-mode)
-  "A list of packages to ensure are installed at launch.")
+    '(auto-complete
+         editorconfig
+         flx-ido
+         helm
+         helm-ag
+         helm-ls-git
+         js2-mode
+         magit
+         markdown-mode
+         markdown-mode+
+         neotree
+         scss-mode
+         spacemacs-theme
+         web-mode)
+    "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
-  (when (not (package-installed-p p)) (package-install p)))
+    (when (not (package-installed-p p)) (package-install p)))
 
 (defun kill-other-buffers ()
-  "Kill all other buffers."
-  (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-  (message "All other buffers are killed.."))
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "All other buffers are killed.."))
 
 ;; default settings
-(setq-default truncate-lines t)
-(setq inhibit-splash-screen t)
+(setq-default
+    indent-tabs-mode nil
+    truncate-lines t)
+(setq
+    ido-enable-flex-matching t
+    ido-use-faces nil
+    inhibit-splash-screen t
+    scroll-conservatively 10000
+    scroll-step 1)
 (menu-bar-mode -1)
-(if (display-graphic-p)
-    (progn
-      (scroll-bar-mode -1)
-      (setq visible-bell 1)
-      (load-theme 'spacemacs-dark t)))
 (tool-bar-mode -1)
 (column-number-mode t)
-
-(set-face-attribute 'default nil :font "Consolas" :height 105 :weight 'normal :width 'normal)
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-(setq-default indent-tabs-mode nil)
 (electric-pair-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (ac-config-default)
+
+;; GUI settings
+(if (display-graphic-p)
+    (progn
+        (setq visible-bell 1)
+        (scroll-bar-mode -1)
+        (set-face-attribute 'default nil :font "Consolas" :height 105 :weight 'normal :width 'normal)
+        (load-theme 'spacemacs-dark t)))
 
 ;; keyboard shortcuts
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
@@ -88,9 +93,9 @@
 (add-to-list 'auto-mode-alist '("\\.api\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("/some/react/path/.*\\.js[x]?\\'" . web-mode))
 (setq web-mode-content-types-alist
-      '(("json" . "/some/path/.*\\.api\\'")
-	("xml"  . "/other/path/.*\\.api\\'")
-	("jsx"  . "/some/react/path/.*\\.js[x]?\\'")))
+    '(("json" . "/some/path/.*\\.api\\'")
+	     ("xml"  . "/other/path/.*\\.api\\'")
+	     ("jsx"  . "/some/react/path/.*\\.js[x]?\\'")))
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
