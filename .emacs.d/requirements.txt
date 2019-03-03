@@ -1,5 +1,5 @@
-rope
-jedi
-flake8
+# rope
+# jedi
 autopep8
 yapf
+pylint

@@ -1,8 +1,12 @@
-;; Gökmen Görgen: Hi, this is my Emacs configuration file.
-;;
-;; This configuration needs some dependencies.
-;; $ pip install -r requirements.txt
+;;; init.el --- GKMNGRGN personal emacs configuration file.
 
+;;; Commentary:
+;;
+;; This configuration needs some dependencies:
+;;
+;;   $ pip install -r requirements.txt
+
+;;; Code:
 
 ;; Encoding
 (prefer-coding-system 'utf-8)
@@ -21,8 +25,8 @@
 (defvar my-packages
     '(auto-complete
          editorconfig
-         elpy
          flx-ido
+         flycheck
          helm
          helm-ag
          helm-ls-git
@@ -50,7 +54,7 @@
     indent-tabs-mode nil
     truncate-lines t)
 (setq
-    ido-enable-flex-matching t
+ ido-enable-flex-matching t
     ido-use-faces nil
     inhibit-splash-screen t
     scroll-conservatively 10000
@@ -94,6 +98,9 @@
 (setq neo-window-fixed-size 0)
 (setq neo-window-width '30)
 
+;; Common settings for all languages
+(global-flycheck-mode)
+
 ;; Web
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -108,9 +115,6 @@
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-engines-alist '(("django" . "\\.html?\\'")))
 (setq web-mode-enable-auto-pairing nil)
-
-;; Python
-(elpy-enable)
 
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -139,3 +143,9 @@
 (setq custom-file custom-file-path)
 (when (file-exists-p custom-file-path)
     (load custom-file))
+
+;;; Local Variables:
+;; coding: utf-8
+;; inten-tabs-mode: nil
+
+;;; init.el ends here
