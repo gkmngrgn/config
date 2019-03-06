@@ -2,9 +2,12 @@
 
 ;;; Commentary:
 ;;
-;; This configuration needs some dependencies:
+;; Install Python environment dependencies with a pip command:
 ;;
 ;;   $ pip install -r requirements.txt
+;;
+;; Install `ag` for searching and refactoring
+;;
 
 ;;; Code:
 
@@ -16,14 +19,18 @@
 
 ;; Packages
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(add-to-list 'package-archives
+    '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 (when (version< emacs-version "27.0")
     (package-initialize))
 (when (not package-archive-contents)
     (package-refresh-contents))
 
 (defvar my-packages
-    '(auto-complete
+    '(company
+         company-lsp
          editorconfig
          flx-ido
          flycheck
@@ -31,12 +38,13 @@
          helm-ag
          helm-ls-git
          js2-mode
+         lsp-mode
          magit
          markdown-mode
-         markdown-mode+
          neotree
          scss-mode
          spacemacs-theme
+         use-package
          web-mode)
     "A list of packages to ensure are installed at launch.")
 
@@ -54,7 +62,7 @@
     indent-tabs-mode nil
     truncate-lines t)
 (setq
- ido-enable-flex-matching t
+    ido-enable-flex-matching t
     ido-use-faces nil
     inhibit-splash-screen t
     scroll-conservatively 10000
@@ -74,15 +82,22 @@
     (progn
         (setq visible-bell 1)
         (scroll-bar-mode -1)
-        (set-face-attribute 'default nil :font "Consolas" :height 105 :weight 'normal :width 'normal)
+        (set-face-attribute 'default nil
+            :font "Consolas"
+            :height 115
+            :weight 'normal
+            :width 'normal)
         (load-theme 'spacemacs-dark t)))
 
 ;; Keyboard shortcuts
-(global-set-key (kbd "C-c k") 'kill-other-buffers)
-(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key [f8] 'neotree-toggle)
+(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c TAB") 'company-complete)
+(global-set-key (kbd "C-c b") 'ibuffer)
+(global-set-key (kbd "C-c f") 'helm-find-files)
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c k") 'kill-other-buffers)
+(global-set-key (kbd "C-c s") 'helm-ag-project-root)
 
 ;; Major mode customizations
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -99,6 +114,7 @@
 (setq neo-window-width '30)
 
 ;; Common settings for all languages
+(global-company-mode)
 (global-flycheck-mode)
 
 ;; Web
@@ -116,6 +132,18 @@
 (setq web-mode-engines-alist '(("django" . "\\.html?\\'")))
 (setq web-mode-enable-auto-pairing nil)
 
+;; Language Server Protocol
+(use-package lsp-mode
+    :commands lsp
+    :init
+
+    ;; I use flycheck instead.
+    (setq lsp-prefer-flymake nil)
+
+    (add-hook 'python-mode-hook #'lsp))
+
+(use-package company-lsp :commands company-backends)
+
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq js2-pretty-multiline-decl-indentation-p 'non-nil)
@@ -131,8 +159,17 @@
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 ;; Text file settings
-(add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
+
+(use-package markdown-mode
+    :defer t
+    :mode (("\\.md?\\'" . markdown-mode))
+    :config
+
+    (set-face-attribute 'markdown-code-face nil
+        :inherit nil
+        :foreground "dim gray")
+    (add-hook 'markdown-mode-hook 'visual-line-mode))
 
 ;; Editorconfig
 (require 'editorconfig)
