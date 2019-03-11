@@ -5,3 +5,5 @@
 *.elc
 .elisp/auto-complete
 .elisp/magit
+
+venv/

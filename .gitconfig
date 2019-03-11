@@ -2,18 +2,10 @@
     name =
     email =
 [alias]
-    di = diff
     st = status -s
-    ci = commit -v
     co = checkout
-    br = branch
-    prune-all = !git remote | xargs -n 1 git remote prune
-    record = !git add -p && git ci
-    amend-record = !git add -p && git ci --amend
-    stoat = !toilet -f future STOATS
-    update-master = !git checkout master && git pull -r
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    pr = !sh -c \"git fetch upstream pull/${1}/head:pr/${1} && git checkout pr/${1}\"
 [color]
     branch = auto
     diff = auto
