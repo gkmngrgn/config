@@ -32,6 +32,7 @@
     '(company
          company-lsp
          editorconfig
+         emojify
          flx-ido
          flycheck
          helm
@@ -43,7 +44,6 @@
          markdown-mode
          neotree
          scss-mode
-         spacemacs-theme
          use-package
          web-mode)
     "A list of packages to ensure are installed at launch.")
@@ -86,8 +86,7 @@
             :font "Consolas"
             :height 115
             :weight 'normal
-            :width 'normal)
-        (load-theme 'spacemacs-dark t)))
+            :width 'normal)))
 
 ;; Keyboard shortcuts
 (global-set-key [f8] 'neotree-toggle)
@@ -116,6 +115,7 @@
 ;; Common settings for all languages
 (global-company-mode)
 (global-flycheck-mode)
+(global-emojify-mode)
 
 ;; Web
 (require 'web-mode)
