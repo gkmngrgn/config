@@ -117,7 +117,8 @@
 (global-company-mode)
 (global-flycheck-mode)
 (global-emojify-mode)
-(global-hl-line-mode)
+(global-auto-revert-mode)
+; (global-hl-line-mode)
 
 ;; Web
 (require 'web-mode)
