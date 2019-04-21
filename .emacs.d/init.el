@@ -33,7 +33,7 @@
          company-lsp
          dart-mode
          editorconfig
-         emojify
+         ; emojify
          flx-ido
          flycheck
          helm
@@ -76,7 +76,7 @@
 (flx-ido-mode 1)
 (electric-pair-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(ac-config-default)
+; (ac-config-default)
 
 ;; GUI settings
 (if (display-graphic-p)
@@ -116,7 +116,7 @@
 ;; Common settings for all languages
 (global-company-mode)
 (global-flycheck-mode)
-(global-emojify-mode)
+; (global-emojify-mode)
 (global-auto-revert-mode)
 ; (global-hl-line-mode)
 

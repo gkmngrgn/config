@@ -1,3 +1,5 @@
+XTerm*vt100.modifyOtherKeys: 1
+
 URxvt.font: xft:Monospace:size=12:antialias=true
 URxvt.scrollBar: false
 URxvt.title: Terminal
@@ -14,6 +16,7 @@ URxvt.url-select.underline: true
 URxvt.matcher.button: 1
 URxvt.clipboard.copycmd:  xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
+
 *fading: 40
 *fadeColor: #002b36
 *foreground: #839496
