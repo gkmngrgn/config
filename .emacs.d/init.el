@@ -31,6 +31,7 @@
 (defvar my-packages
     '(company
          company-lsp
+         dart-mode
          editorconfig
          emojify
          flx-ido
