@@ -12,8 +12,12 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # my custom settings
-export PATH="$PATH:/usr/lib/dart/bin"
+PATH="$PATH:/usr/lib/dart/bin"
 
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
   source ~/.config/exercism/exercism_completion.bash
+fi
+
+if [ -d "$HOME/.local/go/bin" ] ; then
+  PATH="$PATH:$HOME/.local/go/bin"
 fi
