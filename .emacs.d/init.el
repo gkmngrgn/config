@@ -36,6 +36,7 @@
          ; emojify
          flx-ido
          flycheck
+         go-mode
          helm
          helm-ag
          helm-ls-git
