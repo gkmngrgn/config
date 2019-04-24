@@ -2,11 +2,8 @@
 
 ;;; Commentary:
 ;;
-;; Install Python environment dependencies with a pip command:
-;;
-;;   $ pip install -r requirements.txt
-;;
-;; Install `ag` for searching and refactoring
+;; 1. Install Python dependencies: `pip install -r requirements.txt`
+;; 2. Install `ag` for searching and refactoring
 ;;
 
 ;;; Code:
@@ -21,7 +18,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-    '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+    '("melpa" . "https://melpa.org/packages/") t)
 
 (when (version< emacs-version "27.0")
     (package-initialize))
@@ -32,8 +29,8 @@
     '(company
          company-lsp
          dart-mode
+         dockerfile-mode
          editorconfig
-         ; emojify
          flx-ido
          flycheck
          go-mode
@@ -47,7 +44,8 @@
          neotree
          scss-mode
          use-package
-         web-mode)
+         web-mode
+         yaml-mode)
     "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -68,7 +66,8 @@
     ido-use-faces nil
     inhibit-splash-screen t
     scroll-conservatively 10000
-    scroll-step 1)
+    scroll-step 1
+    visible-bell 1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode t)
@@ -82,7 +81,6 @@
 ;; GUI settings
 (if (display-graphic-p)
     (progn
-        (setq visible-bell 1)
         (scroll-bar-mode -1)
         (set-face-attribute 'default nil
             :font "Consolas"
@@ -117,7 +115,6 @@
 ;; Common settings for all languages
 (global-company-mode)
 (global-flycheck-mode)
-; (global-emojify-mode)
 (global-auto-revert-mode)
 ; (global-hl-line-mode)
 
