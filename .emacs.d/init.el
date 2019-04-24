@@ -132,15 +132,14 @@
     :commands lsp
     :init
 
-    ;; I use flycheck instead.
-    (setq lsp-prefer-flymake nil)
+    (setq lsp-prefer-flymake nil) ; I use flycheck instead.
+    (add-hook 'prog-mode-hook #'lsp))
 
-    (add-hook 'python-mode-hook #'lsp)
-    (add-hook 'go-mode-hook #'lsp))
+(use-package lsp-ui
+    :commands lsp-ui-mode)
 
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
-; (use-package company-lsp :commands company-backends)
+(use-package company-lsp
+    :commands company-lsp)
 
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
