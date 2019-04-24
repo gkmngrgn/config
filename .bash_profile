@@ -19,5 +19,5 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
 fi
 
 if [ -d "$HOME/.local/go/bin" ] ; then
-  PATH="$PATH:$HOME/.local/go/bin"
+  PATH="$PATH:$HOME/.local/go/bin:$HOME/go/bin"
 fi

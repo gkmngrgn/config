@@ -2,8 +2,9 @@
 
 ;;; Commentary:
 ;;
-;; 1. Install Python dependencies: `pip install -r requirements.txt`
-;; 2. Install `ag` for searching and refactoring
+;; 1. Install OS dependencies: `apt install -y emacs-nox silversearcher-ag`
+;; 2. Install Python dependencies: `pip install -r requirements.txt`
+;; 3. Install Golang dependencies: `go get -u golang.org/x/tools/cmd/gopls`
 ;;
 
 ;;; Code:
@@ -39,9 +40,9 @@
          helm-ls-git
          js2-mode
          lsp-mode
+         lsp-ui
          magit
          markdown-mode
-         neotree
          scss-mode
          use-package
          web-mode
@@ -89,7 +90,6 @@
             :width 'normal)))
 
 ;; Keyboard shortcuts
-(global-set-key [f8] 'neotree-toggle)
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c TAB") 'company-complete)
 (global-set-key (kbd "C-c b") 'ibuffer)
@@ -105,12 +105,6 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq default-directory (concat (getenv "HOME") "/Workspace"))
-
-;; Sidebar
-(require 'neotree)
-(setq neo-theme 'arrow)
-(setq neo-window-fixed-size 0)
-(setq neo-window-width '30)
 
 ;; Common settings for all languages
 (global-company-mode)
@@ -141,9 +135,12 @@
     ;; I use flycheck instead.
     (setq lsp-prefer-flymake nil)
 
-    (add-hook 'python-mode-hook #'lsp))
+    (add-hook 'python-mode-hook #'lsp)
+    (add-hook 'go-mode-hook #'lsp))
 
-(use-package company-lsp :commands company-backends)
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+; (use-package company-lsp :commands company-backends)
 
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
