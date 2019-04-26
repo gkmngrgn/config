@@ -1,6 +1,6 @@
 set atblanks
 set autoindent
-set linenumbers
+# set linenumbers
 set morespace
 set nohelp
 set nowrap
