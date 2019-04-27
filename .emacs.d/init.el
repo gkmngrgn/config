@@ -9,11 +9,59 @@
 
 ;;; Code:
 
-;; Encoding
+;; Initial Setup
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
 (set-selection-coding-system 'utf-8)
+
+(setq-default
+    indent-tabs-mode nil
+    truncate-lines t)
+
+(setq
+    inhibit-splash-screen t
+    scroll-conservatively 10000
+    scroll-step 1
+    visible-bell 1)
+
+(menu-bar-mode -1)
+(line-number-mode t)
+(column-number-mode t)
+(electric-pair-mode 1)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c b") 'ibuffer)
+
+(global-auto-revert-mode)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Place all backup files in one directory
+(setq
+    backup-directory-alist `((".*" . ,temporary-file-directory))
+    auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+    default-directory (concat (getenv "HOME") "/Workspace"))
+
+;; Custom variables
+(defvar custom-file-path "~/.emacs.d/custom.el")
+(setq custom-file custom-file-path)
+(when (file-exists-p custom-file-path)
+    (load custom-file))
+
+;; GUI settings
+(if (display-graphic-p)
+    (progn
+        (scroll-bar-mode -1)
+        (tool-bar-mode -1)
+        (global-hl-line-mode)
+        (set-face-attribute 'default nil
+            :font "Consolas"
+            :height 115
+            :weight 'normal
+            :width 'normal)))
 
 ;; Packages
 (require 'package)
@@ -27,26 +75,34 @@
     (package-refresh-contents))
 
 (defvar my-packages
-    '(company
-         company-lsp
+    '(
+         ;; file modes
          dart-mode
          dockerfile-mode
-         editorconfig
-         flx-ido
-         flycheck
          go-mode
+         js2-mode
+         markdown-mode
+         scss-mode
+         web-mode
+         yaml-mode
+
+         ;; common
+         editorconfig
+         magit
+         use-package
+
+         ;; navigation plugins
+         flx-ido
          helm
          helm-ag
          helm-ls-git
-         js2-mode
+
+         ;; language server protocol
+         company
+         company-lsp
+         flycheck
          lsp-mode
-         lsp-ui
-         magit
-         markdown-mode
-         scss-mode
-         use-package
-         web-mode
-         yaml-mode)
+         lsp-ui)
     "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -58,125 +114,89 @@
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
     (message "All other buffers are killed.."))
 
-;; Default settings
-(setq-default
-    indent-tabs-mode nil
-    truncate-lines t)
-(setq
-    ido-enable-flex-matching t
-    ido-use-faces nil
-    inhibit-splash-screen t
-    scroll-conservatively 10000
-    scroll-step 1
-    visible-bell 1)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(column-number-mode t)
-(ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
-(electric-pair-mode 1)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-; (ac-config-default)
-
-;; GUI settings
-(if (display-graphic-p)
-    (progn
-        (scroll-bar-mode -1)
-        (set-face-attribute 'default nil
-            :font "Consolas"
-            :height 115
-            :weight 'normal
-            :width 'normal)))
-
-;; Keyboard shortcuts
-(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c TAB") 'company-complete)
-(global-set-key (kbd "C-c b") 'ibuffer)
-(global-set-key (kbd "C-c f") 'helm-find-files)
-(global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
-(global-set-key (kbd "C-c s") 'helm-ag-project-root)
 
-;; Major mode customizations
-(defalias 'yes-or-no-p 'y-or-n-p)
+;; Package Configurations
+(use-package flx-ido
+    :config
+    (setq
+        ido-enable-flex-matching t
+        ido-use-faces nil)
+    (ido-mode 1) ; TODO: do we need ido-mode?
+    (ido-everywhere 1)
+    (flx-ido-mode 1))
 
-;; Place all backup files in one directory
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(setq default-directory (concat (getenv "HOME") "/Workspace"))
+(use-package web-mode
+    :mode ("\\.html$" . web-mode)
+    :config
+    (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-engines-alist '(("django" . "\\.html$"))
+        web-mode-enable-auto-pairing nil))
 
-;; Common settings for all languages
-(global-company-mode)
-(global-flycheck-mode)
-(global-auto-revert-mode)
-; (global-hl-line-mode)
-
-;; Web
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.api\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("/some/react/path/.*\\.js[x]?\\'" . web-mode))
-(setq web-mode-content-types-alist
-    '(("json" . "/some/path/.*\\.api\\'")
-	     ("xml"  . "/other/path/.*\\.api\\'")
-	     ("jsx"  . "/some/react/path/.*\\.js[x]?\\'")))
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-engines-alist '(("django" . "\\.html?\\'")))
-(setq web-mode-enable-auto-pairing nil)
-
-;; Language Server Protocol
 (use-package lsp-mode
     :commands lsp
     :init
-
     (setq lsp-prefer-flymake nil) ; I use flycheck instead.
-    (add-hook 'prog-mode-hook #'lsp))
+    (add-hook 'dart-mode-hook #'lsp)
+    (add-hook 'go-mode-hook #'lsp)
+    (add-hook 'python-mode-hook #'lsp)
+    :config
+    (use-package lsp-ui
+        :commands lsp-ui-mode)
+    (use-package company-lsp
+        :commands company-lsp))
 
-(use-package lsp-ui
-    :commands lsp-ui-mode)
+(use-package company
+    :bind ("C-c TAB" . company-complete)
+    :config
+    (global-company-mode))
 
-(use-package company-lsp
-    :commands company-lsp)
+(use-package flycheck
+    :config
+    (global-flycheck-mode))
 
-;; JavaScript
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(setq js2-pretty-multiline-decl-indentation-p 'non-nil)
-(setq js2-consistent-level-indent-inner-bracket-p 'non-nil)
-(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+(use-package js2-mode
+    :mode ("\\.js$" . js2-mode)
+    :config
+    (add-hook 'js2-mode-hook
+        '(lambda ()
+             (setq
+                 js2-pretty-multiline-decl-indentation-p t
+                 js2-consistent-level-indent-inner-bracket-p t
+                 js2-basic-offset 2))))
 
-;; CSS
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
-(setq css-indent-offset 2)
+(use-package css-mode
+    :config
+    (setq css-indent-offset 2))
 
-;; Helm
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(use-package scss-mode
+    :mode (("\\.scss$" . scss-mode)
+              ("\\.sass$" . scss-mode)))
 
-;; Text file settings
-(add-hook 'text-mode-hook 'visual-line-mode)
+(use-package helm-mode
+    :config
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-c f") 'helm-find-files)
+    (global-set-key (kbd "C-c s") 'helm-ag-project-root)
+    (global-set-key (kbd "C-x C-d") 'helm-browse-project))
 
 (use-package markdown-mode
     :defer t
     :mode (("\\.md?\\'" . markdown-mode))
     :config
-
     (set-face-attribute 'markdown-code-face nil
         :inherit nil
         :foreground "dim gray")
     (add-hook 'markdown-mode-hook 'visual-line-mode))
 
-;; Editorconfig
-(require 'editorconfig)
-(editorconfig-mode 1)
+(use-package editorconfig
+    :config
+    (editorconfig-mode 1))
 
-;; Custom variables
-(defvar custom-file-path "~/.emacs.d/custom.el")
-(setq custom-file custom-file-path)
-(when (file-exists-p custom-file-path)
-    (load custom-file))
+(use-package magit
+    :bind ("C-c g" . magit-status))
 
 ;;; Local Variables:
 ;; coding: utf-8
