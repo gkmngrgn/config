@@ -1,12 +1,12 @@
 # if running bash
-if [ -n "$BASH_VERSION" ]
-then
-  # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]
-  then
-    . "$HOME/.bashrc"
-  fi
-fi
+#if [ -n "$BASH_VERSION" ]
+#then
+#  # include .bashrc if it exists
+#  if [ -f "$HOME/.bashrc" ]
+#  then
+#    . "$HOME/.bashrc"
+#  fi
+#fi
 
 # colors
 BLUE="\\033[1;34m"
@@ -18,11 +18,16 @@ RED="\\033[1;31m"
 PATH_GIT_PROMPT="$HOME/.bash-git-prompt/gitprompt.sh"
 if [ -f $PATH_GIT_PROMPT ]
 then
-  GIT_PROMPT_ONLY_IN_REPO=1
-  GIT_PROMPT_THEME="Solarized"
+  # GIT_PROMPT_THEME="Solarized"
   source $PATH_GIT_PROMPT
 else
   echo -e "${RED}The extension gitprompt is missing.${NORMAL}"
+fi
+
+# use podman instead of docker if it is installed
+if command -v podman &>/dev/null
+then
+  alias docker="podman"
 fi
 
 # my custom settings
