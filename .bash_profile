@@ -29,6 +29,7 @@ if command -v podman &>/dev/null
 then
   alias docker="podman"
 fi
+alias dosh="bash do.sh"
 
 # my custom settings
 PATH="$PATH:$HOME/.local/bin:/usr/lib/dart/bin:$HOME/.local/go/bin:$HOME/go/bin"
