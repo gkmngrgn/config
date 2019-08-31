@@ -32,9 +32,12 @@ fi
 alias dosh="bash do.sh"
 
 # my custom settings
-PATH="$PATH:$HOME/.local/bin:/usr/lib/dart/bin:$HOME/.local/go/bin:$HOME/go/bin"
-
 if [ -f ~/.config/exercism/exercism_completion.bash ]
 then
   source ~/.config/exercism/exercism_completion.bash
 fi
+
+export PATH="$HOME/.local/bin:$PATH"                   # local
+export PATH="$HOME/.cargo/bin:$PATH"                   # rust
+export PATH="/usr/lib/dart/bin:$PATH"                  # dart
+export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # go

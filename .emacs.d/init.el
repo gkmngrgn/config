@@ -4,7 +4,8 @@
 ;;
 ;; 1. Install OS dependencies: `apt install -y emacs-nox silversearcher-ag`
 ;; 2. Install Python dependencies: `pip install -r requirements.txt`
-;; 3. Install Golang dependencies: `go get -u golang.org/x/tools/cmd/gopls`
+;; 3. Install Rust dependencies: `rustup component add rls rust-analysis rust-src`
+;; 4. Install Golang dependencies: `go get -u golang.org/x/tools/cmd/gopls`
 ;;
 
 ;;; Code:
@@ -70,6 +71,7 @@
     go-mode
     js2-mode
     markdown-mode
+    rust-mode
     scss-mode
     web-mode
     yaml-mode
