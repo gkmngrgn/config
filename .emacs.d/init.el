@@ -55,11 +55,11 @@
 ;; Packages
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
-(when (version< emacs-version "27.0")
-  (package-initialize))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                            ("melpa-stable" . "https://stable.melpa.org/packages/")))
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
