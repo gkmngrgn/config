@@ -143,10 +143,15 @@
 (use-package lsp-mode
     :commands lsp
     :init
-    (setq lsp-prefer-flymake nil) ; I use flycheck instead.
+
+    (setq
+        lsp-prefer-flymake nil  ; I use flycheck instead.
+        lsp-enable-snippet nil) ; I use company instead.
+
     (add-hook 'dart-mode-hook #'lsp)
     (add-hook 'go-mode-hook #'lsp)
     (add-hook 'python-mode-hook #'lsp)
+    (add-hook 'rust-mode-hook #'lsp)
 
     :config
     (use-package lsp-ui
