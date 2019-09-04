@@ -117,7 +117,7 @@
         (if (eq system-type 'windows-nt)
             (set-face-attribute 'default nil
                 :font "Consolas"
-                :height 90
+                :height 115
                 :weight 'normal
                 :width 'normal))))
 
