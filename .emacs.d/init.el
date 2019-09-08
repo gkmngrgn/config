@@ -145,9 +145,10 @@
   :commands lsp
   :init
 
-  (setq
-   lsp-prefer-flymake nil  ; I use flycheck instead.
-   lsp-enable-snippet nil) ; I use company instead.
+  (setq-default
+   lsp-prefer-flymake nil               ; flycheck is better
+   lsp-enable-snippet nil               ; company is better
+   lsp-pyls-plugins-pylint-enabled nil) ; pycodestyle is better
 
   (add-hook 'dart-mode-hook #'lsp)
   (add-hook 'go-mode-hook #'lsp)
