@@ -80,7 +80,7 @@
     editorconfig
     magit
     use-package
-    color-theme-sanityinc-tomorrow
+    cyberpunk-theme
 
     ;; navigation plugins
     flx-ido
@@ -113,7 +113,7 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (global-hl-line-mode)
-      (load-theme 'sanityinc-tomorrow-night t)
+      (load-theme 'cyberpunk t)
       (if (eq system-type 'windows-nt)
           (set-face-attribute 'default nil
                               :font "Consolas"
