@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 ;;
-;; 1. Install OS dependencies: `apt install -y emacs-nox silversearcher-ag`
+;; 1. Install OS dependencies: `apt install -y silversearcher-ag`
 ;; 2. Install Python dependencies: `pip install -r requirements.txt`
 ;; 3. Install Rust dependencies: `rustup component add rls rust-analysis rust-src`
 ;; 4. Install Golang dependencies: `go get -u golang.org/x/tools/cmd/gopls`
@@ -117,7 +117,7 @@
       (load-theme 'cyberpunk t)
       (if (eq system-type 'windows-nt)
           (set-face-attribute 'default nil
-                              :font "Consolas"
+                              :font "Fira Code"
                               :height 115
                               :weight 'normal
                               :width 'normal))))
