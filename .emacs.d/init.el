@@ -107,14 +107,14 @@
   (message "All other buffers are killed.."))
 
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
+(global-hl-line-mode)
+(load-theme 'cyberpunk t)
 
 ;; GUI settings
 (if (display-graphic-p)
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (global-hl-line-mode)
-      (load-theme 'cyberpunk t)
       (if (eq system-type 'windows-nt)
           (set-face-attribute 'default nil
                               :font "Fira Code"
