@@ -31,6 +31,9 @@ then
 fi
 alias dosh="bash do.sh"
 
+# change default python version in debian
+alias python="python3"
+
 # my custom settings
 if [ -f ~/.config/exercism/exercism_completion.bash ]
 then
