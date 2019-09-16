@@ -115,12 +115,11 @@
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (if (eq system-type 'windows-nt)
-          (set-face-attribute 'default nil
-                              :font "Fira Code"
-                              :height 115
-                              :weight 'normal
-                              :width 'normal))))
+      (set-face-attribute 'default nil
+                          :font "Fira Code"
+                          ;; :height 115
+                          :weight 'normal
+                          :width 'normal)))
 
 ;; Package Configurations
 (use-package flx-ido
