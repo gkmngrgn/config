@@ -118,7 +118,7 @@
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
                           :font "Fira Code"
-                          ;; :height 115
+                          :height 105
                           :weight 'normal
                           :width 'normal)))
 
