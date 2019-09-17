@@ -123,9 +123,8 @@
                           :width 'normal)))
 
 ;; Package Configurations
-(use-package ace-window
-    :config
-    (global-set-key (kbd "M-o") 'ace-window))
+(setq-default
+ org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 
 (use-package flx-ido
   :config
@@ -135,6 +134,10 @@
   (ido-mode 1) ; TODO: do we need ido-mode?
   (ido-everywhere 1)
   (flx-ido-mode 1))
+
+(use-package ace-window
+  :config
+  (global-set-key (kbd "M-o") 'ace-window))
 
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
