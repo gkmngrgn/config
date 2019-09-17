@@ -122,6 +122,10 @@
                           :width 'normal)))
 
 ;; Package Configurations
+(use-package ace-window
+    :config
+    (global-set-key (kbd "M-o") 'ace-window))
+
 (use-package flx-ido
   :config
   (setq
