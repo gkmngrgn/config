@@ -78,6 +78,7 @@
     yaml-mode
 
     ;; common
+    ace-window
     editorconfig
     magit
     use-package
