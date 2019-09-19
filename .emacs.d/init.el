@@ -79,6 +79,7 @@
     yaml-mode
 
     ;; common
+    avy
     ace-window
     editorconfig
     magit
@@ -118,8 +119,9 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
-                          :font "Cascadia Code"
-                          :height 105
+                          ;; :font "Cascadia Code"
+                          :font "Consolas"
+                          :height 115
                           :weight 'normal
                           :width 'normal)))
 
@@ -139,6 +141,13 @@
 (use-package ace-window
   :config
   (global-set-key (kbd "M-o") 'ace-window))
+
+(use-package avy
+  :config
+  (avy-setup-default)
+  (global-set-key (kbd "M-g g") 'avy-goto-line)
+  (global-set-key (kbd "C-;") 'avy-goto-char)
+  (global-set-key (kbd "C-'") 'avy-goto-char-2))
 
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
