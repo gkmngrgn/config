@@ -72,6 +72,7 @@
     go-mode
     js2-mode
     markdown-mode
+    powershell
     rust-mode
     scss-mode
     web-mode
