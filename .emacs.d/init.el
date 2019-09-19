@@ -65,8 +65,7 @@
   (package-refresh-contents))
 
 (defvar my-packages
-  '(
-    ;; file modes
+  '(;; file modes
     dockerfile-mode
     dart-mode
     go-mode
@@ -82,6 +81,7 @@
     avy
     ace-window
     editorconfig
+    git-gutter
     magit
     use-package
     cyberpunk-theme
@@ -148,6 +148,12 @@
   (global-set-key (kbd "M-g g") 'avy-goto-line)
   (global-set-key (kbd "C-;") 'avy-goto-char)
   (global-set-key (kbd "C-'") 'avy-goto-char-2))
+
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode)
+  (global-set-key (kbd "M-p") 'git-gutter:previous-hunk)
+  (global-set-key (kbd "M-n") 'git-gutter:next-hunk))
 
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
