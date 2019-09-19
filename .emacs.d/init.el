@@ -118,7 +118,7 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
-                          :font "Fira Code"
+                          :font "Cascadia Code"
                           :height 105
                           :weight 'normal
                           :width 'normal)))
