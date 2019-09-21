@@ -80,11 +80,12 @@
     ;; common
     avy
     ace-window
+    cyberpunk-theme
     editorconfig
     git-gutter
     magit
     use-package
-    cyberpunk-theme
+    telephone-line
 
     ;; navigation plugins
     flx-ido
@@ -119,9 +120,8 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
-                          ;; :font "Cascadia Code"
-                          :font "Consolas"
-                          :height 115
+                          :font "Fira Code"
+                          :height 105
                           :weight 'normal
                           :width 'normal)))
 
@@ -154,6 +154,44 @@
   (global-git-gutter-mode)
   (global-set-key (kbd "M-p") 'git-gutter:previous-hunk)
   (global-set-key (kbd "M-n") 'git-gutter:next-hunk))
+
+(use-package telephone-line
+  :init
+
+  (defface color-gray
+    '((t (:foreground "black" :background "gray")))
+    "telephone gray"
+    :group 'telephone-line)
+
+  (defface color-red
+    '((t (:foreground "white" :background "red")))
+    "telephone red"
+    :group 'telephone-line)
+
+  (setq telephone-line-primary-right-separator 'telephone-line-abs-left
+        telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
+
+  (setq telephone-line-faces
+        '((gray   . (color-gray . color-gray))
+          (red    . (color-red . color-red))
+          (evil   . telephone-line-evil-face)
+          (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
+          (nil    . (mode-line . mode-line-inactive))))
+
+  (setq telephone-line-lhs
+        '((red   . (telephone-line-vc-segment
+                    telephone-line-erc-modified-channels-segment
+                    telephone-line-process-segment))
+          (gray  . (telephone-line-buffer-segment))
+          (nil   . (telephone-line-minor-mode-segment))))
+
+  (setq telephone-line-rhs
+        '((nil   . (telephone-line-misc-info-segment))
+          (gray  . (telephone-line-major-mode-segment))
+          (red   . (telephone-line-airline-position-segment))))
+
+  :config
+  (telephone-line-mode t))
 
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
