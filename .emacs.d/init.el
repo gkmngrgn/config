@@ -121,7 +121,7 @@
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
                           :font "Fira Code"
-                          :height 105
+                          :height 100
                           :weight 'normal
                           :width 'normal)))
 
@@ -172,8 +172,8 @@
         telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
 
   (setq telephone-line-faces
-        '((gray   . (color-gray . color-gray))
-          (red    . (color-red . color-red))
+        '((gray   . (color-gray . mode-line-inactive))
+          (red    . (color-red . mode-line-inactive))
           (evil   . telephone-line-evil-face)
           (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
           (nil    . (mode-line . mode-line-inactive))))
