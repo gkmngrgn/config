@@ -28,9 +28,8 @@
  visible-bell 1)
 
 (menu-bar-mode -1)
-(line-number-mode t)
-(column-number-mode t)
-(electric-pair-mode 1)
+(global-hl-line-mode)
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
@@ -111,7 +110,7 @@
   (message "All other buffers are killed.."))
 
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
-(global-hl-line-mode)
+
 (load-theme 'cyberpunk t)
 
 ;; GUI settings
@@ -128,6 +127,11 @@
 ;; Package Configurations
 (setq-default
  org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
+
+(electric-pair-mode 1)
+(electric-layout-mode 1)
+(electric-indent-mode 1)
+(electric-quote-mode 1)
 
 (use-package flx-ido
   :config
@@ -240,10 +244,6 @@
                 js2-pretty-multiline-decl-indentation-p t
                 js2-consistent-level-indent-inner-bracket-p t
                 js2-basic-offset 2))))
-
-(use-package css-mode
-  :config
-  (setq css-indent-offset 2))
 
 (use-package scss-mode
   :mode (("\\.scss$" . scss-mode)
