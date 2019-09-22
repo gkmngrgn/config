@@ -269,7 +269,10 @@
   (add-hook 'markdown-mode-hook 'visual-line-mode))
 
 (use-package editorconfig
+  :ensure t
   :config
+  (setq editorconfig-exclude-modes
+        '(lisp-mode emacs-lisp-mode common-lisp-mode))
   (editorconfig-mode 1))
 
 (use-package magit
