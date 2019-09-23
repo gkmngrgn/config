@@ -22,6 +22,7 @@
  truncate-lines t)
 
 (setq
+ initial-scratch-message ""
  inhibit-splash-screen t
  scroll-conservatively 10000
  scroll-step 1
