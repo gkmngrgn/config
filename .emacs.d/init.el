@@ -81,6 +81,7 @@
     avy
     ace-window
     cyberpunk-theme
+    diminish
     editorconfig
     git-gutter
     magit
@@ -155,6 +156,7 @@
   (global-set-key (kbd "C-'") 'avy-goto-char-2))
 
 (use-package git-gutter
+  :diminish
   :config
   (global-git-gutter-mode)
   (global-set-key (kbd "M-p") 'git-gutter:previous-hunk)
@@ -228,11 +230,13 @@
     :commands company-lsp))
 
 (use-package company
-  :bind ("C-c TAB" . company-complete)
+  :bind ("C-." . company-complete)
+  :diminish
   :config
   (global-company-mode))
 
 (use-package flycheck
+  :diminish (flycheck-mode . "fc")
   :config
   (global-flycheck-mode))
 
@@ -260,6 +264,12 @@
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-d") 'helm-browse-project))
 
+(use-package lisp-mode
+  :diminish eldoc-mode)
+
+(use-package text-mode
+  :diminish (visual-line-mode . "wrap"))
+
 (use-package markdown-mode
   :defer t
   :mode (("\\.md?\\'" . markdown-mode))
@@ -271,6 +281,7 @@
 
 (use-package editorconfig
   :ensure t
+  :diminish (editorconfig-mode . "ed")
   :config
   (setq editorconfig-exclude-modes
         '(lisp-mode emacs-lisp-mode common-lisp-mode))
