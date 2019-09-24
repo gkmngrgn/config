@@ -175,8 +175,10 @@
     "telephone red"
     :group 'telephone-line)
 
+  (telephone-line-defsegment arrow "GKMN")
+
   (setq telephone-line-primary-right-separator 'telephone-line-abs-left
-        telephone-line-secondary-right-separator 'telephone-line-abs-hollow-left)
+        telephone-line-secondary-right-separator 'telephone-line-abs-left)
 
   (setq telephone-line-faces
         '((gray   . (color-gray . mode-line-inactive))
@@ -186,16 +188,17 @@
           (nil    . (mode-line . mode-line-inactive))))
 
   (setq telephone-line-lhs
-        '((red   . (telephone-line-vc-segment
-                    telephone-line-erc-modified-channels-segment
-                    telephone-line-process-segment))
-          (gray  . (telephone-line-buffer-segment))
-          (nil   . (telephone-line-minor-mode-segment))))
+        '((evil . (telephone-line-evil-tag-segment))
+          (red  . (telephone-line-vc-segment))
+          (gray . (telephone-line-buffer-segment))
+          (nil  . (telephone-line-minor-mode-segment
+                   telephone-line-erc-modified-channels-segment))))
 
   (setq telephone-line-rhs
-        '((nil   . (telephone-line-misc-info-segment))
-          (gray  . (telephone-line-major-mode-segment))
-          (red   . (telephone-line-airline-position-segment))))
+        '((nil  . (telephone-line-misc-info-segment))
+          (gray . (telephone-line-major-mode-segment))
+          (red  . (telephone-line-airline-position-segment))
+          (evil . (arrow))))
 
   :config
   (telephone-line-mode t))
