@@ -17,7 +17,7 @@
 ;; (set-selection-coding-system 'utf-8)
 
 (setq-default
- cursor-type 'bar
+ cursor-type 'box
  indent-tabs-mode nil
  truncate-lines t)
 
