@@ -35,7 +35,6 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c b") 'ibuffer)
 
 (global-auto-revert-mode)
 
@@ -154,8 +153,8 @@
   :config
   (avy-setup-default)
   (global-set-key (kbd "M-g g") 'avy-goto-line)
-  (global-set-key (kbd "C-;") 'avy-goto-char)
-  (global-set-key (kbd "C-'") 'avy-goto-char-2))
+  (global-set-key (kbd "M-g f") 'avy-goto-char)
+  (global-set-key (kbd "M-g h") 'avy-goto-char-2))
 
 (use-package git-gutter
   :diminish
@@ -232,9 +231,11 @@
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
 
+
+
 (use-package company
-  :bind ("C-." . company-complete)
-  :diminish
+  :bind ("C-c TAB" . company-complete)
+  :diminish (company-mode . "comp")
   :config
   (global-company-mode))
 
@@ -259,11 +260,11 @@
 
 (use-package helm-mode
   :config
-  (global-set-key (kbd "M-s o") 'helm-occur)
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-c f") 'helm-find-files)
   (global-set-key (kbd "C-c s") 'helm-ag-project-root)
   (global-set-key (kbd "C-c t") 'helm-imenu)
+  (global-set-key (kbd "C-c o") 'helm-occur)
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-d") 'helm-browse-project))
 
