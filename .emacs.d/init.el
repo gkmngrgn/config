@@ -114,7 +114,13 @@
 
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
 
-(load-theme 'cyberpunk t)
+(use-package cyberpunk-theme
+  :config
+  (load-theme 'cyberpunk t)
+  (set-face-attribute 'mode-line nil
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :box nil))
 
 ;; GUI settings
 (if (display-graphic-p)
