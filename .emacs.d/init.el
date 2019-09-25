@@ -1,4 +1,4 @@
-;;; init.el --- GKMNGRGN personal emacs configuration file.
+;;; ~/.emacs.d/init.el --- GKMNGRGN personal emacs configuration file.
 
 ;;; Commentary:
 ;;

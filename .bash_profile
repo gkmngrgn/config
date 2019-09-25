@@ -1,3 +1,9 @@
+# ~/.bash_profile --- GKMNGRGN personal bash profile.
+
+# Requirements:
+# 1. Install git bash prompt:
+#    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+
 # if running bash
 if [ -n "$BASH_VERSION" ]
 then
