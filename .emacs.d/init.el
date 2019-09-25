@@ -59,7 +59,7 @@
 (package-initialize)
 
 (setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
+                         ("melpa-stable" . "https://melpa.org/packages/")))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -93,13 +93,15 @@
     helm
     helm-ag
     helm-ls-git
+    helm-lsp
 
     ;; language server protocol
     company
     company-lsp
     flycheck
     lsp-mode
-    lsp-ui)
+    lsp-ui
+    lsp-treemacs)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -175,11 +177,6 @@
     "telephone red"
     :group 'telephone-line)
 
-  (telephone-line-defsegment arrow "GKMN")
-
-  (setq telephone-line-primary-right-separator 'telephone-line-abs-left
-        telephone-line-secondary-right-separator 'telephone-line-abs-left)
-
   (setq telephone-line-faces
         '((gray   . (color-gray . mode-line-inactive))
           (red    . (color-red . mode-line-inactive))
@@ -188,8 +185,7 @@
           (nil    . (mode-line . mode-line-inactive))))
 
   (setq telephone-line-lhs
-        '((evil . (telephone-line-evil-tag-segment))
-          (red  . (telephone-line-vc-segment))
+        '((red  . (telephone-line-vc-segment))
           (gray . (telephone-line-buffer-segment))
           (nil  . (telephone-line-minor-mode-segment
                    telephone-line-erc-modified-channels-segment))))
@@ -197,8 +193,7 @@
   (setq telephone-line-rhs
         '((nil  . (telephone-line-misc-info-segment))
           (gray . (telephone-line-major-mode-segment))
-          (red  . (telephone-line-airline-position-segment))
-          (evil . (arrow))))
+          (red  . (telephone-line-airline-position-segment))))
 
   :config
   (telephone-line-mode t))
@@ -212,25 +207,30 @@
         web-mode-engines-alist '(("django" . "\\.html$"))
         web-mode-enable-auto-pairing nil))
 
+
 (use-package lsp-mode
+  :hook ((dart-mode   . lsp)
+         (go-mode     . lsp)
+         (python-mode . lsp)
+         (rust-mode   . lsp))
   :commands lsp
   :init
-
   (setq-default
-   lsp-prefer-flymake nil               ; flycheck is better
-   lsp-enable-snippet nil               ; company is better
-   lsp-pyls-plugins-pylint-enabled nil) ; pycodestyle is better
+   lsp-prefer-flymake nil                ; flycheck is better
+   lsp-enable-snippet nil                ; company is better
+   lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
 
-  (add-hook 'dart-mode-hook #'lsp)
-  (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'python-mode-hook #'lsp)
-  (add-hook 'rust-mode-hook #'lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
 
-  :config
-  (use-package lsp-ui
-    :commands lsp-ui-mode)
-  (use-package company-lsp
-    :commands company-lsp))
+(use-package company-lsp
+  :commands company-lsp)
+
+(use-package helm-lsp
+  :commands helm-lsp-workspace-symbol)
+
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list)
 
 (use-package company
   :bind ("C-." . company-complete)
@@ -284,7 +284,7 @@
 
 (use-package editorconfig
   :ensure t
-  :diminish (editorconfig-mode . "ed")
+  :diminish (editorconfig-mode . "ec")
   :config
   (setq editorconfig-exclude-modes
         '(lisp-mode emacs-lisp-mode common-lisp-mode))
