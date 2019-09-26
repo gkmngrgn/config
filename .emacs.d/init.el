@@ -34,8 +34,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
-(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
-
 (global-auto-revert-mode)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -91,12 +89,14 @@
     flx-ido
     helm
     helm-ag
+    helm-flx
     helm-ls-git
     helm-lsp
 
     ;; language server protocol
     company
     company-lsp
+    company-flx
     flycheck
     lsp-mode
     lsp-ui
@@ -113,6 +113,7 @@
   (message "All other buffers are killed.."))
 
 (global-set-key (kbd "C-c k") 'kill-other-buffers)
+(global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 
 (use-package cyberpunk-theme
   :config
@@ -144,30 +145,39 @@
 
 (use-package flx-ido
   :config
-  (setq
-   ido-enable-flex-matching t
-   ido-use-faces nil)
-  (ido-mode 1) ; TODO: do we need ido-mode?
-  (ido-everywhere 1)
-  (flx-ido-mode 1))
+  (ido-mode 1)
+  ;; (ido-everywhere 1)
+  (flx-ido-mode 1)
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
 
 (use-package ace-window
-  :config
-  (global-set-key (kbd "M-o") 'ace-window))
+  :bind ("M-o" . ace-window))
 
 (use-package avy
+  :bind (("M-g g" . avy-goto-line)
+         ("M-g f" . avy-goto-char)
+         ("M-g h" . avy-goto-char-2))
   :config
-  (avy-setup-default)
-  (global-set-key (kbd "M-g g") 'avy-goto-line)
-  (global-set-key (kbd "M-g f") 'avy-goto-char)
-  (global-set-key (kbd "M-g h") 'avy-goto-char-2))
+  (avy-setup-default))
 
 (use-package git-gutter
+  :bind (("M-p" . git-gutter:previous-hunk)
+         ("M-n" . git-gutter:next-hunk))
   :diminish
   :config
-  (global-git-gutter-mode)
-  (global-set-key (kbd "M-p") 'git-gutter:previous-hunk)
-  (global-set-key (kbd "M-n") 'git-gutter:next-hunk))
+  (global-git-gutter-mode))
+
+(use-package helm-mode
+  :bind (("M-x"     . helm-M-x)
+         ("C-c f"   . helm-find-files)
+         ("C-c s"   . helm-ag-project-root)
+         ("C-c t"   . helm-imenu)
+         ("C-c o"   . helm-occur)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-x C-d" . helm-browse-project))
+  :config
+  (helm-flx-mode +1))
 
 (use-package telephone-line
   :init
@@ -203,16 +213,6 @@
   :config
   (telephone-line-mode t))
 
-(use-package web-mode
-  :mode ("\\.html$" . web-mode)
-  :config
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2
-        web-mode-engines-alist '(("django" . "\\.html$"))
-        web-mode-enable-auto-pairing nil))
-
-
 (use-package lsp-mode
   :hook ((dart-mode   . lsp)
          (go-mode     . lsp)
@@ -228,6 +228,13 @@
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
+(use-package company
+  :bind ("C-c TAB" . company-complete)
+  :diminish (company-mode . "comp")
+  :config
+  (global-company-mode)
+  (company-flx-mode +1))
+
 (use-package company-lsp
   :commands company-lsp)
 
@@ -237,18 +244,20 @@
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
 
-
-
-(use-package company
-  :bind ("C-c TAB" . company-complete)
-  :diminish (company-mode . "comp")
-  :config
-  (global-company-mode))
-
 (use-package flycheck
   :diminish (flycheck-mode . "fc")
   :config
   (global-flycheck-mode))
+
+(use-package web-mode
+  :mode ("\\.html$" . web-mode)
+  :config
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-engines-alist '(("django" . "\\.html$"))
+        web-mode-enable-auto-pairing nil
+        web-mode-block-padding 0))
 
 (use-package js2-mode
   :mode ("\\.js$" . js2-mode)
@@ -263,16 +272,6 @@
 (use-package scss-mode
   :mode (("\\.scss$" . scss-mode)
          ("\\.sass$" . scss-mode)))
-
-(use-package helm-mode
-  :config
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-c f") 'helm-find-files)
-  (global-set-key (kbd "C-c s") 'helm-ag-project-root)
-  (global-set-key (kbd "C-c t") 'helm-imenu)
-  (global-set-key (kbd "C-c o") 'helm-occur)
-  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-  (global-set-key (kbd "C-x C-d") 'helm-browse-project))
 
 (use-package lisp-mode
   :diminish eldoc-mode)
@@ -294,14 +293,17 @@
   :diminish (editorconfig-mode . "ec")
   :config
   (setq editorconfig-exclude-modes
-        '(lisp-mode emacs-lisp-mode common-lisp-mode))
+        '(common-lisp-mode
+          emacs-lisp-mode
+          lisp-mode
+          web-mode))
   (editorconfig-mode 1))
 
 (use-package magit
   :bind ("C-c g" . magit-status))
 
-;;; Local Variables:
-;; coding: utf-8
-;; inten-tabs-mode: nil
 
 ;;; init.el ends here
+
+;; Local Variables:
+;; coding: utf-8
