@@ -169,11 +169,11 @@
   (global-git-gutter-mode))
 
 (use-package helm-mode
-  :bind (("M-x"     . helm-M-x)
+  :bind (("M-s o"   . helm-occur)
+         ("M-x"     . helm-M-x)
          ("C-c f"   . helm-find-files)
          ("C-c s"   . helm-ag-project-root)
          ("C-c t"   . helm-imenu)
-         ("C-c o"   . helm-occur)
          ("C-x C-b" . helm-buffers-list)
          ("C-x C-d" . helm-browse-project))
   :config
