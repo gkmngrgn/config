@@ -24,7 +24,7 @@ RED="\\033[1;31m"
 PATH_GIT_PROMPT="$HOME/.bash-git-prompt/gitprompt.sh"
 if [ -f $PATH_GIT_PROMPT ]
 then
-  # GIT_PROMPT_THEME="Solarized"
+  GIT_PROMPT_THEME="Minimal"
   source $PATH_GIT_PROMPT
 else
   echo -e "${RED}The extension gitprompt is missing.${NORMAL}"
