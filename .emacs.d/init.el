@@ -29,11 +29,13 @@
  visible-bell 1)
 
 (menu-bar-mode -1)
-(global-hl-line-mode)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
+(which-function-mode t)
+
+(global-hl-line-mode)
 (global-auto-revert-mode)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -84,6 +86,7 @@
     magit
     use-package
     telephone-line
+    focus
 
     ;; navigation plugins
     flx-ido
@@ -132,7 +135,8 @@
                           :font "Fira Code"
                           :height 110
                           :weight 'normal
-                          :width 'normal)))
+                          :width 'normal)
+      (set-face-attribute 'fringe nil :background nil)))
 
 ;; Package Configurations
 (setq-default
@@ -152,16 +156,23 @@
   (setq ido-use-faces nil))
 
 (use-package ace-window
+  :defer t
   :bind ("M-o" . ace-window))
 
 (use-package avy
+  :defer t
   :bind (("M-g g" . avy-goto-line)
          ("M-g f" . avy-goto-char)
          ("M-g h" . avy-goto-char-2))
   :config
   (avy-setup-default))
 
+(use-package magit
+  :defer t
+  :bind ("C-c g" . magit-status))
+
 (use-package git-gutter
+  :defer t
   :bind (("M-p" . git-gutter:previous-hunk)
          ("M-n" . git-gutter:next-hunk))
   :diminish
@@ -249,6 +260,22 @@
   :config
   (global-flycheck-mode))
 
+;; programming languages
+(use-package lisp-mode
+  :diminish eldoc-mode)
+
+(use-package editorconfig
+  :ensure t
+  :diminish (editorconfig-mode . "ec")
+  :config
+  (setq editorconfig-exclude-modes
+        '(common-lisp-mode
+          emacs-lisp-mode
+          lisp-mode
+          web-mode))
+  (editorconfig-mode 1))
+
+;; web modes
 (use-package web-mode
   :mode ("\\.html$" . web-mode)
   :config
@@ -273,9 +300,7 @@
   :mode (("\\.scss$" . scss-mode)
          ("\\.sass$" . scss-mode)))
 
-(use-package lisp-mode
-  :diminish eldoc-mode)
-
+;; text modes
 (use-package text-mode
   :diminish (visual-line-mode . "wrap"))
 
@@ -287,21 +312,6 @@
                       :inherit nil
                       :foreground "dim gray")
   (add-hook 'markdown-mode-hook 'visual-line-mode))
-
-(use-package editorconfig
-  :ensure t
-  :diminish (editorconfig-mode . "ec")
-  :config
-  (setq editorconfig-exclude-modes
-        '(common-lisp-mode
-          emacs-lisp-mode
-          lisp-mode
-          web-mode))
-  (editorconfig-mode 1))
-
-(use-package magit
-  :bind ("C-c g" . magit-status))
-
 
 ;;; init.el ends here
 
