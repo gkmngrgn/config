@@ -179,10 +179,13 @@
   :config
   (global-git-gutter-mode))
 
+(use-package focus
+  :defer t
+  :bind (("C-c f" . focus-mode)))
+
 (use-package helm-mode
   :bind (("M-s o"   . helm-occur)
          ("M-x"     . helm-M-x)
-         ("C-c f"   . helm-find-files)
          ("C-c s"   . helm-ag-project-root)
          ("C-c t"   . helm-imenu)
          ("C-x C-b" . helm-buffers-list)
