@@ -132,6 +132,7 @@ key_bindings:
   - { key: O,        mods: Alt,     chars: "\x1bo"                           }
   - { key: P,        mods: Alt,     chars: "\x1bp"                           }
   - { key: X,        mods: Alt,     chars: "\x1bx"                           }
+  - { key: Space,    mods: Control, chars: "\x00"                            }
 
   # DEFAULTS
   - { key: Paste,                   action: Paste                            }
