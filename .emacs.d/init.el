@@ -109,13 +109,6 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p)) (package-install p)))
 
-(defun kill-other-buffers ()
-  "Kill all other buffers."
-  (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-  (message "All other buffers are killed.."))
-
-(global-set-key (kbd "C-c k") 'kill-other-buffers)
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 
 (use-package cyberpunk-theme
