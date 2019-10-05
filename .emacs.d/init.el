@@ -16,17 +16,21 @@
 (set-language-environment 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 
-(setq-default
- cursor-type 'box
- indent-tabs-mode nil
- truncate-lines t)
+(setq-default cursor-type 'box
+              indent-tabs-mode nil
+              truncate-lines t
+              org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 
-(setq
- initial-scratch-message ""
- inhibit-splash-screen t
- scroll-conservatively 10000
- scroll-step 1
- visible-bell 1)
+(setq initial-scratch-message ""
+      inhibit-splash-screen t
+      scroll-conservatively 10000
+      scroll-step 1
+      visible-bell 1)
+
+(electric-pair-mode 1)
+(electric-layout-mode 1)
+(electric-indent-mode 1)
+;; (electric-quote-mode 1)
 
 (menu-bar-mode -1)
 
@@ -41,10 +45,9 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Place all backup files in one directory
-(setq
- backup-directory-alist `((".*" . ,temporary-file-directory))
- auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
- default-directory (concat (getenv "HOME") "/Workspace"))
+(setq backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      default-directory (concat (getenv "HOME") "/Workspace"))
 
 ;; Custom variables
 (defvar custom-file-path "~/.emacs.d/custom.el")
@@ -57,8 +60,8 @@
 
 (package-initialize)
 
-(setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
-                         ("melpa-stable" . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -82,7 +85,7 @@
     cyberpunk-theme
     diminish
     editorconfig
-    git-gutter
+    diff-hl
     magit
     use-package
     telephone-line
@@ -134,14 +137,6 @@
       (set-face-attribute 'fringe nil :background nil)))
 
 ;; Package Configurations
-(setq-default
- org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
-
-(electric-pair-mode 1)
-(electric-layout-mode 1)
-(electric-indent-mode 1)
-;; (electric-quote-mode 1)
-
 (use-package flx-ido
   :config
   (ido-mode 1)
@@ -155,12 +150,12 @@
   :hook prog-mode)
 
 (use-package linum-relative
-  :defer t
+  :ensure t
   :diminish
-  :init
-  (setq linum-relative-backend 'display-line-numbers-mode)
+  :custom
+  (linum-relative-backend 'display-line-numbers-mode)
   :config
-  (linum-on))
+  (linum-relative-global-mode))
 
 (use-package ace-window
   :defer t
@@ -178,13 +173,13 @@
   :defer t
   :bind ("C-c g" . magit-status))
 
-(use-package git-gutter
-  :defer t
-  :bind (("M-p" . git-gutter:previous-hunk)
-         ("M-n" . git-gutter:next-hunk))
-  :diminish
+(use-package diff-hl
+  :bind (("M-p" . diff-hl-previous-hunk)
+         ("M-n" . diff-hl-next-hunk))
   :config
-  (global-git-gutter-mode))
+  (global-diff-hl-mode)
+  (if (not (display-graphic-p))
+      (diff-hl-margin-mode)))
 
 (use-package focus
   :defer t
@@ -202,7 +197,6 @@
 
 (use-package telephone-line
   :init
-
   (defface color-gray
     '((t (:foreground "black" :background "gray")))
     "telephone gray"
@@ -241,10 +235,9 @@
          (rust-mode   . lsp))
   :commands lsp
   :init
-  (setq-default
-   lsp-prefer-flymake nil                ; flycheck is better
-   lsp-enable-snippet nil                ; company is better
-   lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
+  (setq-default lsp-prefer-flymake nil                ; flycheck is better
+                lsp-enable-snippet nil                ; company is better
+                lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
@@ -301,10 +294,9 @@
   :config
   (add-hook 'js2-mode-hook
             '(lambda ()
-               (setq
-                js2-pretty-multiline-decl-indentation-p t
-                js2-consistent-level-indent-inner-bracket-p t
-                js2-basic-offset 2))))
+               (setq js2-pretty-multiline-decl-indentation-p t
+                     js2-consistent-level-indent-inner-bracket-p t
+                     js2-basic-offset 2))))
 
 (use-package scss-mode
   :mode (("\\.scss$" . scss-mode)
