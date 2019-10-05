@@ -153,9 +153,11 @@
   :ensure t
   :diminish
   :custom
-  (linum-relative-backend 'display-line-numbers-mode)
-  :config
-  (linum-relative-global-mode))
+  (linum-relative-backend 'display-line-numbers-mode))
+
+(use-package linum-relative-mode
+  :defer t
+  :hook prog-mode)
 
 (use-package ace-window
   :defer t
