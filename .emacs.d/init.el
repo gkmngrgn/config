@@ -88,6 +88,7 @@
     telephone-line
     focus
     rainbow-delimiters
+    linum-relative
 
     ;; navigation plugins
     flx-ido
@@ -152,6 +153,14 @@
 (use-package rainbow-delimiters-mode
   :defer t
   :hook prog-mode)
+
+(use-package linum-relative
+  :defer t
+  :diminish
+  :init
+  (setq linum-relative-backend 'display-line-numbers-mode)
+  :config
+  (linum-on))
 
 (use-package ace-window
   :defer t
