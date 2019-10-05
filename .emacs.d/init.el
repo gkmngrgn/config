@@ -87,6 +87,7 @@
     use-package
     telephone-line
     focus
+    rainbow-delimiters
 
     ;; navigation plugins
     flx-ido
@@ -147,6 +148,10 @@
   (flx-ido-mode 1)
   (setq ido-enable-flex-matching t)
   (setq ido-use-faces nil))
+
+(use-package rainbow-delimiters-mode
+  :defer t
+  :hook prog-mode)
 
 (use-package ace-window
   :defer t
