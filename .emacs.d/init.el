@@ -70,6 +70,7 @@
   '(;; file modes
     dockerfile-mode
     dart-mode
+    elpy
     go-mode
     js2-mode
     markdown-mode
@@ -269,6 +270,14 @@
 ;; programming languages
 (use-package lisp-mode
   :diminish eldoc-mode)
+
+(use-package elpy
+  :ensure t
+  :diminish (elpy-mode . "py")
+  :init
+  (elpy-enable)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (use-package editorconfig
   :ensure t
