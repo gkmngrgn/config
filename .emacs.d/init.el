@@ -316,7 +316,9 @@
 
 ;; text modes
 (use-package text-mode
-  :diminish (visual-line-mode . "wrap"))
+  :diminish (visual-line-mode . "wrap")
+  :init
+  (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
 
 (use-package markdown-mode
   :defer t
