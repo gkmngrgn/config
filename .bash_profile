@@ -5,14 +5,14 @@
 #    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 # if running bash
-if [ -n "$BASH_VERSION" ]
-then
- # include .bashrc if it exists
- if [ -f "$HOME/.bashrc" ]
- then
-   . "$HOME/.bashrc"
- fi
-fi
+# if [ -n "$BASH_VERSION" ]
+# then
+#  # include .bashrc if it exists
+#  if [ -f "$HOME/.bashrc" ]
+#  then
+#    . "$HOME/.bashrc"
+#  fi
+# fi
 
 # colors
 BLUE="\\033[1;34m"
