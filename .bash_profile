@@ -5,14 +5,14 @@
 #    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 # if running bash
-# if [ -n "$BASH_VERSION" ]
-# then
-#  # include .bashrc if it exists
-#  if [ -f "$HOME/.bashrc" ]
-#  then
-#    . "$HOME/.bashrc"
-#  fi
-# fi
+if [ -n "$BASH_VERSION" ]
+then
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]
+  then
+    . "$HOME/.bashrc"
+  fi
+fi
 
 # colors
 BLUE="\\033[1;34m"
@@ -50,3 +50,5 @@ export PATH="$HOME/.local/bin:$PATH"                   # local
 export PATH="$HOME/.cargo/bin:$PATH"                   # rust
 export PATH="/usr/lib/dart/bin:$PATH"                  # dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # go
+
+export TERM="xterm-256color"
