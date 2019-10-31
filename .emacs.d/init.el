@@ -23,8 +23,7 @@
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
-      scroll-conservatively 10000
-      scroll-step 1
+      scroll-step 20
       visible-bell 1)
 
 (electric-pair-mode 1)
