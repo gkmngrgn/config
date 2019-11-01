@@ -23,7 +23,8 @@
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
-      scroll-step 20
+      scroll-conservatively 10
+      scroll-margin 7
       visible-bell 1)
 
 (electric-pair-mode 1)
@@ -94,7 +95,6 @@
     linum-relative
 
     ;; navigation plugins
-    flx-ido
     helm
     helm-ag
     helm-flx
@@ -130,22 +130,14 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
-                          :font "Fira Code"
-                          :height 110
+                          :font "Fira Code Retina"
+                          :height 115
                           :weight 'normal
                           :width 'normal)
       (fringe-mode 12) ;; for HiDPI
       (set-face-attribute 'fringe nil :background nil)))
 
 ;; Package Configurations
-(use-package flx-ido
-  :config
-  (ido-mode 1)
-  ;; (ido-everywhere 1)
-  (flx-ido-mode 1)
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil))
-
 (use-package rainbow-delimiters-mode
   :defer t
   :hook prog-mode)
@@ -189,12 +181,13 @@
   :bind (("C-c f" . focus-mode)))
 
 (use-package helm-mode
-  :bind (("M-s o"   . helm-occur)
-         ("M-x"     . helm-M-x)
+  :bind (("M-x"     . helm-M-x)
+         ("C-s"     . helm-occur)
          ("C-c s"   . helm-ag-project-root)
          ("C-c t"   . helm-imenu)
          ("C-x C-b" . helm-buffers-list)
-         ("C-x C-d" . helm-browse-project))
+         ("C-x C-d" . helm-browse-project)
+         ("C-x C-f" . helm-find-files))
   :config
   (helm-flx-mode +1))
 
@@ -253,7 +246,14 @@
   (company-flx-mode +1))
 
 (use-package company-lsp
-  :commands company-lsp)
+    :commands company-lsp
+    :after company
+    :init
+    (setq company-lsp-async t
+          company-lsp-enable-snippet t
+          company-lsp-cache-candidates 'auto)
+    :config
+    (push 'company-lsp company-backends))
 
 (use-package helm-lsp
   :commands helm-lsp-workspace-symbol)
