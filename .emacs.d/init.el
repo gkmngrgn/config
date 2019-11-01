@@ -30,7 +30,6 @@
 (electric-pair-mode 1)
 (electric-layout-mode 1)
 (electric-indent-mode 1)
-;; (electric-quote-mode 1)
 
 (menu-bar-mode -1)
 
