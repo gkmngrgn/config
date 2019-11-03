@@ -80,6 +80,7 @@
     yaml-mode
 
     ;; common
+    evil
     avy
     ace-window
     cyberpunk-theme
@@ -190,7 +191,15 @@
   :config
   (helm-flx-mode +1))
 
+(use-package evil
+  :diminish ((undo-tree-mode . "ut")
+             (isearch-mode   . "se"))
+  :config
+  (evil-mode t)
+  (setq evil-default-state 'emacs))
+
 (use-package telephone-line
+  :after evil
   :init
   (defface color-gray
     '((t (:foreground "black" :background "gray")))
@@ -202,18 +211,13 @@
     "telephone red"
     :group 'telephone-line)
 
-  (setq telephone-line-faces
-        '((gray   . (color-gray . mode-line-inactive))
-          (red    . (color-red . mode-line-inactive))
-          (evil   . telephone-line-evil-face)
-          (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
-          (nil    . (mode-line . mode-line-inactive))))
-
   (setq telephone-line-lhs
-        '((red  . (telephone-line-vc-segment))
-          (gray . (telephone-line-buffer-segment))
+        '((evil . (telephone-line-evil-tag-segment))
+          (gray . (telephone-line-vc-segment
+                   telephone-line-erc-modified-channels-segment
+                   telephone-line-process-segment))
           (nil  . (telephone-line-minor-mode-segment
-                   telephone-line-erc-modified-channels-segment))))
+                   telephone-line-buffer-segment))))
 
   (setq telephone-line-rhs
         '((nil  . (telephone-line-misc-info-segment))
@@ -221,6 +225,8 @@
           (red  . (telephone-line-airline-position-segment))))
 
   :config
+  (add-to-list 'telephone-line-faces '(gray . (color-gray . mode-line-inactive)))
+  (add-to-list 'telephone-line-faces '(red  . (color-red  . mode-line-inactive)))
   (telephone-line-mode t))
 
 (use-package lsp-mode
