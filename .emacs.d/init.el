@@ -251,14 +251,14 @@
   (company-flx-mode +1))
 
 (use-package company-lsp
-    :commands company-lsp
-    :after company
-    :init
-    (setq company-lsp-async t
-          company-lsp-enable-snippet t
-          company-lsp-cache-candidates 'auto)
-    :config
-    (push 'company-lsp company-backends))
+  :commands company-lsp
+  :after company
+  :init
+  (setq company-lsp-async t
+        company-lsp-enable-snippet t
+        company-lsp-cache-candidates 'auto)
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package helm-lsp
   :commands helm-lsp-workspace-symbol)
