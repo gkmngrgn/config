@@ -50,5 +50,3 @@ export PATH="$HOME/.local/bin:$PATH"                   # local
 export PATH="$HOME/.cargo/bin:$PATH"                   # rust
 export PATH="/usr/lib/dart/bin:$PATH"                  # dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # go
-
-export TERM="xterm-256color"
