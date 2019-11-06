@@ -14,18 +14,20 @@
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
-;; (set-selection-coding-system 'utf-8)
 
 (setq-default cursor-type 'box
+              fill-column 80
               indent-tabs-mode nil
-              truncate-lines t
-              org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
+              org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
+              truncate-lines t)
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
       scroll-conservatively 10
       scroll-margin 7
-      visible-bell 1)
+      scroll-preserve-screen-position 1
+      visible-bell 1
+      require-final-newline t)
 
 (electric-pair-mode 1)
 (electric-layout-mode 1)
@@ -68,6 +70,7 @@
   (package-install 'use-package))
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; GUI settings
 (if (display-graphic-p)
@@ -106,22 +109,28 @@
   (load-theme 'cyberpunk t))
 
 (use-package company
-  :ensure t
   :bind ("C-c TAB" . company-complete)
-  :diminish (company-mode . "comp")
   :config
-  (global-company-mode))
+  (setq company-idle-delay 0.5
+        company-show-numbers t
+        company-tooltip-limit 10
+        company-minimum-prefix-length 2
+        company-tooltip-align-annotations t
+        company-tooltip-flip-when-above t)
+  (global-company-mode)
+  :diminish (company-mode . "comp")
+  :ensure t)
 
 (use-package company-lsp
-  :ensure t
-  :commands company-lsp
   :after company
+  :commands company-lsp
+  :config
+  (push 'company-lsp company-backends)
   :init
   (setq company-lsp-async t
         company-lsp-enable-snippet t
         company-lsp-cache-candidates 'auto)
-  :config
-  (push 'company-lsp company-backends))
+  :ensure t)
 
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
