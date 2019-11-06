@@ -132,13 +132,13 @@
   :ensure t)
 
 (use-package diff-hl
-  :ensure t
   :bind (("M-p" . diff-hl-previous-hunk)
          ("M-n" . diff-hl-next-hunk))
   :config
-  (global-diff-hl-mode)
+  (global-diff-hl-mode +1)
   (if (not (display-graphic-p))
-      (diff-hl-margin-mode)))
+      (diff-hl-margin-mode))
+  :ensure t)
 
 (use-package diminish
   :ensure t)
