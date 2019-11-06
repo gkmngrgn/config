@@ -61,11 +61,11 @@
 
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (unless package-archive-contents
   (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 
@@ -132,6 +132,9 @@
   (if (not (display-graphic-p))
       (diff-hl-margin-mode)))
 
+(use-package diminish
+  :ensure t)
+
 (use-package editorconfig
   :ensure t
   :diminish (editorconfig-mode . "ec")
@@ -142,14 +145,6 @@
           lisp-mode
           web-mode))
   (editorconfig-mode 1))
-
-(use-package evil
-  :ensure t
-  :diminish ((undo-tree-mode . "ut")
-             (isearch-mode   . "se"))
-  :config
-  (evil-mode t)
-  (setq evil-default-state 'emacs))
 
 (use-package flycheck
   :ensure t
@@ -210,7 +205,6 @@
 
 (use-package telephone-line
   :ensure t
-  :after evil
   :init
   (defface color-gray
     '((t (:foreground "black" :background "gray")))
