@@ -82,7 +82,6 @@
                           :height 115
                           :weight 'normal
                           :width 'normal)
-      (fringe-mode 12) ;; for HiDPI
       (set-face-attribute 'fringe nil :background nil)))
 
 ;; Package configurations
