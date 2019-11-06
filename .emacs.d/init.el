@@ -123,6 +123,14 @@
   :config
   (push 'company-lsp company-backends))
 
+(use-package counsel
+  :bind (("M-x"     . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("C-x C-d" . counsel-git)
+         ("C-c s"   . counsel-git-grep)
+         ("C-c a"   . counsel-ag))
+  :ensure t)
+
 (use-package diff-hl
   :ensure t
   :bind (("M-p" . diff-hl-previous-hunk)
@@ -156,6 +164,15 @@
   :ensure t
   :bind (("C-c f" . focus-mode)))
 
+(use-package ivy
+  :bind (("C-c C-r" . ivy-resume))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :diminish
+  :ensure t)
+
 (use-package linum-relative
   :ensure t
   :diminish
@@ -187,8 +204,7 @@
   :commands lsp-ui-mode)
 
 (use-package magit
-  :ensure t
-  :bind ("C-c g" . magit-status))
+  :ensure t)
 
 (use-package projectile
   :ensure t
@@ -202,6 +218,10 @@
 (use-package rainbow-delimiters-mode
   :ensure rainbow-delimiters
   :hook prog-mode)
+
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)))
 
 (use-package telephone-line
   :ensure t
