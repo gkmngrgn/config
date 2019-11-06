@@ -101,11 +101,11 @@
   :ensure t)
 
 (use-package cyberpunk-theme
-  :ensure t
   :config
+  (load-theme 'cyberpunk t)
   (set-face-attribute 'mode-line nil :box nil)
   (set-face-attribute 'mode-line-inactive nil :box nil)
-  (load-theme 'cyberpunk t))
+  :ensure t)
 
 (use-package company
   :bind ("C-c TAB" . company-complete)
