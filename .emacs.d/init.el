@@ -64,74 +64,10 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package-ensure)
-
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq use-package-always-ensure t)
-
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
-
-;; (defvar my-packages
-;;   '(;; file modes
-;;     dockerfile-mode
-;;     dart-mode
-;;     elpy
-;;     go-mode
-;;     js2-mode
-;;     markdown-mode
-;;     powershell
-;;     rust-mode
-;;     scss-mode
-;;     web-mode
-;;     yaml-mode
-
-;;     ;; common
-;;     evil
-;;     avy
-;;     ace-window
-;;     cyberpunk-theme
-;;     diminish
-;;     editorconfig
-;;     diff-hl
-;;     magit
-;;     use-package
-;;     telephone-line
-;;     focus
-;;     rainbow-delimiters
-;;     linum-relative
-
-;;     ;; navigation plugins
-;;     helm
-;;     helm-ag
-;;     helm-flx
-;;     helm-ls-git
-;;     helm-lsp
-
-;;     ;; language server protocol
-;;     company
-;;     company-lsp
-;;     company-flx
-;;     flycheck
-;;     lsp-mode
-;;     lsp-ui
-;;     lsp-treemacs)
-;;   "A list of packages to ensure are installed at launch.")
-
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
-
-(use-package cyberpunk-theme
-  :config
-  (load-theme 'cyberpunk t)
-  (set-face-attribute 'mode-line nil
-                      :box nil)
-  (set-face-attribute 'mode-line-inactive nil
-                      :box nil))
 
 ;; GUI settings
 (if (display-graphic-p)
@@ -146,10 +82,84 @@
       (fringe-mode 12) ;; for HiDPI
       (set-face-attribute 'fringe nil :background nil)))
 
-;; Package Configurations
-(use-package rainbow-delimiters-mode
-  :defer t
-  :hook prog-mode)
+;; Package configurations
+(use-package avy
+  :ensure t
+  :bind (("M-g g" . avy-goto-line)
+         ("M-g f" . avy-goto-char)
+         ("M-g h" . avy-goto-char-2))
+  :config
+  (avy-setup-default))
+
+(use-package ace-window
+  :ensure t
+  :bind ("M-o" . ace-window))
+
+(use-package ag
+  :ensure t)
+
+(use-package cyberpunk-theme
+  :ensure t
+  :config
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil)
+  (load-theme 'cyberpunk t))
+
+(use-package company
+  :ensure t
+  :bind ("C-c TAB" . company-complete)
+  :diminish (company-mode . "comp")
+  :config
+  (global-company-mode))
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp
+  :after company
+  :init
+  (setq company-lsp-async t
+        company-lsp-enable-snippet t
+        company-lsp-cache-candidates 'auto)
+  :config
+  (push 'company-lsp company-backends))
+
+(use-package diff-hl
+  :ensure t
+  :bind (("M-p" . diff-hl-previous-hunk)
+         ("M-n" . diff-hl-next-hunk))
+  :config
+  (global-diff-hl-mode)
+  (if (not (display-graphic-p))
+      (diff-hl-margin-mode)))
+
+(use-package editorconfig
+  :ensure t
+  :diminish (editorconfig-mode . "ec")
+  :config
+  (setq editorconfig-exclude-modes
+        '(common-lisp-mode
+          emacs-lisp-mode
+          lisp-mode
+          web-mode))
+  (editorconfig-mode 1))
+
+(use-package evil
+  :ensure t
+  :diminish ((undo-tree-mode . "ut")
+             (isearch-mode   . "se"))
+  :config
+  (evil-mode t)
+  (setq evil-default-state 'emacs))
+
+(use-package flycheck
+  :ensure t
+  :diminish (flycheck-mode . "fc")
+  :config
+  (global-flycheck-mode))
+
+(use-package focus
+  :ensure t
+  :bind (("C-c f" . focus-mode)))
 
 (use-package linum-relative
   :ensure t
@@ -158,67 +168,48 @@
   (linum-relative-backend 'display-line-numbers-mode))
 
 (use-package linum-relative-mode
-  :defer t
+  :ensure linum-relative
   :hook prog-mode)
 
-(use-package ace-window
-  :defer t
-  :bind ("M-o" . ace-window))
+(use-package lsp-mode
+  :ensure t
+  :hook ((dart-mode   . lsp)
+         (go-mode     . lsp)
+         (python-mode . lsp)
+         (rust-mode   . lsp))
+  :commands lsp
+  :init
+  (setq-default lsp-prefer-flymake nil                ; flycheck is better
+                lsp-enable-snippet nil                ; company is better
+                lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
 
-(use-package avy
-  :defer t
-  :bind (("M-g g" . avy-goto-line)
-         ("M-g f" . avy-goto-char)
-         ("M-g h" . avy-goto-char-2))
-  :config
-  (avy-setup-default))
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list)
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
 
 (use-package magit
-  :defer t
+  :ensure t
   :bind ("C-c g" . magit-status))
-
-(use-package diff-hl
-  :bind (("M-p" . diff-hl-previous-hunk)
-         ("M-n" . diff-hl-next-hunk))
-  :config
-  (global-diff-hl-mode)
-  (if (not (display-graphic-p))
-      (diff-hl-margin-mode)))
-
-(use-package focus
-  :defer t
-  :bind (("C-c f" . focus-mode)))
-
-(use-package ag
-  :ensure t)
 
 (use-package projectile
   :ensure t
+  :diminish (projectile-mode . "pr")
   :init
   (setq projectile-completion-system 'ivy)
   :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1))
 
-(use-package helm-mode
-  :bind (("M-x"     . helm-M-x)
-         ("C-s"     . helm-occur)
-         ("C-c s"   . helm-ag-project-root)
-         ("C-c t"   . helm-imenu)
-         ("C-x C-b" . helm-buffers-list)
-         ("C-x C-d" . helm-browse-project)
-         ("C-x C-f" . helm-find-files))
-  :config
-  (helm-flx-mode +1))
-
-(use-package evil
-  :diminish ((undo-tree-mode . "ut")
-             (isearch-mode   . "se"))
-  :config
-  (evil-mode t)
-  (setq evil-default-state 'emacs))
+(use-package rainbow-delimiters-mode
+  :ensure rainbow-delimiters
+  :hook prog-mode)
 
 (use-package telephone-line
+  :ensure t
   :after evil
   :init
   (defface color-gray
@@ -249,51 +240,12 @@
   (add-to-list 'telephone-line-faces '(red  . (color-red  . mode-line-inactive)))
   (telephone-line-mode t))
 
-(use-package lsp-mode
-  :hook ((dart-mode   . lsp)
-         (go-mode     . lsp)
-         (python-mode . lsp)
-         (rust-mode   . lsp))
-  :commands lsp
-  :init
-  (setq-default lsp-prefer-flymake nil                ; flycheck is better
-                lsp-enable-snippet nil                ; company is better
-                lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
+;; File modes
+(use-package dart-mode
+  :ensure t)
 
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-
-(use-package company
-  :bind ("C-c TAB" . company-complete)
-  :diminish (company-mode . "comp")
-  :config
-  (global-company-mode)
-  (company-flx-mode +1))
-
-(use-package company-lsp
-  :commands company-lsp
-  :after company
-  :init
-  (setq company-lsp-async t
-        company-lsp-enable-snippet t
-        company-lsp-cache-candidates 'auto)
-  :config
-  (push 'company-lsp company-backends))
-
-(use-package helm-lsp
-  :commands helm-lsp-workspace-symbol)
-
-(use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list)
-
-(use-package flycheck
-  :diminish (flycheck-mode . "fc")
-  :config
-  (global-flycheck-mode))
-
-;; programming languages
-(use-package lisp-mode
-  :diminish eldoc-mode)
+(use-package dockerfile-mode
+  :ensure t)
 
 (use-package elpy
   :ensure t
@@ -303,19 +255,49 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(use-package editorconfig
-  :ensure t
-  :diminish (editorconfig-mode . "ec")
-  :config
-  (setq editorconfig-exclude-modes
-        '(common-lisp-mode
-          emacs-lisp-mode
-          lisp-mode
-          web-mode))
-  (editorconfig-mode 1))
+(use-package go-mode
+  :ensure t)
 
-;; web modes
+(use-package lisp-mode
+  :diminish eldoc-mode)
+
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.md?\\'" . markdown-mode))
+  :config
+  (set-face-attribute 'markdown-code-face nil
+                      :inherit nil
+                      :foreground "dim gray")
+  (add-hook 'markdown-mode-hook 'visual-line-mode))
+
+(use-package js2-mode
+  :ensure t
+  :mode ("\\.js$" . js2-mode)
+  :config
+  (add-hook 'js2-mode-hook
+            '(lambda ()
+               (setq js2-pretty-multiline-decl-indentation-p t
+                     js2-consistent-level-indent-inner-bracket-p t
+                     js2-basic-offset 2))))
+
+(use-package powershell
+  :ensure t)
+
+(use-package rust-mode
+  :ensure t)
+
+(use-package scss-mode
+  :ensure t
+  :mode (("\\.scss$" . scss-mode)
+         ("\\.sass$" . scss-mode)))
+
+(use-package text-mode
+  :diminish (visual-line-mode . "wrap")
+  :init
+  (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
+
 (use-package web-mode
+  :ensure t
   :mode ("\\.html$" . web-mode)
   :config
   (setq web-mode-markup-indent-offset 2
@@ -325,33 +307,8 @@
         web-mode-enable-auto-pairing nil
         web-mode-block-padding 0))
 
-(use-package js2-mode
-  :mode ("\\.js$" . js2-mode)
-  :config
-  (add-hook 'js2-mode-hook
-            '(lambda ()
-               (setq js2-pretty-multiline-decl-indentation-p t
-                     js2-consistent-level-indent-inner-bracket-p t
-                     js2-basic-offset 2))))
-
-(use-package scss-mode
-  :mode (("\\.scss$" . scss-mode)
-         ("\\.sass$" . scss-mode)))
-
-;; text modes
-(use-package text-mode
-  :diminish (visual-line-mode . "wrap")
-  :init
-  (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
-
-(use-package markdown-mode
-  :defer t
-  :mode (("\\.md?\\'" . markdown-mode))
-  :config
-  (set-face-attribute 'markdown-code-face nil
-                      :inherit nil
-                      :foreground "dim gray")
-  (add-hook 'markdown-mode-hook 'visual-line-mode))
+(use-package yaml-mode
+  :ensure t)
 
 ;;; init.el ends here
 
