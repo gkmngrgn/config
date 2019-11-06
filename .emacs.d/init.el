@@ -58,59 +58,70 @@
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
 (package-initialize)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(defvar my-packages
-  '(;; file modes
-    dockerfile-mode
-    dart-mode
-    elpy
-    go-mode
-    js2-mode
-    markdown-mode
-    powershell
-    rust-mode
-    scss-mode
-    web-mode
-    yaml-mode
-
-    ;; common
-    evil
-    avy
-    ace-window
-    cyberpunk-theme
-    diminish
-    editorconfig
-    diff-hl
-    magit
-    use-package
-    telephone-line
-    focus
-    rainbow-delimiters
-    linum-relative
-
-    ;; navigation plugins
-    helm
-    helm-ag
-    helm-flx
-    helm-ls-git
-    helm-lsp
-
-    ;; language server protocol
-    company
-    company-lsp
-    company-flx
-    flycheck
-    lsp-mode
-    lsp-ui
-    lsp-treemacs)
-  "A list of packages to ensure are installed at launch.")
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
+(require 'use-package-ensure)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(setq use-package-always-ensure t)
+
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
+;; (defvar my-packages
+;;   '(;; file modes
+;;     dockerfile-mode
+;;     dart-mode
+;;     elpy
+;;     go-mode
+;;     js2-mode
+;;     markdown-mode
+;;     powershell
+;;     rust-mode
+;;     scss-mode
+;;     web-mode
+;;     yaml-mode
+
+;;     ;; common
+;;     evil
+;;     avy
+;;     ace-window
+;;     cyberpunk-theme
+;;     diminish
+;;     editorconfig
+;;     diff-hl
+;;     magit
+;;     use-package
+;;     telephone-line
+;;     focus
+;;     rainbow-delimiters
+;;     linum-relative
+
+;;     ;; navigation plugins
+;;     helm
+;;     helm-ag
+;;     helm-flx
+;;     helm-ls-git
+;;     helm-lsp
+
+;;     ;; language server protocol
+;;     company
+;;     company-lsp
+;;     company-flx
+;;     flycheck
+;;     lsp-mode
+;;     lsp-ui
+;;     lsp-treemacs)
+;;   "A list of packages to ensure are installed at launch.")
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 
