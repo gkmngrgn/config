@@ -57,10 +57,8 @@
 ;; Packages
 (require 'package)
 
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-
-(setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -111,8 +109,8 @@
     lsp-treemacs)
   "A list of packages to ensure are installed at launch.")
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p)) (package-install p)))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (global-set-key (kbd "C-c SPC") 'comment-or-uncomment-region)
 
@@ -179,6 +177,17 @@
 (use-package focus
   :defer t
   :bind (("C-c f" . focus-mode)))
+
+(use-package ag
+  :ensure t)
+
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-completion-system 'ivy)
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (projectile-mode +1))
 
 (use-package helm-mode
   :bind (("M-x"     . helm-M-x)
