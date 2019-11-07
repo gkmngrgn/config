@@ -117,7 +117,7 @@
         company-tooltip-align-annotations t
         company-tooltip-flip-when-above t)
   (global-company-mode)
-  :diminish (company-mode . "comp")
+  :diminish (company-mode . "cmp")
   :ensure t)
 
 (use-package company-lsp
@@ -153,7 +153,7 @@
 
 (use-package editorconfig
   :ensure t
-  :diminish (editorconfig-mode . "ec")
+  :diminish (editorconfig-mode . "edc")
   :config
   (setq editorconfig-exclude-modes
         '(common-lisp-mode
@@ -164,7 +164,7 @@
 
 (use-package flycheck
   :ensure t
-  :diminish (flycheck-mode . "fc")
+  :diminish (flycheck-mode . "fly")
   :config
   (global-flycheck-mode))
 
@@ -192,12 +192,13 @@
   :hook prog-mode)
 
 (use-package lsp-mode
+  :commands lsp
+  :diminish (lsp-mode . "lsp")
   :ensure t
   :hook ((dart-mode   . lsp)
          (go-mode     . lsp)
          (python-mode . lsp)
          (rust-mode   . lsp))
-  :commands lsp
   :init
   (setq-default lsp-prefer-flymake nil                ; flycheck is better
                 lsp-enable-snippet nil                ; company is better
@@ -216,7 +217,7 @@
 
 (use-package projectile
   :ensure t
-  :diminish (projectile-mode . "pr")
+  :diminish (projectile-mode . "prj")
   :init
   (setq projectile-completion-system 'ivy)
   :config
@@ -270,7 +271,7 @@
 
 (use-package elpy
   :ensure t
-  :diminish (elpy-mode . "py")
+  :diminish (elpy-mode . "epy")
   :init
   (elpy-enable)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -313,7 +314,7 @@
          ("\\.sass$" . scss-mode)))
 
 (use-package text-mode
-  :diminish (visual-line-mode . "wrap")
+  :diminish (visual-line-mode . "wrp")
   :init
   (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
 
