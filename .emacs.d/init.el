@@ -11,10 +11,6 @@
 ;;; Code:
 
 ;; Initial Setup
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-language-environment 'utf-8)
-
 (setq-default cursor-type 'box
               fill-column 80
               indent-tabs-mode nil
@@ -29,19 +25,16 @@
       visible-bell 1
       require-final-newline t)
 
-(electric-pair-mode 1)
-(electric-layout-mode 1)
-(electric-indent-mode 1)
-
-(menu-bar-mode -1)
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
-(which-function-mode t)
-
+(menu-bar-mode -1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment 'utf-8)
+(which-function-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -86,16 +79,16 @@
 
 ;; Package configurations
 (use-package avy
-  :ensure t
   :bind (("M-g g" . avy-goto-line)
          ("M-g f" . avy-goto-char)
          ("M-g h" . avy-goto-char-2))
   :config
-  (avy-setup-default))
+  (avy-setup-default)
+  :ensure t)
 
 (use-package ace-window
-  :ensure t
-  :bind ("M-o" . ace-window))
+  :bind ("M-o" . ace-window)
+  :ensure t)
 
 (use-package ag
   :ensure t)
@@ -163,9 +156,9 @@
   (editorconfig-mode 1))
 
 (use-package flycheck
-  :ensure t
   :diminish (flycheck-mode . "fly")
-  :config
+  :ensure t
+  :init
   (global-flycheck-mode))
 
 (use-package focus
@@ -227,6 +220,12 @@
 (use-package rainbow-delimiters-mode
   :ensure rainbow-delimiters
   :hook prog-mode)
+
+(use-package smartparens
+  :diminish
+  :config
+  (smartparens-global-mode t)
+  :ensure t)
 
 (use-package swiper
   :ensure t
