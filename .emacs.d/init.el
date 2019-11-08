@@ -381,9 +381,10 @@
     "Focus"
     ("g"   text-scale-increase                 "Zoom in")
     ("l"   text-scale-decrease                 "Zoom out")
-    ("f"   focus-mode                          "Focus")
     ("j"   diff-hl-next-hunk                   "Next hunk")
     ("k"   diff-hl-previous-hunk               "Previous hunk")
+
+    ("f"   focus-mode                          "Focus")
     ("q"   nil                                 "Cancel" :color blue))
   (defhydra hydra-project (:columns 4)
     "Projectile"
@@ -401,7 +402,7 @@
     ("s"   projectile-switch-project           "Switch project")
     ("k"   projectile-kill-buffers             "Kill buffers")
     ("q"   nil                                 "Cancel" :color blue))
-  (defhydra hydra-lsp (:exit t :hint nil :columns 4)
+  (defhydra hydra-lsp (:columns 4)
     "LSP"
     ("d"   lsp-find-declaration                "Find declaration")
     ("D"   lsp-ui-peek-find-definitions        "Find definitions")
