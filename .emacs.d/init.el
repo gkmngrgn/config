@@ -17,6 +17,10 @@
               org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
               truncate-lines t)
 
+(when (eq system-type 'windows-nt)
+  (setq-default w32-pass-lwindow-to-system nil
+                nw32-lwindow-modifier 'super))
+
 (setq initial-scratch-message ""
       inhibit-splash-screen t
       scroll-conservatively 10
@@ -133,10 +137,8 @@
   :ensure t)
 
 (use-package diff-hl
-  :bind (("M-p" . diff-hl-previous-hunk)
-         ("M-n" . diff-hl-next-hunk))
   :config
-  (global-diff-hl-mode +1)
+  (global-diff-hl-mode)
   (if (not (display-graphic-p))
       (diff-hl-margin-mode))
   :ensure t)
@@ -162,8 +164,7 @@
   (global-flycheck-mode))
 
 (use-package focus
-  :ensure t
-  :bind (("C-c f" . focus-mode)))
+  :ensure t)
 
 (use-package ivy
   :bind (("C-c C-r" . ivy-resume))
@@ -211,11 +212,10 @@
 (use-package projectile
   :ensure t
   :diminish (projectile-mode . "prj")
-  :init
-  (setq projectile-completion-system 'ivy)
   :config
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (projectile-mode +1))
+  (projectile-mode +1)
+  :init
+  (setq projectile-completion-system 'ivy))
 
 (use-package rainbow-delimiters-mode
   :ensure rainbow-delimiters
@@ -224,6 +224,7 @@
 (use-package smartparens
   :diminish
   :config
+  (require 'smartparens-config)
   (smartparens-global-mode t)
   :ensure t)
 
@@ -330,6 +331,95 @@
 
 (use-package yaml-mode
   :ensure t)
+
+;; Hydra settings
+(use-package hydra
+  :bind (("s-e" . hydra-errors/body)
+         ("s-f" . hydra-focus/body)
+         ("s-l" . hydra-lsp/body)
+         ("s-p" . hydra-project/body))
+  :commands (hydra-default-pre
+             hydra-keyboard-quit
+             hydra--call-interactively-remap-maybe
+             hydra-show-hint
+             hydra-set-transient-map
+             diff-hl-next-hunk
+             diff-hl-previous-hunk
+             flycheck-list-errors
+             flycheck-error-list-set-filter
+             flycheck-next-error
+             flycheck-previous-error
+             flycheck-first-error
+             lsp-find-declaration
+             lsp-ui-peek-find-definitions
+             lsp-ui-peek-find-references
+             lsp-ui-peek-find-implementation
+             lsp-find-type-definition
+             lsp-describe-thing-at-point
+             lsp-rename
+             lsp-format-buffer
+             lsp-ui-imenu
+             lsp-execute-code-action
+             lsp-describe-session
+             lsp-workspace-restart
+             lsp-workspace-shutdown)
+  :ensure t
+  :init
+  (defhydra hydra-errors (:pre (flycheck-list-errors)
+                               :post (quit-windows-on "*Flycheck errors*")
+                               :hint nil)
+    "Errors"
+    ("f"   flycheck-error-list-set-filter      "Filter")
+    ("j"   flycheck-next-error                 "Next")
+    ("k"   flycheck-previous-error             "Previous")
+    ("gg"  flycheck-first-error                "First")
+    ("G"   (progn
+             (goto-char (point-max))
+             (flycheck-previous-error))        "Last")
+    ("q"   nil                                 "Cancel" :color blue))
+  (defhydra hydra-focus (:columns 4)
+    "Focus"
+    ("g"   text-scale-increase                 "Zoom in")
+    ("l"   text-scale-decrease                 "Zoom out")
+    ("f"   focus-mode                          "Focus")
+    ("j"   diff-hl-next-hunk                   "Next hunk")
+    ("k"   diff-hl-previous-hunk               "Previous hunk")
+    ("q"   nil                                 "Cancel" :color blue))
+  (defhydra hydra-project (:columns 4)
+    "Projectile"
+    ("f"   projectile-find-file                "Find file")
+    ("r"   projectile-recentf                  "Recent files")
+    ("z"   projectile-cache-current-file       "Cache current file")
+    ("x"   projectile-remove-known-project     "Remove known project")
+
+    ("d"   projectile-find-dir                 "Find directory")
+    ("b"   projectile-switch-to-buffer         "Switch to buffer")
+    ("c"   projectile-invalidate-cache         "Clear cache")
+    ("X"   projectile-cleanup-known-projects   "Cleanup known projects")
+
+    ("o"   projectile-multi-occur              "Multi occur")
+    ("s"   projectile-switch-project           "Switch project")
+    ("k"   projectile-kill-buffers             "Kill buffers")
+    ("q"   nil                                 "Cancel" :color blue))
+  (defhydra hydra-lsp (:exit t :hint nil :columns 4)
+    "LSP"
+    ("d"   lsp-find-declaration                "Find declaration")
+    ("D"   lsp-ui-peek-find-definitions        "Find definitions")
+    ("R"   lsp-ui-peek-find-references         "Find references")
+    ("i"   lsp-ui-peek-find-implementation     "Find implementation")
+
+    ("t"   lsp-find-type-definition            "Find type definition")
+    ("o"   lsp-describe-thing-at-point         "Describe")
+    ("r"   lsp-rename                          "Rename")
+    ("f"   lsp-format-buffer                   "Format buffer")
+
+    ("m"   lsp-ui-imenu                        "Menu")
+    ("x"   lsp-execute-code-action             "Execute code action")
+    ("M-s" lsp-describe-session                "Describe session")
+    ("M-r" lsp-workspace-restart               "Restart workspace")
+
+    ("S"   lsp-workspace-shutdown              "Shutdown workspace")
+    ("q"   nil                                 "Cancel" :color blue)))
 
 ;;; init.el ends here
 
