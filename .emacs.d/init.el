@@ -17,10 +17,6 @@
               org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
               truncate-lines t)
 
-(when (eq system-type 'windows-nt)
-  (setq-default w32-pass-lwindow-to-system nil
-                nw32-lwindow-modifier 'super))
-
 (setq initial-scratch-message ""
       inhibit-splash-screen t
       scroll-conservatively 10
@@ -334,10 +330,10 @@
 
 ;; Hydra settings
 (use-package hydra
-  :bind (("s-e" . hydra-errors/body)
-         ("s-f" . hydra-focus/body)
-         ("s-l" . hydra-lsp/body)
-         ("s-p" . hydra-project/body))
+  :bind (("<f2> e" . hydra-errors/body)
+         ("<f2> f" . hydra-focus/body)
+         ("<f2> l" . hydra-lsp/body)
+         ("<f2> p" . hydra-project/body))
   :commands (hydra-default-pre
              hydra-keyboard-quit
              hydra--call-interactively-remap-maybe
