@@ -330,10 +330,10 @@
 
 ;; Hydra settings
 (use-package hydra
-  :bind (("<f2> e" . hydra-errors/body)
-         ("<f2> f" . hydra-focus/body)
-         ("<f2> l" . hydra-lsp/body)
-         ("<f2> p" . hydra-project/body))
+  :bind (("C-c e" . hydra-errors/body)
+         ("C-c f" . hydra-focus/body)
+         ("C-c l" . hydra-lsp/body)
+         ("C-c p" . hydra-project/body))
   :commands (hydra-default-pre
              hydra-keyboard-quit
              hydra--call-interactively-remap-maybe
