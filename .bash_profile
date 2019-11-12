@@ -1,8 +1,8 @@
 # ~/.bash_profile --- GKMNGRGN personal bash profile.
 
 # Requirements:
-# 1. Install git bash prompt:
-#    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+# 1. Install starship with cargo:
+#    cargo install starship
 
 # colors
 BLUE="\\033[1;34m"
@@ -10,15 +10,8 @@ GREEN="\\033[1;32m"
 NORMAL="\\033[0;39m"
 RED="\\033[1;31m"
 
-# git prompt
-PATH_GIT_PROMPT="$HOME/.bash-git-prompt/gitprompt.sh"
-if [ -f $PATH_GIT_PROMPT ]
-then
-  GIT_PROMPT_THEME="Minimal"
-  source $PATH_GIT_PROMPT
-else
-  echo -e "${RED}The extension gitprompt is missing.${NORMAL}"
-fi
+# git supported prompt
+eval "$(starship init bash)"
 
 # use podman instead of docker if it is installed
 if command -v podman &>/dev/null
