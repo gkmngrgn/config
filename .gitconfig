@@ -1,0 +1,26 @@
+[user]
+    name =
+    email =
+[alias]
+    st = status -s
+    co = checkout
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    pr = !sh -c \"git fetch upstream pull/${1}/head:pr/${1} && git checkout pr/${1}\"
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[core]
+    autocrlf = false
+    editor = nano
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore_global
+    pager = delta --dark
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[tag]
+    sort = version:refname
