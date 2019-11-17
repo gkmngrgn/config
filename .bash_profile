@@ -10,9 +10,6 @@ GREEN="\\033[1;32m"
 NORMAL="\\033[0;39m"
 RED="\\033[1;31m"
 
-# git supported prompt
-eval "$(starship init bash)"
-
 # use podman instead of docker if it is installed
 if command -v podman &>/dev/null
 then
@@ -33,3 +30,6 @@ export PATH="$HOME/.local/bin:$PATH"                   # local
 export PATH="$HOME/.cargo/bin:$PATH"                   # rust
 export PATH="/usr/lib/dart/bin:$PATH"                  # dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # go
+
+# git supported prompt
+eval "$(starship init bash)"
