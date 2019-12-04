@@ -124,6 +124,9 @@
         company-lsp-cache-candidates 'auto)
   :ensure t)
 
+(use-package company-solidity
+  :after solidity-mode)
+
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
@@ -226,6 +229,12 @@
   (require 'smartparens-config)
   (smartparens-global-mode t)
   :ensure t)
+
+(use-package solidity-mode
+  :ensure t)
+
+(use-package solidity-flycheck
+  :after solidity-mode)
 
 (use-package swiper
   :ensure t
