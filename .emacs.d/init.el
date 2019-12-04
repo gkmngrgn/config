@@ -268,14 +268,6 @@
 (use-package dockerfile-mode
   :ensure t)
 
-(use-package elpy
-  :ensure t
-  :diminish (elpy-mode . "epy")
-  :init
-  (elpy-enable)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
 (use-package go-mode
   :ensure t)
 
