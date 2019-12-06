@@ -31,6 +31,7 @@
 (menu-bar-mode -1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
+(global-display-line-numbers-mode)
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
@@ -71,7 +72,7 @@
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
       (set-face-attribute 'default nil
-                          :font "Fira Code Retina"
+                          :font "Fira Code"
                           :height 115
                           :weight 'normal
                           :width 'normal)
@@ -176,16 +177,6 @@
   (setq enable-recursive-minibuffers t)
   :diminish
   :ensure t)
-
-(use-package linum-relative
-  :ensure t
-  :diminish
-  :custom
-  (linum-relative-backend 'display-line-numbers-mode))
-
-(use-package linum-relative-mode
-  :ensure linum-relative
-  :hook prog-mode)
 
 (use-package lsp-mode
   :commands lsp
