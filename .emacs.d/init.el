@@ -146,9 +146,6 @@
 (use-package diminish
   :ensure t)
 
-(use-package dimmer
-  :ensure t)
-
 (use-package editorconfig
   :ensure t
   :diminish (editorconfig-mode . "edc")
