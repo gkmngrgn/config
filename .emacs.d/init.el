@@ -94,11 +94,9 @@
 (use-package ag
   :ensure t)
 
-(use-package cyberpunk-theme
+(use-package kaolin-themes
   :config
-  (load-theme 'cyberpunk t)
-  (set-face-attribute 'mode-line nil :box nil)
-  (set-face-attribute 'mode-line-inactive nil :box nil)
+  (load-theme 'kaolin-aurora t)
   :ensure t)
 
 (use-package company
