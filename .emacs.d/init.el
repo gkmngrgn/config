@@ -292,7 +292,12 @@
   :ensure t)
 
 (use-package rust-mode
-  :ensure t)
+  :ensure t
+  :config
+  (use-package cargo
+    :diminish (cargo-minor-mode . "crg")
+    :ensure t
+    :hook (rust-mode . cargo-minor-mode)))
 
 (use-package scss-mode
   :ensure t
