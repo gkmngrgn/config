@@ -13,6 +13,11 @@ export PATH="$HOME/.cargo/bin:$PATH"                   # Rust
 export PATH="/usr/lib/dart/bin:$PATH"                  # Dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # Golang
 
+# Pyenv & Python settings
+export PATH="/home/gokmen/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # NVM & Node.js settings
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
