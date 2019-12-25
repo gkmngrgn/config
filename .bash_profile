@@ -15,6 +15,7 @@ export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # Golang
 
 # Pyenv & Python settings
 export PATH="/home/gokmen/.pyenv/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
