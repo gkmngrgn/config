@@ -13,8 +13,11 @@ export PATH="$HOME/.cargo/bin:$PATH"                   # Rust
 export PATH="/usr/lib/dart/bin:$PATH"                  # Dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # Golang
 
+# git supported prompt
+eval "$(starship init bash)"
+
 # Pyenv & Python settings
-export PATH="/home/gokmen/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -23,6 +26,3 @@ eval "$(pyenv virtualenv-init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# git supported prompt
-eval "$(starship init bash)"
