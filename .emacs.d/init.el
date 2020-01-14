@@ -94,11 +94,6 @@
 (use-package ag
   :ensure t)
 
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-aurora t)
-  :ensure t)
-
 (use-package company
   :bind ("C-c TAB" . company-complete)
   :config
@@ -155,6 +150,11 @@
           web-mode))
   (editorconfig-mode 1))
 
+(use-package exec-path-from-shell :ensure t
+  :commands (exec-path-from-shell-initialize)
+  :init
+  (exec-path-from-shell-initialize))
+
 (use-package flycheck
   :diminish (flycheck-mode . "fly")
   :ensure t
@@ -171,6 +171,11 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   :diminish
+  :ensure t)
+
+(use-package kaolin-themes
+  :config
+  (load-theme 'kaolin-aurora t)
   :ensure t)
 
 (use-package lsp-mode
