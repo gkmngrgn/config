@@ -153,7 +153,8 @@
 (use-package exec-path-from-shell :ensure t
   :commands (exec-path-from-shell-initialize)
   :init
-  (exec-path-from-shell-initialize))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (use-package flycheck
   :diminish (flycheck-mode . "fly")
