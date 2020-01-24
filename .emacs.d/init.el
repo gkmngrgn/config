@@ -188,9 +188,9 @@
          (python-mode . lsp)
          (rust-mode   . lsp))
   :init
-  (setq-default lsp-prefer-flymake nil                ; flycheck is better
-                lsp-enable-snippet nil                ; company is better
-                lsp-pyls-plugins-pylint-enabled nil)) ; pycodestyle is better
+  (setq-default lsp-prefer-flymake nil                     ; flycheck is better
+                lsp-enable-snippet nil                     ; company is better
+                lsp-pyls-plugins-pycodestyle-enabled nil)) ; pylint is better
 
 (use-package lsp-treemacs
   :ensure t
