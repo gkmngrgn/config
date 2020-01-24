@@ -183,14 +183,16 @@
   :commands lsp
   :diminish (lsp-mode . "lsp")
   :ensure t
-  :hook ((dart-mode   . lsp)
-         (go-mode     . lsp)
-         (python-mode . lsp)
-         (rust-mode   . lsp))
+  :hook ((dart-mode   . lsp-deferred)
+         (go-mode     . lsp-deferred)
+         (rust-mode   . lsp-deferred))
   :init
-  (setq-default lsp-prefer-flymake nil                     ; flycheck is better
-                lsp-enable-snippet nil                     ; company is better
-                lsp-pyls-plugins-pycodestyle-enabled nil)) ; pylint is better
+  (setq-default lsp-prefer-flymake nil   ; flycheck is better
+                lsp-enable-snippet nil)) ; company is better
+
+(use-package lsp-python-ms
+  :ensure t
+  :hook (python-mode . (lambda () (require 'lsp-python-ms) (lsp-deferred))))
 
 (use-package lsp-treemacs
   :ensure t
