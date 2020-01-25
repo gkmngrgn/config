@@ -19,11 +19,12 @@
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
-      scroll-conservatively 10
-      scroll-margin 7
-      scroll-preserve-screen-position 1
       visible-bell 1
       require-final-newline t)
+
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
