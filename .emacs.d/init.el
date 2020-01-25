@@ -81,9 +81,8 @@
 
 ;; Package configurations
 (use-package avy
-  :bind (("M-g g" . avy-goto-line)
-         ("M-g f" . avy-goto-char)
-         ("M-g h" . avy-goto-char-2))
+  :bind (("M-g g" . avy-goto-char-2)
+         ("M-g f" . avy-goto-char))
   :config
   (avy-setup-default)
   :ensure t)
