@@ -203,7 +203,9 @@
 (use-package lsp-ui
   :defer t
   :ensure t
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :init
+  (setq lsp-ui-doc-enable nil))
 
 (use-package magit
   :defer t
