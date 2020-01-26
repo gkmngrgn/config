@@ -28,22 +28,21 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'text-mode-hook 'visual-line-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (menu-bar-mode -1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
-(global-display-line-numbers-mode)
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
-(which-function-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Place all backup files in one directory
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-      default-directory (concat (getenv "HOME") "/Workspace"))
+      default-directory "~/")
 
 ;; Custom variables
 (defvar custom-file-path "~/.emacs.d/custom.el")
@@ -95,31 +94,34 @@
   :ensure t)
 
 (use-package company
-  :bind ("C-c TAB" . company-complete)
   :config
-  (setq company-idle-delay 0.5
-        company-show-numbers t
-        company-tooltip-limit 10
+  (setq company-idle-delay nil
+        company-show-numbers nil
+        company-tooltip-limit 5
         company-minimum-prefix-length 2
         company-tooltip-align-annotations t
-        company-tooltip-flip-when-above t)
-  (global-company-mode)
+        company-tooltip-flip-when-above nil)
   :diminish (company-mode . "cmp")
-  :ensure t)
+  :ensure t
+  :init
+  (global-company-mode 1))
 
 (use-package company-lsp
   :after company
+  :bind ("C-<tab>" . company-complete-common)
   :commands company-lsp
   :config
   (push 'company-lsp company-backends)
+  :ensure t
   :init
   (setq company-lsp-async t
         company-lsp-enable-snippet t
-        company-lsp-cache-candidates 'auto)
-  :ensure t)
+        company-lsp-cache-candidates 'auto))
 
 (use-package company-solidity
-  :after solidity-mode)
+  :after solidity-mode
+  :defer t
+  :ensure t)
 
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
@@ -150,7 +152,8 @@
           web-mode))
   (editorconfig-mode 1))
 
-(use-package exec-path-from-shell :ensure t
+(use-package exec-path-from-shell
+  :ensure t
   :commands (exec-path-from-shell-initialize)
   :init
   (when (memq window-system '(mac ns x))
@@ -163,6 +166,7 @@
   (global-flycheck-mode))
 
 (use-package focus
+  :defer t
   :ensure t)
 
 (use-package ivy
@@ -185,27 +189,28 @@
   :ensure t
   :hook ((dart-mode   . lsp-deferred)
          (go-mode     . lsp-deferred)
+         (python-mode . lsp-deferred)
          (rust-mode   . lsp-deferred))
   :init
   (setq-default lsp-prefer-flymake nil   ; flycheck is better
                 lsp-enable-snippet nil)) ; company is better
 
-(use-package lsp-python-ms
-  :ensure t
-  :hook (python-mode . (lambda () (require 'lsp-python-ms) (lsp-deferred))))
-
 (use-package lsp-treemacs
+  :defer t
   :ensure t
   :commands lsp-treemacs-errors-list)
 
 (use-package lsp-ui
+  :defer t
   :ensure t
   :commands lsp-ui-mode)
 
 (use-package magit
+  :defer t
   :ensure t)
 
 (use-package projectile
+  :defer t
   :ensure t
   :diminish (projectile-mode . "prj")
   :config
@@ -225,10 +230,13 @@
   :ensure t)
 
 (use-package solidity-mode
+  :defer t
   :ensure t)
 
 (use-package solidity-flycheck
-  :after solidity-mode)
+  :after solidity-mode
+  :defer t
+  :ensure t)
 
 (use-package swiper
   :ensure t
@@ -266,18 +274,23 @@
 
 ;; File modes
 (use-package dart-mode
+  :defer t
   :ensure t)
 
 (use-package dockerfile-mode
+  :defer t
   :ensure t)
 
 (use-package go-mode
+  :defer t
   :ensure t)
 
 (use-package lisp-mode
+  :defer t
   :diminish eldoc-mode)
 
 (use-package markdown-mode
+  :defer t
   :ensure t
   :mode (("\\.md?\\'" . markdown-mode))
   :config
@@ -287,6 +300,7 @@
   (add-hook 'markdown-mode-hook 'visual-line-mode))
 
 (use-package js2-mode
+  :defer t
   :ensure t
   :mode ("\\.js$" . js2-mode)
   :config
@@ -297,9 +311,11 @@
                      js2-basic-offset 2))))
 
 (use-package powershell
+  :defer t
   :ensure t)
 
 (use-package rust-mode
+  :defer t
   :ensure t
   :config
   (use-package cargo
@@ -308,6 +324,7 @@
     :hook (rust-mode . cargo-minor-mode)))
 
 (use-package scss-mode
+  :defer t
   :ensure t
   :mode (("\\.scss$" . scss-mode)
          ("\\.sass$" . scss-mode)))
@@ -318,6 +335,7 @@
   (add-to-list 'auto-mode-alist '("\\`/tmp/neomutt-" . mail-mode)))
 
 (use-package web-mode
+  :defer t
   :ensure t
   :mode ("\\.html$" . web-mode)
   :config
@@ -329,6 +347,7 @@
         web-mode-block-padding 0))
 
 (use-package yaml-mode
+  :defer t
   :ensure t)
 
 ;; Hydra settings
@@ -348,17 +367,14 @@
              flycheck-error-list-set-filter
              flycheck-next-error
              flycheck-previous-error
-             flycheck-first-error
              lsp-find-declaration
              lsp-ui-peek-find-definitions
              lsp-ui-peek-find-references
              lsp-ui-peek-find-implementation
              lsp-find-type-definition
-             lsp-describe-thing-at-point
              lsp-rename
              lsp-format-buffer
              lsp-ui-imenu
-             lsp-execute-code-action
              lsp-describe-session
              lsp-workspace-restart
              lsp-workspace-shutdown)
@@ -371,20 +387,15 @@
     ("f"   flycheck-error-list-set-filter      "Filter")
     ("j"   flycheck-next-error                 "Next")
     ("k"   flycheck-previous-error             "Previous")
-    ("gg"  flycheck-first-error                "First")
-    ("G"   (progn
-             (goto-char (point-max))
-             (flycheck-previous-error))        "Last")
-    ("q"   nil                                 "Cancel" :color blue))
-  (defhydra hydra-focus (:columns 4)
+    ("C-g" nil                                 "Cancel" :color blue))
+  (defhydra hydra-focus ()
     "Focus"
+    ("f"   focus-mode                          "Focus")
     ("g"   text-scale-increase                 "Zoom in")
     ("l"   text-scale-decrease                 "Zoom out")
     ("j"   diff-hl-next-hunk                   "Next hunk")
     ("k"   diff-hl-previous-hunk               "Previous hunk")
-
-    ("f"   focus-mode                          "Focus")
-    ("q"   nil                                 "Cancel" :color blue))
+    ("C-g" nil                                 "Cancel" :color blue))
   (defhydra hydra-project (:columns 4)
     "Projectile"
     ("f"   projectile-find-file                "Find file")
@@ -400,7 +411,7 @@
     ("o"   projectile-multi-occur              "Multi occur")
     ("s"   projectile-switch-project           "Switch project")
     ("k"   projectile-kill-buffers             "Kill buffers")
-    ("q"   nil                                 "Cancel" :color blue))
+    ("C-g" nil                                 "Cancel" :color blue))
   (defhydra hydra-lsp (:columns 4)
     "LSP"
     ("d"   lsp-find-declaration                "Find declaration")
@@ -409,17 +420,14 @@
     ("i"   lsp-ui-peek-find-implementation     "Find implementation")
 
     ("t"   lsp-find-type-definition            "Find type definition")
-    ("o"   lsp-describe-thing-at-point         "Describe")
     ("r"   lsp-rename                          "Rename")
     ("f"   lsp-format-buffer                   "Format buffer")
-
     ("m"   lsp-ui-imenu                        "Menu")
-    ("x"   lsp-execute-code-action             "Execute code action")
+
     ("M-s" lsp-describe-session                "Describe session")
     ("M-r" lsp-workspace-restart               "Restart workspace")
-
     ("S"   lsp-workspace-shutdown              "Shutdown workspace")
-    ("q"   nil                                 "Cancel" :color blue)))
+    ("C-g" nil                                 "Cancel" :color blue)))
 
 ;;; init.el ends here
 
