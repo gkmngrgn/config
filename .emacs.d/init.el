@@ -170,7 +170,6 @@
   :ensure t)
 
 (use-package ivy
-  :bind (("C-c C-r" . ivy-resume))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
@@ -208,6 +207,7 @@
   (setq lsp-ui-doc-enable nil))
 
 (use-package magit
+  :bind (("C-x g" . magit-status))
   :defer t
   :ensure t)
 
