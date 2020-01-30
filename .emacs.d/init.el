@@ -389,7 +389,7 @@
     ("f"   flycheck-error-list-set-filter      "Filter")
     ("j"   flycheck-next-error                 "Next")
     ("k"   flycheck-previous-error             "Previous")
-    ("C-g" nil                                 "Cancel" :color blue))
+    ("RET" nil                                 "Close" :color blue))
   (defhydra hydra-focus ()
     "Focus"
     ("f"   focus-mode                          "Focus")
@@ -397,7 +397,7 @@
     ("l"   text-scale-decrease                 "Zoom out")
     ("j"   diff-hl-next-hunk                   "Next hunk")
     ("k"   diff-hl-previous-hunk               "Previous hunk")
-    ("C-g" nil                                 "Cancel" :color blue))
+    ("RET" nil                                 "Close" :color blue))
   (defhydra hydra-project (:columns 4)
     "Projectile"
     ("f"   projectile-find-file                "Find file")
@@ -413,7 +413,7 @@
     ("o"   projectile-multi-occur              "Multi occur")
     ("s"   projectile-switch-project           "Switch project")
     ("k"   projectile-kill-buffers             "Kill buffers")
-    ("C-g" nil                                 "Cancel" :color blue))
+    ("RET" nil                                 "Close" :color blue))
   (defhydra hydra-lsp (:columns 4)
     "LSP"
     ("d"   lsp-find-declaration                "Find declaration")
@@ -429,7 +429,7 @@
     ("M-s" lsp-describe-session                "Describe session")
     ("M-r" lsp-workspace-restart               "Restart workspace")
     ("S"   lsp-workspace-shutdown              "Shutdown workspace")
-    ("C-g" nil                                 "Cancel" :color blue)))
+    ("RET" nil                                 "Close" :color blue)))
 
 ;;; init.el ends here
 
