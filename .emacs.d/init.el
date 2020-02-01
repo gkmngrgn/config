@@ -71,12 +71,7 @@
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (set-face-attribute 'default nil
-                          :font "Fira Code"
-                          :height 120
-                          :weight 'normal
-                          :width 'normal)
-      (set-face-attribute 'fringe nil :background nil)))
+      (set-frame-font "Fira Code")))
 
 ;; Package configurations
 (use-package avy
