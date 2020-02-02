@@ -226,6 +226,15 @@
   (smartparens-global-mode t)
   :ensure t)
 
+(use-package slime-company
+  :ensure t)
+
+(use-package slime
+  :config
+  (slime-setup '(slime-fancy slime-company))
+  :diminish (slime-mode . "slm")
+  :ensure t)
+
 (use-package solidity-mode
   :defer t
   :ensure t)
@@ -289,7 +298,7 @@
 (use-package markdown-mode
   :defer t
   :ensure t
-  :mode (("\\.md?\\'" . markdown-mode))
+  :mode (("\\.md$" . markdown-mode))
   :config
   (set-face-attribute 'markdown-code-face nil
                       :inherit nil
