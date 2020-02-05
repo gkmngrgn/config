@@ -278,6 +278,10 @@
   (add-to-list 'telephone-line-faces '(red  . (color-red  . mode-line-inactive)))
   (telephone-line-mode t))
 
+(use-package undo-fu
+  :defer t
+  :ensure t)
+
 ;; File modes
 (use-package dart-mode
   :defer t
@@ -362,78 +366,63 @@
          ("C-c f" . hydra-focus/body)
          ("C-c l" . hydra-lsp/body)
          ("C-c p" . hydra-project/body))
-  :commands (hydra-default-pre
-             hydra-keyboard-quit
-             hydra--call-interactively-remap-maybe
-             hydra-show-hint
-             hydra-set-transient-map
-             diff-hl-next-hunk
-             diff-hl-previous-hunk
-             flycheck-list-errors
-             flycheck-error-list-set-filter
-             flycheck-next-error
-             flycheck-previous-error
-             lsp-find-declaration
-             lsp-ui-peek-find-definitions
-             lsp-ui-peek-find-references
-             lsp-ui-peek-find-implementation
-             lsp-find-type-definition
-             lsp-rename
-             lsp-format-buffer
-             lsp-ui-imenu
-             lsp-describe-session
-             lsp-workspace-restart
-             lsp-workspace-shutdown)
-  :ensure t
-  :init
-  (defhydra hydra-errors (:pre (flycheck-list-errors)
-                               :post (quit-windows-on "*Flycheck errors*")
-                               :hint nil)
-    "Errors"
-    ("f"   flycheck-error-list-set-filter      "Filter")
-    ("j"   flycheck-next-error                 "Next")
-    ("k"   flycheck-previous-error             "Previous")
-    ("RET" nil                                 "Close" :color blue))
-  (defhydra hydra-focus ()
-    "Focus"
-    ("f"   focus-mode                          "Focus")
-    ("g"   text-scale-increase                 "Zoom in")
-    ("l"   text-scale-decrease                 "Zoom out")
-    ("j"   diff-hl-next-hunk                   "Next hunk")
-    ("k"   diff-hl-previous-hunk               "Previous hunk")
-    ("RET" nil                                 "Close" :color blue))
-  (defhydra hydra-project (:columns 4)
-    "Projectile"
-    ("f"   projectile-find-file                "Find file")
-    ("r"   projectile-recentf                  "Recent files")
-    ("z"   projectile-cache-current-file       "Cache current file")
-    ("x"   projectile-remove-known-project     "Remove known project")
+  :config
+  (with-no-warnings ;; to ignore the warning message "the following functions might not be defined..."
+    (defhydra hydra-errors (:pre (flycheck-list-errors)
+                                 :post (quit-windows-on "*Flycheck errors*")
+                                 :hint nil)
+      "Errors"
+      ("f"   flycheck-error-list-set-filter      "Filter")
+      ("j"   flycheck-next-error                 "Next")
+      ("k"   flycheck-previous-error             "Previous")
+      ("RET" nil                                 "Close" :color blue))
 
-    ("d"   projectile-find-dir                 "Find directory")
-    ("b"   projectile-switch-to-buffer         "Switch to buffer")
-    ("c"   projectile-invalidate-cache         "Clear cache")
-    ("X"   projectile-cleanup-known-projects   "Cleanup known projects")
+    (defhydra hydra-focus (:columns 4)
+      "Focus"
+      ("g"   text-scale-increase                 "Zoom in")
+      ("l"   text-scale-decrease                 "Zoom out")
+      ("j"   diff-hl-next-hunk                   "Next hunk")
+      ("k"   diff-hl-previous-hunk               "Previous hunk")
 
-    ("o"   projectile-multi-occur              "Multi occur")
-    ("s"   projectile-switch-project           "Switch project")
-    ("k"   projectile-kill-buffers             "Kill buffers")
-    ("RET" nil                                 "Close" :color blue))
-  (defhydra hydra-lsp (:columns 4)
-    "LSP"
-    ("d"   lsp-find-declaration                "Find declaration")
-    ("D"   lsp-ui-peek-find-definitions        "Find definitions")
-    ("R"   lsp-ui-peek-find-references         "Find references")
-    ("i"   lsp-ui-peek-find-implementation     "Find implementation")
+      ("f"   focus-mode                          "Focus")
+      ("u"   undo-fu-only-undo                   "Undo")
+      ("r"   undo-fu-only-redo                   "Redo")
+      ("RET" nil                                 "Close" :color blue))
 
-    ("t"   lsp-find-type-definition            "Find type definition")
-    ("r"   lsp-rename                          "Rename")
-    ("f"   lsp-format-buffer                   "Format buffer")
-    ("m"   lsp-ui-imenu                        "Menu")
+    (defhydra hydra-project (:columns 4)
+      "Projectile"
+      ("f"   projectile-find-file                "Find file")
+      ("r"   projectile-recentf                  "Recent files")
+      ("z"   projectile-cache-current-file       "Cache current file")
+      ("x"   projectile-remove-known-project     "Remove known project")
 
-    ("M-s" lsp-describe-session                "Describe session")
-    ("M-r" lsp-workspace-restart               "Restart workspace")
-    ("S"   lsp-workspace-shutdown              "Shutdown workspace")
-    ("RET" nil                                 "Close" :color blue)))
+      ("d"   projectile-find-dir                 "Find directory")
+      ("b"   projectile-switch-to-buffer         "Switch to buffer")
+      ("c"   projectile-invalidate-cache         "Clear cache")
+      ("X"   projectile-cleanup-known-projects   "Cleanup known projects")
+
+      ("o"   projectile-multi-occur              "Multi occur")
+      ("s"   projectile-switch-project           "Switch project")
+      ("k"   projectile-kill-buffers             "Kill buffers")
+      ("RET" nil                                 "Close" :color blue))
+
+    (defhydra hydra-lsp (:columns 4)
+      "LSP"
+      ("d"   lsp-find-declaration                "Find declaration")
+      ("D"   lsp-ui-peek-find-definitions        "Find definitions")
+      ("R"   lsp-ui-peek-find-references         "Find references")
+      ("i"   lsp-ui-peek-find-implementation     "Find implementation")
+
+      ("t"   lsp-find-type-definition            "Find type definition")
+      ("r"   lsp-rename                          "Rename")
+      ("f"   lsp-format-buffer                   "Format buffer")
+      ("m"   lsp-ui-imenu                        "Menu")
+
+      ("M-s" lsp-describe-session                "Describe session")
+      ("M-r" lsp-workspace-restart               "Restart workspace")
+      ("S"   lsp-workspace-shutdown              "Shutdown workspace")
+      ("RET" nil                                 "Close" :color blue)))
+  :ensure t)
 
 ;;; init.el ends here
 
