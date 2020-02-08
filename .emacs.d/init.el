@@ -19,23 +19,25 @@
 
 (setq initial-scratch-message ""
       inhibit-splash-screen t
-      visible-bell 1
-      require-final-newline t)
+      visible-bell t
+      require-final-newline t
+      line-number-mode t
+      column-number-mode t)
 
 (setq scroll-margin 0
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook   'visual-line-mode)
+(add-hook 'prog-mode-hook   'display-line-numbers-mode)
 
 (menu-bar-mode -1)
 (global-hl-line-mode)
 (global-auto-revert-mode)
-(prefer-coding-system 'utf-8)
+(prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
-(set-language-environment 'utf-8)
+(set-language-environment   'utf-8)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -247,36 +249,6 @@
 (use-package swiper
   :ensure t
   :bind (("C-s" . swiper)))
-
-(use-package telephone-line
-  :ensure t
-  :init
-  (defface color-gray
-    '((t (:foreground "black" :background "gray")))
-    "telephone gray"
-    :group 'telephone-line)
-
-  (defface color-red
-    '((t (:foreground "white" :background "red")))
-    "telephone red"
-    :group 'telephone-line)
-
-  (setq telephone-line-lhs
-        '((red  . (telephone-line-vc-segment
-                   telephone-line-erc-modified-channels-segment
-                   telephone-line-process-segment))
-          (gray . (telephone-line-minor-mode-segment))
-          (nil  . (telephone-line-buffer-segment))))
-
-  (setq telephone-line-rhs
-        '((nil  . (telephone-line-misc-info-segment))
-          (gray . (telephone-line-major-mode-segment))
-          (red  . (telephone-line-airline-position-segment))))
-
-  :config
-  (add-to-list 'telephone-line-faces '(gray . (color-gray . mode-line-inactive)))
-  (add-to-list 'telephone-line-faces '(red  . (color-red  . mode-line-inactive)))
-  (telephone-line-mode t))
 
 (use-package undo-fu
   :defer t
