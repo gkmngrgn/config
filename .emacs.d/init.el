@@ -353,12 +353,16 @@
       "Focus"
       ("g"   text-scale-increase                 "Zoom in")
       ("l"   text-scale-decrease                 "Zoom out")
-      ("j"   diff-hl-next-hunk                   "Next hunk")
-      ("k"   diff-hl-previous-hunk               "Previous hunk")
-
       ("f"   focus-mode                          "Focus")
+      ("r"   focus-read-only-mode                "Review")
+
+      ("["   diff-hl-previous-hunk               "Previous diff")
+      ("="   diff-hl-diff-goto-hunk              "Show diff")
+      ("]"   diff-hl-next-hunk                   "Next diff")
+      ("-"   diff-hl-revert-hunk                 "Revert changes")
+
       ("u"   undo-fu-only-undo                   "Undo")
-      ("r"   undo-fu-only-redo                   "Redo")
+      ("U"   undo-fu-only-redo                   "Redo")
       ("RET" nil                                 "Close" :color blue))
 
     (defhydra hydra-project (:columns 4)
@@ -390,7 +394,7 @@
       ("f"   lsp-format-buffer                   "Format buffer")
       ("m"   lsp-ui-imenu                        "Menu")
 
-      ("a"   lsp-ui-sideline-apply-code-actions  "Code actions")
+      ("a"   lsp-ui-sideline-apply-code-actions  "Select action")
       ("M-s" lsp-describe-session                "Describe session")
       ("M-r" lsp-workspace-restart               "Restart workspace")
       ("RET" nil                                 "Close" :color blue)))
