@@ -390,9 +390,9 @@
       ("f"   lsp-format-buffer                   "Format buffer")
       ("m"   lsp-ui-imenu                        "Menu")
 
+      ("a"   lsp-ui-sideline-apply-code-actions  "Code actions")
       ("M-s" lsp-describe-session                "Describe session")
       ("M-r" lsp-workspace-restart               "Restart workspace")
-      ("S"   lsp-workspace-shutdown              "Shutdown workspace")
       ("RET" nil                                 "Close" :color blue)))
   :ensure t)
 
