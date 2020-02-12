@@ -8,7 +8,8 @@
 ;;; Commentary:
 
 ;; OS:
-;; The only dependency is "silversearcher-ag".  It's also available in Windows.
+;; - silversearcher-ag: a code searching tool.
+;; - fonts-ibm-plex: my default font.
 ;;
 ;; Python:
 ;; I recommend you to use pyenv for installing packages without root access.
