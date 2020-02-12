@@ -73,7 +73,7 @@
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (set-frame-font "Fira Code")))
+      (set-frame-font "IBM Plex Mono Italic")))
 
 ;; Package configurations
 (use-package avy
@@ -176,7 +176,7 @@
 
 (use-package kaolin-themes
   :config
-  (load-theme 'kaolin-aurora t)
+  (load-theme 'kaolin-valley-dark t)
   :ensure t)
 
 (use-package lsp-mode
