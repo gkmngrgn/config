@@ -1,12 +1,32 @@
 ;;; ~/.emacs.d/init.el --- GKMNGRGN personal emacs configuration file.
 
+;; Copyright (c) 2010-2020 Gökmen Görgen
+;;
+;; Author: Gökmen Görgen <gkmngrgn@gmail.com>
+;; URL: https://github.com/gkmngrgn/config
+
 ;;; Commentary:
+
+;; OS:
+;; The only dependency is "silversearcher-ag".  It's also available in Windows.
 ;;
-;; 1. Install OS dependencies: `apt install -y silversearcher-ag`
-;; 2. Install Python dependencies: `pip install -r requirements.txt`
-;; 3. Install Rust dependencies: `rustup component add rls rust-analysis rust-src`
-;; 4. Install Golang dependencies: `go get -u golang.org/x/tools/cmd/gopls`
+;; Python:
+;; I recommend you to use pyenv for installing packages without root access.
 ;;
+;; $ pyenv install 3.8.1
+;; $ pyenv global 3.8.1
+;; $ pip install -U pip
+;; $ pip install python-language-server[all]
+;;
+;; Rust:
+;; Install rust with "rustup".  Then type this command:
+;; $ rustup component add rls rust-analysis rust-src
+;;
+;; Dart:
+;; Install Dart SDK, it has a builtin analysis tool.  Then customize SDK path in your editor.
+;;
+;; Golang:
+;; $ go get -u golang.org/x/tools/cmd/gopls
 
 ;;; Code:
 
