@@ -183,6 +183,11 @@
   :init
   (global-flycheck-mode))
 
+(use-package flycheck-rust
+  :ensure t
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 (use-package focus
   :defer t
   :ensure t)
