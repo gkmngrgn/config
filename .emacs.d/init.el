@@ -260,6 +260,7 @@
 
 (use-package slime
   :config
+  (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-fancy slime-company))
   :diminish (slime-mode . "slm")
   :ensure t)
