@@ -94,7 +94,8 @@
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (set-frame-font "IBM Plex Mono Italic")))
+      (set-frame-font "IBM Plex Mono Italic")
+      (set-face-attribute 'default nil :height 120)))
 
 ;; Package configurations
 (use-package avy
