@@ -137,6 +137,13 @@
         company-lsp-enable-snippet t
         company-lsp-cache-candidates 'auto))
 
+(use-package company-prescient
+  :after company
+  :config
+  (company-prescient-mode t)
+  :defer t
+  :ensure t)
+
 (use-package company-solidity
   :after solidity-mode
   :defer t
@@ -201,6 +208,13 @@
   :diminish
   :ensure t)
 
+(use-package ivy-prescient
+  :after counsel
+  :config
+  (ivy-prescient-mode t)
+  :defer t
+  :ensure t)
+
 (use-package kaolin-themes
   :config
   (load-theme 'kaolin-valley-dark t)
@@ -232,6 +246,12 @@
 
 (use-package magit
   :bind (("C-x g" . magit-status))
+  :defer t
+  :ensure t)
+
+(use-package prescient
+  :config
+  (prescient-persist-mode t)
   :defer t
   :ensure t)
 
