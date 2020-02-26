@@ -215,6 +215,12 @@
   :defer t
   :ensure t)
 
+(use-package lsp-ivy
+  :after counsel
+  :commands (lsp-ivy-workspace-symbol)
+  :defer t
+  :ensure t)
+
 (use-package lsp-mode
   :commands (lsp)
   :diminish (lsp-mode . "lsp")
