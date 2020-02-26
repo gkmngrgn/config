@@ -128,7 +128,7 @@
 (use-package company-lsp
   :after company
   :bind ("C-<tab>" . company-complete-common)
-  :commands company-lsp
+  :commands (company-lsp)
   :config
   (push 'company-lsp company-backends)
   :ensure t
@@ -215,13 +215,8 @@
   :defer t
   :ensure t)
 
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-valley-dark t)
-  :ensure t)
-
 (use-package lsp-mode
-  :commands lsp
+  :commands (lsp)
   :diminish (lsp-mode . "lsp")
   :ensure t
   :hook ((dart-mode   . lsp-deferred)
@@ -233,14 +228,14 @@
                 lsp-enable-snippet nil)) ; company is better
 
 (use-package lsp-treemacs
+  :commands (lsp-treemacs-errors-list)
   :defer t
-  :ensure t
-  :commands lsp-treemacs-errors-list)
+  :ensure t)
 
 (use-package lsp-ui
   :defer t
   :ensure t
-  :commands lsp-ui-mode
+  :commands (lsp-ui-mode)
   :init
   (setq lsp-ui-doc-enable nil))
 
@@ -249,7 +244,14 @@
   :defer t
   :ensure t)
 
+(use-package modus-vivendi-theme
+  :ensure t)
+
+(use-package modus-operandi-theme
+  :ensure t)
+
 (use-package prescient
+  :commands (prescient-persist-mode)
   :config
   (prescient-persist-mode t)
   :defer t
@@ -296,8 +298,18 @@
   :ensure t)
 
 (use-package swiper
+  :bind (("C-s" . swiper))
+  :ensure t)
+
+(use-package theme-changer
+  :commands (change-theme)
+  :config
+  (change-theme 'modus-operandi 'modus-vivendi)
   :ensure t
-  :bind (("C-s" . swiper)))
+  :init
+  (setq calendar-location-name "Berlin, Germany")
+  (setq calendar-latitude 52.52)
+  (setq calendar-longitude 13.39))
 
 (use-package undo-fu
   :defer t
