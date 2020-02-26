@@ -250,10 +250,10 @@
   :defer t
   :ensure t)
 
-(use-package modus-vivendi-theme
+(use-package modus-operandi-theme
   :ensure t)
 
-(use-package modus-operandi-theme
+(use-package modus-vivendi-theme
   :ensure t)
 
 (use-package prescient
@@ -306,16 +306,6 @@
 (use-package swiper
   :bind (("C-s" . swiper))
   :ensure t)
-
-(use-package theme-changer
-  :commands (change-theme)
-  :config
-  (change-theme 'modus-operandi 'modus-vivendi)
-  :ensure t
-  :init
-  (setq calendar-location-name "Berlin, Germany")
-  (setq calendar-latitude 52.52)
-  (setq calendar-longitude 13.39))
 
 (use-package undo-fu
   :defer t
