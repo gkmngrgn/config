@@ -153,8 +153,8 @@
   :bind (("M-x"     . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-x C-d" . counsel-git)
-         ("C-c s"   . counsel-git-grep)
-         ("C-c a"   . counsel-ag))
+         ("C-c C-s" . counsel-git-grep)
+         ("C-c C-a" . counsel-ag))
   :ensure t)
 
 (use-package diff-hl
@@ -311,6 +311,16 @@
   :defer t
   :ensure t)
 
+(use-package yasnippet
+  :config
+  (yas-global-mode 1)
+  :diminish (yasnippet-mode . "yas")
+  :ensure t)
+
+(use-package yasnippet-snippets
+  :after yasnippet
+  :ensure t)
+
 ;; File modes
 (use-package dart-mode
   :defer t
@@ -394,7 +404,8 @@
   :bind (("C-c e" . hydra-errors/body)
          ("C-c f" . hydra-focus/body)
          ("C-c l" . hydra-lsp/body)
-         ("C-c p" . hydra-project/body))
+         ("C-c p" . hydra-project/body)
+         ("C-c s" . hydra-yasnippet/body))
   :config
   (with-no-warnings ;; to ignore the warning message "the following functions might not be defined..."
     (defhydra hydra-errors (:pre (flycheck-list-errors)
@@ -437,6 +448,22 @@
       ("o"   projectile-multi-occur              "Multi occur")
       ("s"   projectile-switch-project           "Switch project")
       ("k"   projectile-kill-buffers             "Kill buffers")
+      ("RET" nil                                 "Close" :color blue))
+
+    (defhydra hydra-yasnippet (:columns 4)
+      "Yasnippet"
+      ("d" yas-load-directory                    "Load directory")
+      ("i" yas-insert-snippet                    "Insert snippet")
+      ("f" yas-visit-snippet-file                "Visit snippet file")
+      ("n" yas-new-snippet                       "New snippet")
+
+      ("g" yas/global-mode                       "Global mode")
+      ("m" yas/minor-mode                        "Minor mode")
+      ("e" yas-activate-extra-mode               "Extra mode")
+      ("a" yas-reload-all                        "Reload all")
+
+      ("t" yas-tryout-snippet                    "Tryout snippet")
+      ("l" yas-describe-tables                   "Describe tables")
       ("RET" nil                                 "Close" :color blue))
 
     (defhydra hydra-lsp (:columns 4)
