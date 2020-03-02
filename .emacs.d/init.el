@@ -392,7 +392,8 @@
         web-mode-code-indent-offset 2
         web-mode-engines-alist '(("django" . "\\.html$"))
         web-mode-enable-auto-pairing nil
-        web-mode-block-padding 0))
+        web-mode-block-padding 0
+        web-mode-enable-auto-indentation nil))
 
 (use-package yaml-mode
   :defer t
