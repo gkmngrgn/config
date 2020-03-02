@@ -153,8 +153,7 @@
   :bind (("M-x"     . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-x C-d" . counsel-git)
-         ("C-c C-s" . counsel-git-grep)
-         ("C-c C-a" . counsel-ag))
+         ("C-x C-/" . counsel-git-grep))
   :ensure t)
 
 (use-package diff-hl
