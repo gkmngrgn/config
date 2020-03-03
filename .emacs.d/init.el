@@ -35,7 +35,6 @@
 (setq-default cursor-type 'box
               fill-column 80
               indent-tabs-mode nil
-              org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE"))
               truncate-lines t)
 
 (setq initial-scratch-message ""
@@ -254,6 +253,11 @@
 
 (use-package modus-vivendi-theme
   :ensure t)
+
+(use-package org
+  :init
+  (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
+  (setq org-log-done t))
 
 (use-package prescient
   :commands (prescient-persist-mode)
