@@ -198,6 +198,13 @@
   :defer t
   :ensure t)
 
+(use-package indent-guide
+  :defer t
+  :ensure t
+  :init
+  (setq indent-guide-delay 0.2)
+  (indent-guide-global-mode))
+
 (use-package ivy
   :config
   (ivy-mode 1)
