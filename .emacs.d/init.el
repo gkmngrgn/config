@@ -150,9 +150,9 @@
 
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
+         ("C-r"     . counsel-git-grep)
          ("C-x C-f" . counsel-find-file)
-         ("C-x C-d" . counsel-git)
-         ("C-x C-/" . counsel-git-grep))
+         ("C-x C-d" . counsel-git))
   :ensure t)
 
 (use-package diff-hl
@@ -182,6 +182,11 @@
   :init
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
+
+(use-package expand-region
+  :bind (("C-M-w" . er/expand-region))
+  :defer t
+  :ensure t)
 
 (use-package flycheck
   :diminish (flycheck-mode . "fly")
