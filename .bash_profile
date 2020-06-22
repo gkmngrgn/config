@@ -8,10 +8,10 @@ alias dosh="bash do.sh"
 alias python="python3"
 alias ls="ls --color=auto"
 
-export PATH="$HOME/.local/bin:$PATH"                   # local
-export PATH="$HOME/.cargo/bin:$PATH"                   # Rust
-export PATH="$HOME/.pub-cache/bin:$PATH"               # Dart
-export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"   # Golang
+export PATH="$HOME/.local/bin:$PATH"                         # local
+export PATH="$HOME/.cargo/bin:$PATH"                         # Rust
+export PATH="$HOME/.pub-cache/bin:/usr/lib/dart/bin:$PATH"   # Dart
+export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # Golang
 
 # git supported prompt
 eval "$(starship init bash)"
