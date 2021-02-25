@@ -11,12 +11,12 @@ window:
    y: 0
 
   padding:
-    x: 0
-    y: 0
+    x: 20
+    y: 20
 
   dynamic_padding: false
   decorations: full
-  startup_mode: Fullscreen
+  startup_mode: Maximized
 
 font:
   normal:
