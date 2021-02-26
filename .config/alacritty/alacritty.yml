@@ -12,7 +12,7 @@ window:
 
   padding:
     x: 20
-    y: 20
+    y: 10
 
   dynamic_padding: false
   decorations: full
@@ -20,13 +20,13 @@ window:
 
 font:
   normal:
-    family: Iosevka
+    family: IosevkaTerm
     style: Regular
   bold:
-    family: Iosevka
+    family: IosevkaTerm
     style: Bold
   italic:
-    family: Iosevka
+    family: IosevkaTerm
     style: Italic
 
   size: 16.0
