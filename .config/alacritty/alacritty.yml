@@ -11,8 +11,8 @@ window:
    y: 0
 
   padding:
-    x: 20
-    y: 10
+    x: 0
+    y: 0
 
   dynamic_padding: false
   decorations: full
@@ -29,7 +29,7 @@ font:
     family: IosevkaTerm
     style: Italic
 
-  size: 16.0
+  size: 15.0
 
   offset:
     x: 0
@@ -111,6 +111,7 @@ key_bindings:
   - { key: N,        mods: Alt,     chars: "\x1bn"                           }
   - { key: O,        mods: Alt,     chars: "\x1bo"                           }
   - { key: P,        mods: Alt,     chars: "\x1bp"                           }
+  - { key: W,        mods: Alt,     chars: "\x1bw"                           }
   - { key: X,        mods: Alt,     chars: "\x1bx"                           }
   - { key: Space,    mods: Control, chars: "\x00"                            }
 
