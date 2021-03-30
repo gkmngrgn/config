@@ -1,0 +1,31 @@
+format = """
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$golang\
+$kotlin\
+$nodejs\
+$python\
+$rust\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$character"""
+command_timeout = 100
+add_newline = false
