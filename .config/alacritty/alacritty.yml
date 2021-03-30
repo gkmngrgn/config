@@ -16,28 +16,20 @@ window:
 
   dynamic_padding: false
   decorations: full
-  startup_mode: Fullscreen
-
-scrolling:
-  history: 10000
-  multiplier: 3
-  faux_multiplier: 3
-  auto_scroll: true
-
-tabspaces: 8
+  startup_mode: Maximized
 
 font:
   normal:
-    family: Fira Code
+    family: IosevkaTerm
     style: Regular
   bold:
-    family: Fira Code
+    family: IosevkaTerm
     style: Bold
   italic:
-    family: Fira Code
+    family: IosevkaTerm
     style: Italic
 
-  size: 12.0
+  size: 15.0
 
   offset:
     x: 0
@@ -78,11 +70,6 @@ colors:
 
   indexed_colors: []
 
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0
-  color: '0xffffff'
-
 background_opacity: 1.0
 
 mouse_bindings:
@@ -99,18 +86,11 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true
 
-dynamic_title: true
-
 cursor:
   style: Block
   unfocused_hollow: true
 
 live_config_reload: true
-
-shell:
- program: wsl.exe
- args:
-   - -d Debian
 
 working_directory: None
 enable_experimental_conpty_backend: true
@@ -131,6 +111,7 @@ key_bindings:
   - { key: N,        mods: Alt,     chars: "\x1bn"                           }
   - { key: O,        mods: Alt,     chars: "\x1bo"                           }
   - { key: P,        mods: Alt,     chars: "\x1bp"                           }
+  - { key: W,        mods: Alt,     chars: "\x1bw"                           }
   - { key: X,        mods: Alt,     chars: "\x1bx"                           }
   - { key: Space,    mods: Control, chars: "\x00"                            }
 
