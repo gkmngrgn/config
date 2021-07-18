@@ -15,6 +15,10 @@ export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
 # git supported prompt
 eval "$(starship init bash)"
 
+# Dotnet settings
+export PATH="$HOME/.dotnet/tools:$PATH"
+export DOTNET_ROOT="/snap/dotnet-sdk/current"
+
 # Python settings
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
