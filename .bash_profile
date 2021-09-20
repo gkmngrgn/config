@@ -37,3 +37,6 @@ export NVM_DIR="$HOME/.nvm"
 # Deno settings
 export DENO_INSTALL="/home/gokmen/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
