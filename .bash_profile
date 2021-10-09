@@ -12,6 +12,9 @@ export PATH="$HOME/.cargo/bin:$PATH"                         # rust
 export PATH="$HOME/.pub-cache/bin:/usr/lib/dart/bin:$PATH"   # dart
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
 
+# editor settings
+export EDITOR="emacsclient"
+
 # git supported prompt
 eval "$(starship init bash)"
 
