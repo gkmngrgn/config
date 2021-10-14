@@ -8,6 +8,7 @@ alias python="python3"
 alias ls="ls --color=auto"
 alias clip="xclip -selection clipboard"
 alias clipw="clip.exe"
+alias hm="himalaya"
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"               # local
 export PATH="$HOME/.cargo/bin:$PATH"                         # rust
