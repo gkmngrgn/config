@@ -35,5 +35,5 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
-source ~/.profile
+source ~/.bash_profile
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
