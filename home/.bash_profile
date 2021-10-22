@@ -1,8 +1,5 @@
 # ~/.bash_profile --- GKMNGRGN personal bash profile.
 
-# Requirements:
-# 1. install starship from starship.rs
-
 alias dosh="bash do.sh"
 alias python="python3"
 alias ls="ls --color=auto"
@@ -18,9 +15,6 @@ export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
 
 # editor settings
 export EDITOR="emacsclient"
-
-# git supported prompt
-eval "$(starship init bash)"
 
 # Dotnet settings
 export PATH="$HOME/.dotnet/tools:$PATH"
