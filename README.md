@@ -20,4 +20,5 @@ Emacs configuration has been moved to a separate
 - [fd](https://github.com/sharkdp/fd): instead of find
 - [hugo](https://github.com/gohugoio/hugo): static site generator
 - [himalaya](https://github.com/soywod/himalaya) email client
+- [jq](https://github.com/stedolan/jq) json processor
 - [rg](https://github.com/BurntSushi/ripgrep): instead of grep
