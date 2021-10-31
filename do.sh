@@ -18,6 +18,14 @@ install() {
          -iname '.*' \
          -type f \
          -exec cp {} $HOME \;
+
+    if [ ! -e "$HOME/.oh-my-zsh" ]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+
+    if [ ! -e "$HOME/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
 }
 
 if [ -z ${1} ]
