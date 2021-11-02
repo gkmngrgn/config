@@ -9,19 +9,19 @@ alias hm="himalaya"
 alias em="emacsclient -nw"
 alias ab="abook -f ~/.config/abook/addressbook"
 
-export PATH="$HOME/.local/bin:$HOME/bin:$PATH"               # local
-export PATH="$HOME/.cargo/bin:$PATH"                         # rust
-export PATH="$HOME/.pub-cache/bin:/usr/lib/dart/bin:$PATH"   # dart
-export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                # local
+export PATH="$HOME/.cargo/bin:$PATH"                          # rust
+export PATH="$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH"    # dart & flutter
+export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"          # golang
 
-# editor settings
+# EDITOR
 export EDITOR="emacsclient"
 
-# Dotnet settings
+# DOTNET
 export PATH="$HOME/.dotnet/tools:$PATH"
 export DOTNET_ROOT="/snap/dotnet-sdk/current"
 
-# Python settings
+# PYTHON
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -30,21 +30,21 @@ fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# NVM & Node.js settings
+# NVM & NODEJS
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 . "$HOME/.cargo/env"
 
-# Deno settings
+# DENO
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-# Added by serverless binary installer
+# SERVERLESS
 export PATH="$HOME/.serverless/bin:$PATH"
 
-# Nix installer
+# NIX
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
