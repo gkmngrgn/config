@@ -1,12 +1,12 @@
 # ~/.bash_profile --- GKMNGRGN personal bash profile.
-
-alias dosh="bash do.sh"
-alias ls="ls --color=auto"
+alias ab="abook -f ~/.config/abook/addressbook"
+alias bt="bartib -f ~/.config/bartib/records.txt"
 alias clip="xclip -selection clipboard"
 alias clipw="clip.exe"
-alias hm="himalaya"
+alias dosh="bash do.sh"
 alias em="emacsclient -nw"
-alias ab="abook -f ~/.config/abook/addressbook"
+alias hm="himalaya"
+alias ls="ls --color=auto"
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                # local
 export PATH="$HOME/.cargo/bin:$PATH"                          # rust

@@ -14,6 +14,7 @@ Emacs configuration has been moved to a separate
 ## CLI APPS THAT I USE
 
 - [abook](https://github.com/hhirsch/abook): contacts
+- [bartib](https://github.com/nikolassv/bartib): time tracker
 - [bat](https://github.com/sharkdp/bat): instead of cat
 - [delta](https://github.com/dandavison/delta): diff viewer for git
 - [exa](https://github.com/ogham/exa): instead of ls
