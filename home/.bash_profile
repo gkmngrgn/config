@@ -47,3 +47,7 @@ export PATH="$HOME/.serverless/bin:$PATH"
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
+
+# TIME TRACKER
+echo -e "TIME TRACKER"
+bt current
