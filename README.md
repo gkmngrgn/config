@@ -23,4 +23,6 @@ Emacs configuration has been moved to a separate
 - [himalaya](https://github.com/soywod/himalaya) email client
 - [jq](https://github.com/stedolan/jq) json processor
 - [nb](https://github.com/xwmx/nb) bookmarking and note taking app
+- [pyenv](https://github.com/pyenv/pyenv-installer) python version management
 - [rg](https://github.com/BurntSushi/ripgrep): instead of grep
+- [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) lsp for rust
