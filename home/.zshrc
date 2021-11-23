@@ -5,7 +5,18 @@ ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode auto
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
-plugins=(git)
+plugins=(
+    cargo
+    cp
+    emacs
+    flutter
+    git
+    git-lfs
+    man
+    pass
+    ripgrep
+    tmux
+)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile
