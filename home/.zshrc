@@ -12,6 +12,7 @@ plugins=(
     flutter
     git
     git-lfs
+    kubectl
     man
     pass
     ripgrep
