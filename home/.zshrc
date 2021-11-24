@@ -19,7 +19,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bash_profile
+source ~/.goedev-env.sh
 
 bindkey -e   # emacs style key binding
 
@@ -36,3 +36,7 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history            # share command history data
+
+# TIME TRACKER
+echo -e "TIME TRACKER"
+bt current
