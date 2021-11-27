@@ -8,10 +8,11 @@ alias em="emacsclient -nw"
 alias hm="himalaya"
 alias ls="ls --color=auto"
 
-export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                # local
-export PATH="$HOME/.cargo/bin:$PATH"                          # rust
-export PATH="$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH"    # dart & flutter
-export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"          # golang
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                             # local
+export PATH="$HOME/.cargo/bin:$PATH"                                       # rust
+export PATH="$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH"                 # dart & flutter
+export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"                       # golang
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"   # solana
 
 # EDITOR
 export EDITOR="emacsclient"
