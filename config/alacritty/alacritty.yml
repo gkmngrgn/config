@@ -1,6 +1,3 @@
-import:
-  - ~/.config/alacritty/tempus_night.yml
-
 env:
   TERM: xterm-256color
 
@@ -68,13 +65,16 @@ cursor:
   thickness: 0.15
 
 colors:
+  primary:
+    background: '#111111'
+  normal:
+    black: '#111111'
   cursor:
     text: '#1a1a1a'
     cursor: '#ffa500'
 
 live_config_reload: true
 
-working_directory: none
 enable_experimental_conpty_backend: true
 
 debug:
