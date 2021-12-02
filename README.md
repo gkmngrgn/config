@@ -22,6 +22,7 @@ Emacs configuration has been moved to a separate
 - [hugo](https://github.com/gohugoio/hugo): static site generator
 - [himalaya](https://github.com/soywod/himalaya) email client
 - [jq](https://github.com/stedolan/jq) json processor
+- [mosh](https://github.com/mobile-shell/mosh) battery included ssh
 - [nb](https://github.com/xwmx/nb) bookmarking and note taking app
 - [pyenv](https://github.com/pyenv/pyenv-installer) python version management
 - [rg](https://github.com/BurntSushi/ripgrep): instead of grep
