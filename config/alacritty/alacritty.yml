@@ -19,7 +19,7 @@ window:
 
   dynamic_padding: false
   decorations: full
-  startup_mode: Maximized
+  startup_mode: Fullscreen
 
 font:
   normal:
