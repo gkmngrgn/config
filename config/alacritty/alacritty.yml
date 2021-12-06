@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/xterm.yml
+  - ~/.config/alacritty/campbell.yaml
 
 env:
   TERM: xterm-256color
@@ -23,15 +23,15 @@ window:
 
 font:
   normal:
-    family: FiraCode
+    family: Fira Code
     style: Regular
 
   bold:
-    family: FiraCode
+    family: Fira Code
     style: Bold
 
   italic:
-    family: FiraCode
+    family: Fira Code
 
   size: 14
 
