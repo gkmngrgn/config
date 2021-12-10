@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/campbell.yaml
+  - ~/.config/alacritty/ayu_dark.yml
 
 env:
   TERM: xterm-256color
@@ -17,26 +17,31 @@ window:
     x: 0
     y: 0
 
-  dynamic_padding: false
+  dynamic_padding: true
   decorations: full
-  startup_mode: Fullscreen
+  startup_mode: Maximized
 
 font:
   normal:
-    family: Fira Code
+    family: Iosevka Term
     style: Regular
 
   bold:
-    family: Fira Code
+    family: Iosevka Term
     style: Bold
 
   italic:
-    family: Fira Code
+    family: Iosevka Term
+    style: Italic
 
-  size: 14
+  bold_italic:
+    family: Iosevka Term
+    style: Bold Italic
+
+  size: 15
 
   offset:
-    x: 0
+    x: 1
     y: 0
 
   glyph_offset:
