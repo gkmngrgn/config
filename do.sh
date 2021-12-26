@@ -48,6 +48,16 @@ install_cli_apps() {
     # install rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+    # install go
+    if [ ! -d "$HOME/go" ]; then
+        curl -L -o go.tar.gz https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
+        tar -xf go.tar.gz
+        mv go $HOME
+    fi
+
+    # install pyenv
+    curl https://pyenv.run | bash
+
     cd ..
     rm -rf tmp
 }
