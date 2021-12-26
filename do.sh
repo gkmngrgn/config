@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
 CONFIG_DIR="$HOME/.config"
+BIN_DIR="$HOME/.local/bin"
+
 
 print_help() {
     echo "Subcommands:"
-    echo "  > install   copy your configuration files to your home folder."
+    echo "  > install            copy your configuration files to your home folder."
+    echo "  > install_cli_apps   install cli apps."
 }
 
 install() {
@@ -26,6 +29,27 @@ install() {
     if [ ! -e "$HOME/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     fi
+}
+
+install_cli_apps() {
+    if [ ! -d "$BIN_DIR" ]; then
+        mkdir -p $BIN_DIR
+    fi
+
+    mkdir -p tmp
+    cd tmp
+
+    # install bartib
+    curl -L -o bartib.tar.gz https://github.com/nikolassv/bartib/releases/download/v1.0.1/bartib.x86_64-unknown-linux-gnu.tar.gz --output bartib.tar.gz
+    tar -xf bartib.tar.gz
+    chmod +x bartib
+    mv bartib $BIN_DIR
+
+    # install rust
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+    cd ..
+    rm -rf tmp
 }
 
 if [ -z ${1} ]
