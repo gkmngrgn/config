@@ -40,23 +40,45 @@ install_cli_apps() {
     cd tmp
 
     # install bartib
-    curl -L -o bartib.tar.gz https://github.com/nikolassv/bartib/releases/download/v1.0.1/bartib.x86_64-unknown-linux-gnu.tar.gz --output bartib.tar.gz
-    tar -xf bartib.tar.gz
-    chmod +x bartib
-    mv bartib $BIN_DIR
-
-    # install rust
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    if hash bartib 2>/dev/null; then
+        echo -e "bartib is already installed. Skipped."
+    else
+        curl -L -o bartib.tar.gz https://github.com/nikolassv/bartib/releases/download/v1.0.1/bartib.x86_64-unknown-linux-gnu.tar.gz --output bartib.tar.gz
+        tar -xf bartib.tar.gz
+        chmod +x bartib
+        mv bartib $BIN_DIR
+    fi
 
     # install go
-    if [ ! -d "$HOME/go" ]; then
+    if hash go 2>/dev/null; then
+        echo -e "go is already installed. Skipped."
+    else
         curl -L -o go.tar.gz https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
         tar -xf go.tar.gz
         mv go $HOME
     fi
 
     # install pyenv
-    curl https://pyenv.run | bash
+    if hash pyenv 2>/dev/null; then
+        echo -e "pyenv is already installed. Skipped."
+    else
+        curl https://pyenv.run | bash
+    fi
+
+    # install ripgrep
+    if hash rg 2>/dev/null; then
+        echo -e "rg is already installed. Skipped."
+    else
+        curl -L -o ripgrep.deb https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
+        sudo dpkg -i ripgrep.deb
+    fi
+
+    # install rust
+    if hash rustc 2>/dev/null; then
+        echo -e "rust is already installed. Skipped."
+    else
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    fi
 
     cd ..
     rm -rf tmp
