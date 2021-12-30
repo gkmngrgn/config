@@ -49,6 +49,14 @@ install_cli_apps() {
         mv bartib $BIN_DIR
     fi
 
+    # install delta
+    if hash delta 2>/dev/null; then
+        echo -e "delta is already installed. Skipped."
+    else
+        curl -L -o delta.deb https://github.com/dandavison/delta/releases/download/0.11.3/git-delta_0.11.3_amd64.deb
+        sudo dpkg -i delta.deb
+    fi
+
     # install go
     if hash go 2>/dev/null; then
         echo -e "go is already installed. Skipped."
