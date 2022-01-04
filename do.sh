@@ -66,6 +66,13 @@ install_cli_apps() {
         mv go $HOME
     fi
 
+    # install jq
+    if hash jq 2>/dev/null; then
+        echo -e "jq is already installed. Skipped."
+    else
+        sudo apt install -y jq
+    fi
+
     # install pyenv
     if hash pyenv 2>/dev/null; then
         echo -e "pyenv is already installed. Skipped."
