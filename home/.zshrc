@@ -6,7 +6,6 @@ zstyle ':omz:update' mode auto
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
 plugins=(
-    cargo
     cp
     flutter
     git
@@ -15,6 +14,7 @@ plugins=(
     man
     pass
     ripgrep
+    rust
     tmux
 )
 
