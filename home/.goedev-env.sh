@@ -1,4 +1,8 @@
-# ~/.bash_profile --- GKMNGRGN personal bash profile.
+# ~/.goedev-env.sh --- GOEDEV terminal environment.
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 alias ab="abook -f ~/.config/abook/addressbook"
 alias bt="bartib -f ~/.config/bartib/records.txt"
 alias clip="xclip -selection clipboard"

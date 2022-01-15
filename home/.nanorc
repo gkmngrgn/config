@@ -1,9 +1,11 @@
 set atblanks
 set autoindent
-set morespace
 set nohelp
 set nowrap
-set smooth
 set softwrap
 set tabsize 4
 set tabstospaces
+
+## these are not working on macos
+# set morespace
+# set smooth
