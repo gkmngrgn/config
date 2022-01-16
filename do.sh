@@ -32,6 +32,20 @@ install() {
 }
 
 install_cli_apps() {
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        install_cli_apps_for_deb
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        install_cli_apps_for_mac
+    else
+        echo -e "Unknown OS."
+    fi
+}
+
+install_cli_apps_for_mac() {
+    brew install bat git-delta git-lfs htop mosh nano pass tmux toilet
+}
+
+install_cli_apps_for_deb() {
     if [ ! -d "$BIN_DIR" ]; then
         mkdir -p $BIN_DIR
     fi
