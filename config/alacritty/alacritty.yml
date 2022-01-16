@@ -84,9 +84,13 @@ debug:
   ref_test: false
 
 key_bindings:
-  # for macos
+  # use option as meta key on macos
   - { key: B,   mods: Alt,   chars: "\x1bb" }
   - { key: D,   mods: Alt,   chars: "\x1bd" }
   - { key: F,   mods: Alt,   chars: "\x1bf" }
   - { key: W,   mods: Alt,   chars: "\x1bw" }
   - { key: X,   mods: Alt,   chars: "\x1bx" }
+  - { key: Q,   mods: Alt,   chars: "\x1bq" }
+
+  - { key: LBracket,   mods: Shift|Alt,   chars: "\x1b{" }
+  - { key: RBracket,   mods: Shift|Alt,   chars: "\x1b}" }
