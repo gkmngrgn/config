@@ -42,7 +42,18 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    arch -arm64 brew install bat git-delta git-lfs htop mosh nano pass ripgrep tmux toilet
+    arch -arm64 brew install \
+         bat \
+         brave-browser \
+         git-delta \
+         git-lfs \
+         htop \
+         mosh \
+         nano \
+         pass \
+         ripgrep \
+         tmux \
+         toilet
 }
 
 install_cli_apps_for_deb() {
@@ -52,16 +63,6 @@ install_cli_apps_for_deb() {
 
     mkdir -p tmp
     cd tmp
-
-    # install bartib
-    if hash bartib 2>/dev/null; then
-        echo -e "bartib is already installed. Skipped."
-    else
-        curl -L -o bartib.tar.gz https://github.com/nikolassv/bartib/releases/download/v1.0.1/bartib.x86_64-unknown-linux-gnu.tar.gz --output bartib.tar.gz
-        tar -xf bartib.tar.gz
-        chmod +x bartib
-        mv bartib $BIN_DIR
-    fi
 
     # install delta
     if hash delta 2>/dev/null; then
