@@ -42,7 +42,7 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    brew install bat git-delta git-lfs htop mosh nano pass tmux toilet
+    arch -arm64 brew install bat git-delta git-lfs htop mosh nano pass ripgrep tmux toilet
 }
 
 install_cli_apps_for_deb() {
