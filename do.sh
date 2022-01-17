@@ -51,6 +51,7 @@ install_cli_apps_for_mac() {
          mosh \
          nano \
          pass \
+         pre-commit \
          ripgrep \
          tmux \
          toilet
