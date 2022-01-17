@@ -38,7 +38,7 @@ font:
     family: Iosevka Term
     style: Bold Italic
 
-  size: 18
+  size: 24
 
   offset:
     x: 0
@@ -46,7 +46,7 @@ font:
 
   glyph_offset:
     x: 0
-    y: 2
+    y: 1
 
   use_thin_strokes: true
 
