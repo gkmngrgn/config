@@ -50,8 +50,6 @@ font:
 
   use_thin_strokes: true
 
-background_opacity: 1.0
-
 mouse_bindings:
   - { mouse: Right, action: PasteSelection }
 
@@ -88,6 +86,7 @@ key_bindings:
   - { key: B,   mods: Alt,   chars: "\x1bb" }
   - { key: D,   mods: Alt,   chars: "\x1bd" }
   - { key: F,   mods: Alt,   chars: "\x1bf" }
+  - { key: G,   mods: Alt,   chars: "\x1bg" }
   - { key: W,   mods: Alt,   chars: "\x1bw" }
   - { key: X,   mods: Alt,   chars: "\x1bx" }
   - { key: Q,   mods: Alt,   chars: "\x1bq" }

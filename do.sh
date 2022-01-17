@@ -42,7 +42,7 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    arch -arm64 brew install \
+    arch -arm64 brew install -q \
          bat \
          brave-browser \
          git-delta \
@@ -54,6 +54,17 @@ install_cli_apps_for_mac() {
          ripgrep \
          tmux \
          toilet
+
+    arch -arm64 brew install -q \
+         pyenv \
+         openssl \
+         readline \
+         sqlite3 \
+         xz \
+         zlib
+
+    # install nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 }
 
 install_cli_apps_for_deb() {
@@ -87,6 +98,9 @@ install_cli_apps_for_deb() {
     else
         sudo apt install -y jq
     fi
+
+    # install nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
     # install pyenv
     if hash pyenv 2>/dev/null; then
