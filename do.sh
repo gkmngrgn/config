@@ -49,6 +49,8 @@ install_cli_apps_for_mac() {
          htop \
          hugo \
          jq \
+         latexindent \
+         mactex-no-gui \
          mosh \
          nano \
          pass \
