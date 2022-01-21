@@ -10,8 +10,8 @@ window:
     lines: 0
 
   position:
-   x: 0
-   y: 0
+    x: 0
+    y: 0
 
   padding:
     x: 5
@@ -59,7 +59,7 @@ mouse:
   hide_when_typing: true
 
 selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
 
 cursor:
@@ -83,15 +83,15 @@ debug:
 
 key_bindings:
   # use option as meta key on macos
-  - { key: B,        mods: Command,   chars:  "\x1bb"          }
-  - { key: D,        mods: Command,   chars:  "\x1bd"          }
-  - { key: F,        mods: Command,   chars:  "\x1bf"          }
-  - { key: G,        mods: Command,   chars:  "\x1bg"          }
-  - { key: Q,        mods: Command,   chars:  "\x1bq"          }
-  - { key: W,        mods: Command,   chars:  "\x1bw"          }
-  - { key: X,        mods: Command,   chars:  "\x1bx"          }
-  - { key: Return,   mods: Command,   action: ToggleFullscreen }
-  - { key: Period,   mods: Command,   chars:  "\x1b."          }
+  - { key: B, mods: Command, chars: "\x1bb" }
+  - { key: D, mods: Command, chars: "\x1bd" }
+  - { key: F, mods: Command, chars: "\x1bf" }
+  - { key: G, mods: Command, chars: "\x1bg" }
+  - { key: Q, mods: Command, chars: "\x1bq" }
+  - { key: W, mods: Command, chars: "\x1bw" }
+  - { key: X, mods: Command, chars: "\x1bx" }
+  - { key: Return, mods: Command, action: ToggleFullscreen }
+  - { key: Period, mods: Command, chars: "\x1b." }
 
-  - { key: LBracket,   mods: Shift|Alt,   chars: "\x1b{" }
-  - { key: RBracket,   mods: Shift|Alt,   chars: "\x1b}" }
+  - { key: LBracket, mods: Shift|Command, chars: "\x1b{" }
+  - { key: RBracket, mods: Shift|Command, chars: "\x1b}" }
