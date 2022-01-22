@@ -88,7 +88,7 @@ key_bindings:
   - { key: D, mods: Command, chars: "\x1bd" }
   - { key: F, mods: Command, chars: "\x1bf" }
   - { key: G, mods: Command, chars: "\x1bg" }
-  - { key: Q, mods: Command, chars: "\x1bq" }
+  - { key: Q, mods: Alt, chars: "\x1bq" }
   - { key: W, mods: Command, chars: "\x1bw" }
   - { key: X, mods: Command, chars: "\x1bx" }
   - { key: Return, mods: Command, action: ToggleFullscreen }
