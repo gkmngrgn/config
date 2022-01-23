@@ -44,6 +44,7 @@ install_cli_apps() {
 install_cli_apps_for_mac() {
     arch -arm64 brew install -q \
          bat \
+         exa \
          git-delta \
          git-lfs \
          htop \

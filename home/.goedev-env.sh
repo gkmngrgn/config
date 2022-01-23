@@ -9,7 +9,6 @@ alias clipw="clip.exe"
 alias dosh="bash do.sh"
 alias em="emacsclient -nw"
 alias hm="himalaya"
-alias ls="ls --color=auto"
 alias tb="nc yank.gokmengorgen.net 9999"
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                             # local
