@@ -48,6 +48,7 @@ install_cli_apps_for_mac() {
          git-delta \
          git-lfs \
          golang \
+         himalaya \
          htop \
          hugo \
          jq \
