@@ -59,7 +59,6 @@ install_cli_apps_for_mac() {
          pass \
          pre-commit \
          ripgrep \
-         tig \
          tmux \
          toilet
 
