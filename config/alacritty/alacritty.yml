@@ -82,6 +82,8 @@ debug:
   ref_test: false
 
 key_bindings:
+  - { key: Return, mods: Alt, action: ToggleFullscreen }
+
   # use option as meta key on macos
   - { key: Space, mods: Control, chars: "\x00" }
   - { key: B, mods: Command, chars: "\x1bb" }
@@ -91,7 +93,6 @@ key_bindings:
   - { key: Q, mods: Alt, chars: "\x1bq" }
   - { key: W, mods: Command, chars: "\x1bw" }
   - { key: X, mods: Command, chars: "\x1bx" }
-  - { key: Return, mods: Command, action: ToggleFullscreen }
   - { key: Period, mods: Command, chars: "\x1b." }
   - { key: LBracket, mods: Shift|Command, chars: "\x1b{" }
   - { key: RBracket, mods: Shift|Command, chars: "\x1b}" }
