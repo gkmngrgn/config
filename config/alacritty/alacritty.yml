@@ -38,7 +38,7 @@ font:
     family: Iosevka Term
     style: Bold Italic
 
-  size: 18
+  size: 16
 
   offset:
     x: 0

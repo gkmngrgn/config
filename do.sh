@@ -42,32 +42,36 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    arch -arm64 brew install -q \
-         bat \
-         exa \
-         git-delta \
-         git-lfs \
-         golang \
-         himalaya \
-         htop \
-         hugo \
-         jq \
-         latexindent \
-         mactex-no-gui \
-         mosh \
-         nano \
-         pass \
-         pre-commit \
-         ripgrep \
-         tmux \
-         toilet
+    brew tap xwmx/taps  # for nb
 
-    arch -arm64 brew install -q \
-         pyenv \
-         openssl \
-         readline \
-         sqlite3 \
-         xz \
+    brew install -q    \
+         bat           \
+         exa           \
+         git-delta     \
+         git-lfs       \
+         golang        \
+         himalaya      \
+         htop          \
+         hugo          \
+         jq            \
+         latexindent   \
+         mactex-no-gui \
+         mosh          \
+         nb            \
+         nano          \
+         openssl       \
+         pass          \
+         pre-commit    \
+         ripgrep       \
+         tmux          \
+         toilet        \
+
+     # pyenv dependencies
+     brew install -q \
+         pyenv       \
+         readline    \
+         sqlite3     \
+         xz          \
          zlib
 
     # install nvm
