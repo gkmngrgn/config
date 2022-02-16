@@ -19,6 +19,7 @@ export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"   # sol
 
 # EDITOR
 export EDITOR="emacsclient"
+export LSP_USE_PLISTS=true
 
 # DOTNET
 export PATH="$HOME/.dotnet/tools:$PATH"
