@@ -87,66 +87,6 @@ install_cli_apps_for_mac() {
          toilet
 }
 
-install_cli_apps_for_deb() {
-    if [ ! -d "$BIN_DIR" ]; then
-        mkdir -p $BIN_DIR
-    fi
-
-    mkdir -p tmp
-    cd tmp
-
-    # install delta
-    if hash delta 2>/dev/null; then
-        echo -e "delta is already installed. Skipped."
-    else
-        curl -L -o delta.deb https://github.com/dandavison/delta/releases/download/0.11.3/git-delta_0.11.3_amd64.deb
-        sudo dpkg -i delta.deb
-    fi
-
-    # install go
-    if hash go 2>/dev/null; then
-        echo -e "go is already installed. Skipped."
-    else
-        curl -L -o go.tar.gz https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
-        tar -xf go.tar.gz
-        mv go $HOME
-    fi
-
-    # install jq
-    if hash jq 2>/dev/null; then
-        echo -e "jq is already installed. Skipped."
-    else
-        sudo apt install -y jq
-    fi
-
-    # install nvm
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
-    # install pyenv
-    if hash pyenv 2>/dev/null; then
-        echo -e "pyenv is already installed. Skipped."
-    else
-        curl https://pyenv.run | bash
-    fi
-
-    # install ripgrep
-    if hash rg 2>/dev/null; then
-        echo -e "rg is already installed. Skipped."
-    else
-        curl -L -o ripgrep.deb https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
-        sudo dpkg -i ripgrep.deb
-    fi
-
-    # install rust
-    if hash rustc 2>/dev/null; then
-        echo -e "rust is already installed. Skipped."
-    else
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    fi
-
-    cd ..
-    rm -rf tmp
-}
 
 if [ -z ${1} ]
 then
