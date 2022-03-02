@@ -11,6 +11,7 @@ alias em="emacsclient -nw"
 alias hm="himalaya"
 alias tb="nc yank.gokmengorgen.net 9999"
 
+export PATH="/opt/homebrew/bin/:$PATH"                                     # homebrew
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                             # local
 export PATH="$HOME/.cargo/bin:$PATH"                                       # rust
 export PATH="$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH"                 # dart & flutter
