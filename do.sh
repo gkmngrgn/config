@@ -64,6 +64,7 @@ install_cli_apps_for_mac() {
          pre-commit    \
          ripgrep       \
          rust-analyzer \
+         tig           \
          tmux          \
          toilet        \
 
