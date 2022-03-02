@@ -47,6 +47,7 @@ install_cli_apps_for_mac() {
     brew install -q    \
          bat           \
          exa           \
+         font-ibm-plex \
          git-delta     \
          git-lfs       \
          golang        \
