@@ -11,7 +11,7 @@ alias em="emacsclient -nw"
 alias hm="himalaya"
 alias tb="nc yank.gokmengorgen.net 9999"
 
-export PATH="$HOME/.local/bin:$HOME/bin:/usr/bin:/bin"                     # bin
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin"      # default bin folders
 export PATH="$HOME/.cargo/bin:$PATH"                                       # rust
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"                       # golang
 export PATH="/opt/homebrew/bin/:$PATH"                                     # homebrew
