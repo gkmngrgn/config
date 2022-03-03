@@ -9,7 +9,6 @@ zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.z
 
 plugins=(
     cp
-    flutter
     git
     git-lfs
     kubectl
