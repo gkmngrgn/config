@@ -11,20 +11,14 @@ alias em="emacsclient -nw"
 alias hm="himalaya"
 alias tb="nc yank.gokmengorgen.net 9999"
 
-export PATH="/opt/homebrew/bin/:$PATH"                                     # homebrew
-export PATH="$HOME/.local/bin:$HOME/bin:$PATH"                             # local
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/bin:/bin"                     # bin
 export PATH="$HOME/.cargo/bin:$PATH"                                       # rust
-export PATH="$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH"                 # dart & flutter
 export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"                       # golang
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"   # solana
+export PATH="/opt/homebrew/bin/:$PATH"                                     # homebrew
 
 # EDITOR
-export EDITOR="emacsclient"
+export EDITOR="nano"
 export LSP_USE_PLISTS=true
-
-# DOTNET
-export PATH="$HOME/.dotnet/tools:$PATH"
-export DOTNET_ROOT="/snap/dotnet-sdk/current"
 
 # PYTHON
 export PYENV_ROOT="$HOME/.pyenv"
@@ -35,21 +29,9 @@ fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# NVM & NODEJS
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-. "$HOME/.cargo/env"
-
 # DENO
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # SERVERLESS
 export PATH="$HOME/.serverless/bin:$PATH"
-
-# NIX
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi
