@@ -11,7 +11,6 @@ plugins=(
     cp
     git
     git-lfs
-    kubectl
     man
     pass
     ripgrep
