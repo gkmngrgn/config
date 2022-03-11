@@ -19,7 +19,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  startup_mode: Maximized
+  startup_mode: Windowed
 
 font:
   normal:
