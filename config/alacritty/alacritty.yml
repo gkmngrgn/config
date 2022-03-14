@@ -89,6 +89,7 @@ key_bindings:
   - { key: B, mods: Alt, chars: "\x1bb" }
   - { key: D, mods: Alt, chars: "\x1bd" }
   - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: G, mods: Alt, chars: "\x1bg" }
   - { key: Q, mods: Alt, chars: "\x1bq" }
   - { key: W, mods: Alt, chars: "\x1bw" }
   - { key: X, mods: Alt, chars: "\x1bx" }
