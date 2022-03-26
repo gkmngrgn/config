@@ -1,3 +1,6 @@
+# this line fixes a problem about emacs tramp:
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 source ~/.goedev-env.sh
 
 export ZSH="$HOME/.oh-my-zsh"
