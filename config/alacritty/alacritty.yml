@@ -10,12 +10,17 @@ window:
     columns: 140
     lines: 40
 
+  position:
+    x: 30
+    y: 150
+
   padding:
     x: 0
     y: 0
 
   dynamic_padding: true
   dynamic_title: false
+  decorations: None
   startup_mode: Windowed
 
 font:
