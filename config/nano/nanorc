@@ -1,11 +1,12 @@
 set atblanks
 set autoindent
+set mouse
 set nohelp
 set nowrap
 set softwrap
 set tabsize 4
 set tabstospaces
+set trimblanks
+set unix
 
-## these are not working on macos
-# set morespace
-# set smooth
+include ~/.config/nano/nanorc.d/*.nanorc

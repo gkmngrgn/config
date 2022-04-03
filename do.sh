@@ -22,12 +22,22 @@ install() {
          -type f \
          -exec cp {} $HOME \;
 
+    if [ ! -e "$CONFIG_DIR/nano/nanorc.d" ]; then
+        git clone https://github.com/scopatz/nanorc.git $CONFIG_DIR/nano/nanorc.d
+    else
+        echo "update nanorc repository..."
+        git -C "$CONFIG_DIR/nano/nanorc.d" pull
+    fi
+
     if [ ! -e "$HOME/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
 
     if [ ! -e "$HOME/.tmux/plugins/tpm" ]; then
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+    else
+        echo "update tpm repository..."
+        git -C "$HOME/.tmux/plugins/tpm" pull
     fi
 }
 
