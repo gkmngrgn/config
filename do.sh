@@ -52,25 +52,22 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    brew tap xwmx/taps  # for nb
-
     brew install -q    \
          bat           \
          cmake         \
          exa           \
+         exercism      \
          font-ibm-plex \
          git-delta     \
          git-lfs       \
          golang        \
-         himalaya      \
          htop          \
          hugo          \
          jq            \
          latexindent   \
          llvm          \
          mactex-no-gui \
-         mosh          \
-         nb            \
+         miniconda     \
          nano          \
          openssl       \
          pass          \
@@ -78,15 +75,7 @@ install_cli_apps_for_mac() {
          ripgrep       \
          rust-analyzer \
          tmux          \
-         toilet        \
-
-     # pyenv dependencies
-     brew install -q \
-         pyenv       \
-         readline    \
-         sqlite3     \
-         xz          \
-         zlib
+         toilet
 
     # install nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
