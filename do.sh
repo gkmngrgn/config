@@ -39,6 +39,8 @@ install() {
         echo "update tpm repository..."
         git -C "$HOME/.tmux/plugins/tpm" pull
     fi
+
+    conda init zsh
 }
 
 install_cli_apps() {
