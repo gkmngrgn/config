@@ -8,11 +8,11 @@ env:
 window:
   dimensions:
     columns: 140
-    lines: 40
+    lines: 36
 
   position:
     x: 30
-    y: 150
+    y: 100
 
   padding:
     x: 0
@@ -20,7 +20,7 @@ window:
 
   dynamic_padding: true
   dynamic_title: false
-  decorations: None
+  decorations: full
   startup_mode: Windowed
 
 font:
