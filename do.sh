@@ -60,6 +60,7 @@ install_cli_apps_for_mac() {
          exa           \
          exercism      \
          font-ibm-plex \
+         gh            \
          git-delta     \
          git-lfs       \
          golang        \
