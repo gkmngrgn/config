@@ -71,6 +71,7 @@ install_cli_apps_for_mac() {
          llvm          \
          mactex-no-gui \
          miniconda     \
+         multimarkdown \
          nano          \
          openssl       \
          pass          \
