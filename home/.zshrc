@@ -38,3 +38,9 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history            # share command history data
+
+
+export NVM_DIR="$HOME/.nvm"
+export NVM_OPT_DIR="/opt/homebrew/opt/nvm"
+
+[ -s "$NVM_OPT_DIR/nvm.sh" ] && \. "$NVM_OPT_DIR/nvm.sh"  # This loads nvm

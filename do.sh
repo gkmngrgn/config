@@ -11,6 +11,8 @@ print_help() {
 }
 
 install() {
+    install_cli_apps
+
     if [ ! -d "$CONFIG_DIR" ]; then
         mkdir -p $CONFIG_DIR
     fi
@@ -73,6 +75,7 @@ install_cli_apps_for_mac() {
          miniconda     \
          multimarkdown \
          nano          \
+         nvm           \
          openssl       \
          pass          \
          pre-commit    \
@@ -80,9 +83,6 @@ install_cli_apps_for_mac() {
          rust-analyzer \
          tmux          \
          toilet
-
-    # install nvm
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 }
 
 install_cli_apps_for_deb() {
