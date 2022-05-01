@@ -25,3 +25,4 @@ key_bindings:
   - { key: Period, mods: Alt, chars: "\x1b." }
   - { key: LBracket, mods: Shift|Alt, chars: "\x1b{" }
   - { key: RBracket, mods: Shift|Alt, chars: "\x1b}" }
+  - { key: Backslash, mods: Shift|Alt, chars: "\x1b|" }
