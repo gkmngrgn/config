@@ -56,33 +56,34 @@ install_cli_apps() {
 }
 
 install_cli_apps_for_mac() {
-    brew install -q    \
-         bat           \
-         cmake         \
-         exa           \
-         exercism      \
-         font-ibm-plex \
-         gh            \
-         git-delta     \
-         git-lfs       \
-         golang        \
-         htop          \
-         hugo          \
-         jq            \
-         latexindent   \
-         llvm          \
-         mactex-no-gui \
-         miniconda     \
-         multimarkdown \
-         nano          \
-         nvm           \
-         openssl       \
-         pass          \
-         pre-commit    \
-         ripgrep       \
-         rust-analyzer \
-         shellcheck    \
-         tmux          \
+    brew install -q      \
+         MisterTea/et/et \
+         bat             \
+         cmake           \
+         exa             \
+         exercism        \
+         font-ibm-plex   \
+         gh              \
+         git-delta       \
+         git-lfs         \
+         golang          \
+         htop            \
+         hugo            \
+         jq              \
+         latexindent     \
+         llvm            \
+         mactex-no-gui   \
+         miniconda       \
+         multimarkdown   \
+         nano            \
+         nvm             \
+         openssl         \
+         pass            \
+         pre-commit      \
+         ripgrep         \
+         rust-analyzer   \
+         shellcheck      \
+         tmux            \
          toilet
 }
 
