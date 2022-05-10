@@ -22,17 +22,12 @@ export EDITOR="nano"
 export LSP_USE_PLISTS=true
 
 # PYTHON
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-fi
-
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # DENO
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-# SERVERLESS
-export PATH="$HOME/.serverless/bin:$PATH"
+# NODE
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

@@ -46,16 +46,6 @@ install() {
 }
 
 install_cli_apps() {
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        install_cli_apps_for_deb
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        install_cli_apps_for_mac
-    else
-        echo -e "Unknown OS."
-    fi
-}
-
-install_cli_apps_for_mac() {
     brew install -q      \
          MisterTea/et/et \
          bat             \
@@ -76,7 +66,6 @@ install_cli_apps_for_mac() {
          miniconda       \
          multimarkdown   \
          nano            \
-         nvm             \
          openssl         \
          pass            \
          pre-commit      \
@@ -85,6 +74,8 @@ install_cli_apps_for_mac() {
          shellcheck      \
          tmux            \
          toilet
+
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 }
 
 
