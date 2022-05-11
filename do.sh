@@ -62,7 +62,7 @@ install_cli_apps() {
          jq              \
          latexindent     \
          llvm            \
-         mactex-no-gui   \
+         # mactex-no-gui   \
          miniconda       \
          multimarkdown   \
          nano            \
