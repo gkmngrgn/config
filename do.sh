@@ -24,13 +24,6 @@ install() {
          -type f \
          -exec cp {} $HOME \;
 
-    if [ ! -e "$CONFIG_DIR/nano/nanorc.d" ]; then
-        git clone https://github.com/scopatz/nanorc.git $CONFIG_DIR/nano/nanorc.d
-    else
-        echo "update nanorc repository..."
-        git -C "$CONFIG_DIR/nano/nanorc.d" pull
-    fi
-
     if [ ! -e "$HOME/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
@@ -46,6 +39,8 @@ install() {
 }
 
 install_cli_apps() {
+    brew tap helix-editor/helix
+
     brew install -q      \
          MisterTea/et/et \
          bat             \
@@ -57,15 +52,14 @@ install_cli_apps() {
          git-delta       \
          git-lfs         \
          golang          \
+         helix           \
          htop            \
          hugo            \
          jq              \
          latexindent     \
          llvm            \
-         # mactex-no-gui   \
          miniconda       \
          multimarkdown   \
-         nano            \
          openssl         \
          pass            \
          pre-commit      \
