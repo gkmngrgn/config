@@ -44,6 +44,7 @@ install_cli_apps() {
     brew install -q      \
          MisterTea/et/et \
          bat             \
+         clojure         \
          cmake           \
          exa             \
          exercism        \
