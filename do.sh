@@ -48,6 +48,7 @@ install_cli_apps() {
          cmake           \
          exa             \
          exercism        \
+         fd              \
          font-ibm-plex   \
          gh              \
          git-delta       \
