@@ -3,7 +3,7 @@ concerns. There's no personal information, but please review it before
 starting using my configuration. **I don't guarantee anything**.
 
 Emacs configuration has been moved to a separate
-[repository](https://github.com/gkmngrgn/emacs.d).
+[repository](https://git.gokmengorgen.net/goedev/emacs.d).
 
 
 ## INSTALLATION
