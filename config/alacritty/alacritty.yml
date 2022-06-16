@@ -11,8 +11,8 @@ window:
     lines: 36
 
   position:
-    x: 30
-    y: 100
+    x: 50
+    y: 150
 
   padding:
     x: 0
@@ -20,7 +20,7 @@ window:
 
   dynamic_padding: true
   dynamic_title: false
-  decorations: full
+  decorations: none
   startup_mode: Windowed
 
 font:
