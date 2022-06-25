@@ -58,8 +58,8 @@ install_cli_apps() {
          htop            \
          hugo            \
          jq              \
-         latexindent     \
          llvm            \
+         miktex-console  \
          miniconda       \
          multimarkdown   \
          openssl         \
