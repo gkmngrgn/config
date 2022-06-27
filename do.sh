@@ -46,6 +46,7 @@ install_cli_apps() {
          bat             \
          clojure         \
          cmake           \
+         deno            \
          exa             \
          exercism        \
          fd              \
