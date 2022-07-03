@@ -6,8 +6,9 @@ BIN_DIR="$HOME/.local/bin"
 
 print_help() {
     echo "Subcommands:"
-    echo "  > install            copy your configuration files to your home folder."
-    echo "  > install_cli_apps   install cli apps."
+    echo "  > install            copy your configuration files to your home folder"
+    echo "  > install_cli_apps   install cli apps"
+    echo "  > repositories       list all repositories"
 }
 
 install() {
@@ -73,6 +74,27 @@ install_cli_apps() {
          toilet
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+}
+
+repositories() {
+    for repo in $(curl -X GET "https://git.gokmengorgen.net/api/v1/repos/search?uid=goedev&limit=10000" \
+                       -H "accept: application/json" \
+                       -H "Authorization: token 78bf524da43ee281157150b7173d785d125fdd83" \
+                       -H "Content-Type: application/json" \
+                       -s | jq -c ".data[] | {ssh_url,name}"); do
+        ssh_url=$(echo $repo | jq -r ".ssh_url")
+        name=$(echo $repo | jq -r ".name")
+        repo_dir="~/Workspace/goedev/$name"
+
+        if [ -d $repo_dir ]; then
+            echo "Repo $name is syncing..."
+            git -C $repo_dir pull
+        else
+            echo "Repo $name is cloning..."
+            git clone $ssh_url $repo_dir
+        fi
+        echo ""
+    done
 }
 
 
