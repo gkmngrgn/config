@@ -84,7 +84,7 @@ repositories() {
                        -s | jq -c ".data[] | {ssh_url,name}"); do
         ssh_url=$(echo $repo | jq -r ".ssh_url")
         name=$(echo $repo | jq -r ".name")
-        repo_dir="~/Workspace/goedev/$name"
+        repo_dir="$HOME/Workspace/goedev/$name"
 
         if [ -d $repo_dir ]; then
             echo "Repo $name is syncing..."
