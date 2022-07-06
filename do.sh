@@ -6,8 +6,8 @@ BIN_DIR="$HOME/.local/bin"
 
 print_help() {
     echo "Subcommands:"
-    echo "  > install            copy your configuration files to your home folder."
-    echo "  > install_cli_apps   install cli apps."
+    echo "  > install            copy your configuration files to your home folder"
+    echo "  > install_cli_apps   install cli apps"
 }
 
 install() {
