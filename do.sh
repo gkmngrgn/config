@@ -50,8 +50,6 @@ install_cli_apps() {
          exa             \
          exercism        \
          fd              \
-         font-ibm-plex   \
-         gh              \
          git-delta       \
          git-lfs         \
          golang          \
@@ -60,8 +58,6 @@ install_cli_apps() {
          hugo            \
          jq              \
          llvm            \
-         miktex-console  \
-         miniconda       \
          multimarkdown   \
          openssl         \
          pass            \
@@ -70,8 +66,14 @@ install_cli_apps() {
          rustup-init     \
          rust-analyzer   \
          shellcheck      \
-         tmux            \
-         toilet
+         tmux
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install -q     \
+             font-ibm-plex  \
+             miktex-console \
+             miniconda
+    fi
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 }
