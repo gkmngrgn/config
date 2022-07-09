@@ -3,12 +3,7 @@
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-alias ab="abook -f ~/.config/abook/addressbook"
-alias clip="xclip -selection clipboard"
-alias clipw="clip.exe"
-alias em="emacsclient -nw"
-alias hm="himalaya"
-alias tb="nc yank.gokmengorgen.net 9999"
+alias em="TERM=alacritty-direct emacs -nw"
 
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"   # default bin folders
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"               # default bin folders
