@@ -3,6 +3,7 @@
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+alias gerudo="et gerudo -c tmux"
 alias em="TERM=alacritty-direct emacs -nw"
 
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"   # default bin folders
