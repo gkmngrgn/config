@@ -17,7 +17,7 @@ export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
 export PATH="/opt/homebrew/bin/:$PATH"                       # homebrew
 
 # EDITOR
-export EDITOR="nano"
+export EDITOR="hx"
 export LSP_USE_PLISTS=true
 
 # PYTHON
