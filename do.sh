@@ -35,7 +35,10 @@ install() {
         git -C "$HOME/.tmux/plugins/tpm" pull
     fi
 
-    conda init zsh
+    if command -v conda &> /dev/null
+    then
+        conda init zsh
+    fi
 }
 
 install_cli_apps() {
