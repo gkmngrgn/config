@@ -67,6 +67,7 @@ install_cli_apps() {
          pass            \
          pre-commit      \
          ripgrep         \
+         rustup-init     \
          rust-analyzer   \
          shellcheck      \
          tmux            \
