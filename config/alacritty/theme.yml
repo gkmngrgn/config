@@ -1,30 +1,30 @@
-# GoeDev Theme (based on ayu dark)
+# GoeDev Theme (based on modus-theme)
 
 colors:
   primary:
-    background: '0x000000'
-    foreground: '0xFFFFFF'
+    background: "#000000"
+    foreground: "#ffffff"
 
   # Normal colors
   normal:
-    black:   '0x01060E'
-    red:     '0xEA6C73'
-    green:   '0x91B362'
-    yellow:  '0xF9AF4F'
-    blue:    '0x53BDFA'
-    magenta: '0xFAE994'
-    cyan:    '0x90E1C6'
-    white:   '0xC7C7C7'
+    black: "#000000"
+    red: "#ff8059"
+    green: "#44bc44"
+    yellow: "#d0bc00"
+    blue: "#2fafff"
+    magenta: "#feacd0"
+    cyan: "#00d3d0"
+    white: "#bfbfbf"
 
   # Bright colors
   bright:
-    black:   '0x686868'
-    red:     '0xF07178'
-    green:   '0xC2D94C'
-    yellow:  '0xFFB454'
-    blue:    '0x59C2FF'
-    magenta: '0xFFEE99'
-    cyan:    '0x95E6CB'
-    white:   '0xFFFFFF'
+    black: "#595959"
+    red: "#ef8b50"
+    green: "#70b900"
+    yellow: "#c0c530"
+    blue: "#79a8ff"
+    magenta: "#b6a0ff"
+    cyan: "#6ae4b9"
+    white: "#ffffff"
 
 draw_bold_text_with_bright_colors: true
