@@ -1,6 +1,8 @@
-This repository includes my configuration files that have no security
-concerns. There's no personal information, but please review it before
-starting using my configuration. **I don't guarantee anything**.
+# CONFIG
+
+This repository contains my configuration files that do not include
+personal information. Please take a look at the file contents before
+starting using it. **I do not guarantee anything.**
 
 Emacs configuration has been moved to a separate
 [repository](https://git.gokmengorgen.net/goedev/emacs.d).
@@ -8,22 +10,10 @@ Emacs configuration has been moved to a separate
 
 ## INSTALLATION
 
-    dosh install
+Install [dosh](https://git.gokmengorgen.net/goedev/dosh) first, then:
 
+```shell
+$ dosh help
+```
 
-## CLI APPS THAT I USE
-
-- [abook](https://github.com/hhirsch/abook): contacts
-- [bartib](https://github.com/nikolassv/bartib): time tracker
-- [bat](https://github.com/sharkdp/bat): instead of cat
-- [delta](https://github.com/dandavison/delta): diff viewer for git
-- [exa](https://github.com/ogham/exa): instead of ls
-- [fd](https://github.com/sharkdp/fd): instead of find
-- [hugo](https://github.com/gohugoio/hugo): static site generator
-- [himalaya](https://github.com/soywod/himalaya) email client
-- [jq](https://github.com/stedolan/jq) json processor
-- [mosh](https://github.com/mobile-shell/mosh) battery included ssh
-- [nb](https://github.com/xwmx/nb) bookmarking and note taking app
-- [pyenv](https://github.com/pyenv/pyenv-installer) python version management
-- [rg](https://github.com/BurntSushi/ripgrep): instead of grep
-- [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) lsp for rust
+Dosh will guide you on how to install configuration files.
