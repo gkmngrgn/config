@@ -5,7 +5,7 @@ def cmd_setup_my_os():
     """place my config files."""
 
     copy("./config/*", CONFIG_DIR)
-    copy("./home/.*", HOME)
+    copy("./home/.*", path_home())
 
     if IS_ZSH:
         if not exists(path_home(".oh-my-zsh")):
