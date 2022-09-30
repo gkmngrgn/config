@@ -5,6 +5,7 @@ export LC_ALL="en_US.UTF-8"
 
 alias gerudo="et gerudo -c tmux"
 alias em="TERM=alacritty-direct emacs -nw"
+alias emc="TERM=alacritty-direct emacsclient -c -nw"
 
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"   # default bin folders
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"               # default bin folders
@@ -13,7 +14,7 @@ export PATH="$HOME/.local/go/bin:$HOME/go/bin:$PATH"         # golang
 export PATH="/opt/homebrew/bin/:$PATH"                       # homebrew
 
 # EDITOR
-export EDITOR="hx"
+export EDITOR="nano"
 export LSP_USE_PLISTS=true
 
 # PYTHON
