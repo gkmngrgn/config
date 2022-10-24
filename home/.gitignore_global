@@ -1,9 +1,9 @@
-.vscode
+.fleet
 .idea
 .vs
+.vscode
 
 *.elc
 .elisp/auto-complete
 .elisp/magit
-
-venv/
+.dir_locals.el
