@@ -8,4 +8,11 @@ return {
       bottom = 0,
       left = 0,
    },
+   ssh_domains = {
+      {
+         name = 'gerudo',
+         remote_address = 'gerudo',
+         username = 'goedev',
+      },
+   },
 }
