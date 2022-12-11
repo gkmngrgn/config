@@ -11,6 +11,7 @@ return {
       bottom = 0,
       left = 0,
    },
+   audible_bell = 'Disabled',
    ssh_domains = {
       {
          name = 'gerudo',
