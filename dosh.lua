@@ -3,14 +3,14 @@ local config_dir = "~/.config/"
 cmd.add_task{
    name="setup",
    description="setup my operating system.",
-   required_commands={"brew"},
    required_platforms={"macos"},
    command=function()
       -- check if all required packages are installed
       cmd.brew_install(
          {
-            "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "openssl", "pass", "rustup-init",
-            "tmux", "font-ibm-plex", "miktex-console", "miniconda", "wezterm",
+            "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "openssl",
+            "rustup-init", "tmux", "font-ibm-plex", "miktex-console", "miniconda",
+            "wezterm",
          },
          {
             taps = { "wez/wezterm" }
