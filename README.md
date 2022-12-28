@@ -1,18 +1,20 @@
 # CONFIG
 
-This repository contains my configuration files that do not include
-personal information. Please take a look at the file contents before
-starting using it. **I do not guarantee anything.**
+This repository contains my configuration files that do not include personal
+information. Please take a look at the file contents before starting using it.
 
-Emacs configuration has been moved to a separate
-[repository](https://git.gokmengorgen.net/goedev/emacs.d).
+**I do not guarantee anything.**
 
 
 ## INSTALLATION
 
-Install [dosh](https://git.gokmengorgen.net/goedev/dosh) first, then:
+Install [dosh](https://github.com/gkmngrgn/dosh) first, then:
 
 ```shell
+# replace my config files into home folder.
+$ dosh setup
+
+# to see all available tasks and parameters:
 $ dosh help
 ```
 

@@ -1,17 +1,32 @@
 local config_dir = "~/.config/"
 
 cmd.add_task{
-   name="install",
+   name="setup",
    description="setup my operating system.",
+   required_commands={"brew"},
+   required_platforms={"macos"},
    command=function()
-      -- TODO: in the next dosh version I'll add `cmd.ls` command.
-      --       update this part later.
-      -- local config_dirs = cmd.ls{
-      --    parent_dir = ".",
-      --    exclude = { "home", "archived" },
-      --    file_types = { "directory" },
-      -- }
+      -- check if all required packages are installed
+      cmd.brew_install(
+         {
+            "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "openssl", "pass", "rustup-init",
+            "tmux", "font-ibm-plex", "miktex-console", "miniconda", "wezterm",
+         },
+         {
+            taps = { "wez/wezterm" }
+         }
+      )
 
+      -- check if tmux package manager is installed
+      cmd.clone(
+         "https://github.com/tmux-plugins/tpm",
+         {
+            destination="~/.tmux/plugins/tmp",
+            fetch = true,
+         }
+      )
+
+      -- copy all configuration files
       local config_dirs = { "alacritty", "kitty", "nano", "wezterm" }
       for index = 1, #config_dirs do
          cmd.copy("./" .. config_dirs[index] .. "/", config_dir)
@@ -19,6 +34,7 @@ cmd.add_task{
 
       cmd.copy("./home/*", "~")
 
+      -- configure shell
       local shell_type
 
       if env.IS_ZSH then
@@ -31,46 +47,10 @@ cmd.add_task{
          shell_type = "bash"
       end
 
+      -- configure miniconda
       cmd.run("conda init " .. shell_type)
 
-      -- cmd.clone(
-      --    "https://github.com/tmux-plugins/tpm",
-      --    {
-      --       destination="~/.tmux/plugins/tmp",
-      --       fetch = true,
-      --    }
-      -- )
-   end
-}
-
-cmd.add_task{
-   name="install-emacs",
-   description="install emacs configuration files.",
-   command=function()
-   end
-}
-
-cmd.add_task{
-   name="install-apps",
-   description="install my favorite apps.",
-   command=function()
-      if env.IS_WINDOWS then
-         local packages = {
-            "Git.Git", "VSCodium.VSCodium", "Discord.Discord", "Valve.Steam"
-         }
-         cmd.winget_install(packages)
-      elseif env.IS_MACOS then
-         local packages = {
-            "bat", "exa", "fd", "git-delta", "git-lfs", "htop", "llvm", "multimarkdown", "nvm", "openssl", "pass",
-            "pre-commit", "ripgrep", "rust-analyzer", "rustup-init", "shellcheck", "tmux", "font-ibm-plex",
-            "miktex-console", "miniconda"
-         }
-         cmd.brew_install(packages, { taps = { "wez/wezterm" }})
-      elseif env.IS_LINUX then
-         local packages = {
-            "git", "ripgrep"
-         }
-         cmd.apt_install(packages)
-      end
+      -- configure emacs
+      cmd.run_url("https://raw.githubusercontent.com/gkmngrgn/emacs.d/main/dosh.lua", parameters="install")
    end
 }
