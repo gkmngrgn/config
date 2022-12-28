@@ -4,7 +4,19 @@ cmd.add_task{
    name="install",
    description="setup my operating system.",
    command=function()
-      cmd.copy("./config/*", config_dir)
+      -- TODO: in the next dosh version I'll add `cmd.ls` command.
+      --       update this part later.
+      -- local config_dirs = cmd.ls{
+      --    parent_dir = ".",
+      --    exclude = { "home", "archived" },
+      --    file_types = { "directory" },
+      -- }
+
+      local config_dirs = { "alacritty", "kitty", "nano", "wezterm" }
+      for index = 1, #config_dirs do
+         cmd.copy("./" .. config_dirs[index] .. "/", config_dir)
+      end
+
       cmd.copy("./home/*", "~")
 
       local shell_type
@@ -20,13 +32,21 @@ cmd.add_task{
       end
 
       cmd.run("conda init " .. shell_type)
-      cmd.clone(
-         "https://github.com/tmux-plugins/tpm",
-         {
-            destination="~/.tmux/plugins/tmp",
-            fetch = true,
-         }
-      )
+
+      -- cmd.clone(
+      --    "https://github.com/tmux-plugins/tpm",
+      --    {
+      --       destination="~/.tmux/plugins/tmp",
+      --       fetch = true,
+      --    }
+      -- )
+   end
+}
+
+cmd.add_task{
+   name="install-emacs",
+   description="install emacs configuration files.",
+   command=function()
    end
 }
 
