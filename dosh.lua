@@ -51,6 +51,11 @@ cmd.add_task{
       cmd.run("conda init " .. shell_type)
 
       -- configure emacs
-      cmd.run_url("https://raw.githubusercontent.com/gkmngrgn/emacs.d/main/dosh.lua", parameters="install")
+      cmd.run_url(
+         "https://raw.githubusercontent.com/gkmngrgn/emacs.d/main/dosh.lua",
+         {
+            parameters = "install"
+         }
+      )
    end
 }
