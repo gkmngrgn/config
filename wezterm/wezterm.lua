@@ -1,7 +1,6 @@
 local wezterm = require 'wezterm'
 
 return {
-   color_scheme='Adventure',
    initial_cols = 130,
    initial_rows = 40,
    tab_bar_at_bottom = true,
