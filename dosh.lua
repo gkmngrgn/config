@@ -1,61 +1,51 @@
 local config_dir = "~/.config/"
 
-cmd.add_task{
-   name="setup",
-   description="setup my operating system.",
-   required_platforms={"macos"},
-   command=function()
-      -- check if all required packages are installed
-      cmd.brew_install(
-         {
+cmd.add_task {
+    name = "setup",
+    description = "setup my operating system.",
+    required_platforms = {"macos"},
+    command = function(arg)
+        arg = arg or "all"
+        local shell_type = env.IS_ZSH and "zsh" or "bash"
+
+        -- check if all required packages are installed
+        cmd.brew_install({
             "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "openssl",
-            "rustup-init", "tmux", "font-ibm-plex", "miktex-console", "miniconda",
-            "wezterm",
-         },
-         {
-            taps = { "wez/wezterm" }
-         }
-      )
+            "font-ibm-plex", "wezterm"
+        }, {taps = {"wez/wezterm"}})
 
-      -- check if tmux package manager is installed
-      cmd.clone(
-         "https://github.com/tmux-plugins/tpm",
-         {
-            destination="~/.tmux/plugins/tpm",
-            fetch = true,
-         }
-      )
+        -- copy all configuration files
+        local config_dirs = {"alacritty", "kitty", "nano", "wezterm"}
+        for index = 1, #config_dirs do
+            cmd.copy("./" .. config_dirs[index] .. "/", config_dir)
+        end
 
-      -- copy all configuration files
-      local config_dirs = { "alacritty", "kitty", "nano", "wezterm" }
-      for index = 1, #config_dirs do
-         cmd.copy("./" .. config_dirs[index] .. "/", config_dir)
-      end
+        cmd.copy("./home/*", "~")
 
-      cmd.copy("./home/*", "~")
+        if arg == "tmux" or arg == "all" then
+            cmd.brew_install({"tmux"})
+            cmd.clone("https://github.com/tmux-plugins/tpm",
+                      {destination = "~/.tmux/plugins/tpm", fetch = true})
+        end
 
-      -- configure shell
-      local shell_type
+        if arg == "shell" or arg == "all" then
+            if env.IS_ZSH then
+                if not cmd.exists("~/.oh-my-zsh") then
+                    cmd.run_url(
+                        "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
+                end
+            end
+        end
 
-      if env.IS_ZSH then
-         shell_type = "zsh"
+        if arg == "python" or arg == "all" then
+            cmd.brew_install({"mambaforge"})
+            cmd.run("mamba init " .. shell_type)
+        end
 
-         if not cmd.exists("~/.oh-my-zsh") then
-            cmd.run_url("https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
-         end
-      else
-         shell_type = "bash"
-      end
-
-      -- configure miniconda
-      cmd.run("conda init " .. shell_type)
-
-      -- configure emacs
-      cmd.run_url(
-         "https://raw.githubusercontent.com/gkmngrgn/emacs.d/main/dosh.lua",
-         {
-            parameters = "install"
-         }
-      )
-   end
+        if arg == "emacs" or arg == "all" then
+            cmd.run_url(
+                "https://raw.githubusercontent.com/gkmngrgn/emacs.d/main/dosh.lua",
+                {parameters = "install"})
+        end
+    end
 }
