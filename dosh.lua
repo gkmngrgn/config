@@ -21,7 +21,7 @@ cmd.add_task{
       cmd.clone(
          "https://github.com/tmux-plugins/tpm",
          {
-            destination="~/.tmux/plugins/tmp",
+            destination="~/.tmux/plugins/tpm",
             fetch = true,
          }
       )
