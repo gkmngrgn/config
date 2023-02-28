@@ -1,6 +1,3 @@
-# this line fixes a problem about emacs tramp:
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
-
 source ~/.goedev-env.sh
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -37,10 +34,6 @@ setopt hist_ignore_dups         # ignore duplication command history list
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
-setopt share_history            # share command history data
 
-
-export NVM_DIR="$HOME/.nvm"
-export NVM_OPT_DIR="/opt/homebrew/opt/nvm"
-
-[ -s "$NVM_OPT_DIR/nvm.sh" ] && \. "$NVM_OPT_DIR/nvm.sh"  # This loads nvm
+# this line fixes a problem about emacs tramp:
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
