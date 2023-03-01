@@ -1,1 +1,0 @@
-source ~/.goedev-env.sh
