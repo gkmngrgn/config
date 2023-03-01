@@ -50,8 +50,9 @@ cmd.add_task {
         end
 
         if arg == "python" or arg == "all" then
-            cmd.brew_install({"mambaforge"})
-            cmd.run("mamba init " .. shell_type)
+            cmd.brew_install({"miniconda"})
+            cmd.run("conda init " .. shell_type)
+            cmd.run("conda config --set auto_activate_base false")
         end
 
         -- if arg == "emacs" or arg == "all" then
