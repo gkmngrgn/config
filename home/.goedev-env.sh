@@ -2,7 +2,8 @@
 
 export COLORTERM="truecolor"
 export DOSH_ENV="development"
-export EDITOR="emacsclient -t -a nano"
+export ALTERNATE_EDITOR="nano"
+export EDITOR="emacsclient -t"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
