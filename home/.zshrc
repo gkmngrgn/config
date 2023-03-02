@@ -1,11 +1,10 @@
 export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="robbyrussell"
+export ZSH_THEME="robbyrussell"
 
 zstyle ':omz:update' mode auto
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
-plugins=(
+export plugins=(
     cp
     git
     git-lfs
@@ -16,14 +15,14 @@ plugins=(
     tmux
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
-bindkey -e   # emacs style key binding
+bindkey -e  # emacs style key binding
 
 # HISTORY
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
-SAVEHIST=10000
+export SAVEHIST=10000
 
 setopt append_history
 setopt extended_history
@@ -36,4 +35,4 @@ setopt inc_append_history
 # this line fixes a problem about emacs tramp:
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-source ~/.goedev-env.sh
+source "$HOME/.goedev-env.sh"
