@@ -18,8 +18,8 @@ cmd.add_task {
         if arg == "all" then
             -- check if all required packages are installed
             cmd.brew_install({
-                "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "openssl",
-                "font-ibm-plex", "wezterm"
+                "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "pyenv",
+                "openssl", "font-ibm-plex", "wezterm"
             })
 
             -- copy all configuration files
@@ -50,9 +50,7 @@ cmd.add_task {
         end
 
         if arg == "python" or arg == "all" then
-            cmd.brew_install({"miniconda"})
-            cmd.run("conda init " .. shell_type)
-            cmd.run("conda config --set auto_activate_base false")
+            cmd.brew_install({"pyenv"})
         end
 
         -- if arg == "emacs" or arg == "all" then

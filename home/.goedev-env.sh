@@ -14,3 +14,8 @@ if command -v /opt/homebrew/bin/brew &> /dev/null
 then
    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+if command -v pyenv &> /dev/null
+then
+    eval "$(pyenv init -)"
+fi
