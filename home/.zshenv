@@ -1,0 +1,1 @@
+. "$HOME/.goedev-env.sh"

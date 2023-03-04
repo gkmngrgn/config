@@ -34,5 +34,3 @@ setopt inc_append_history
 
 # this line fixes a problem about emacs tramp:
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
-
-source "$HOME/.goedev-env.sh"
