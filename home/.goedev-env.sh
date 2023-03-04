@@ -10,9 +10,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 alias edit='eval "$EDITOR"'
 
-if command -v /opt/homebrew/bin/brew &> /dev/null
+PATH_HOMEBREW="/opt/homebrew/bin/brew"
+if command -v "$PATH_HOMEBREW" &> /dev/null
 then
-   eval "$(/opt/homebrew/bin/brew shellenv)"
+   eval "$($PATH_HOMEBREW shellenv)"
 fi
 
 if command -v pyenv &> /dev/null
