@@ -32,11 +32,9 @@ cmd.add_task {
 
             cmd.copy("./home/*", "~")
 
-            if env.IS_ZSH then
-                if not cmd.exists("~/.oh-my-zsh") then
-                    cmd.run_url(
-                        "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
-                end
+            if env.IS_ZSH and not cmd.exists("~/.oh-my-zsh") then
+               cmd.run_url(
+                  "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
             end
         end
 
