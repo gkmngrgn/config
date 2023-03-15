@@ -8,7 +8,7 @@ return {
     font_size = 15,
     audible_bell = 'Disabled',
     window_padding = {top = 0, left = 0, right = 0, bottom = 0},
-    window_decorations = "NONE",
+    window_decorations = "TITLE",
     ssh_domains = {
         {name = 'gerudo', remote_address = 'gerudo', username = 'goedev'}
     }
