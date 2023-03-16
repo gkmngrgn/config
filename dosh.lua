@@ -17,8 +17,8 @@ cmd.add_task {
         if arg == "all" or arg == "shell" then
             -- check if all required packages are installed
             cmd.brew_install({
-                "bat", "exa", "git-delta", "git-lfs", "htop", "nvm", "pyenv",
-                "openssl", "font-ibm-plex", "wezterm"
+                "bat", "exa", "git-lfs", "htop", "nvm", "pyenv", "openssl",
+                "font-ibm-plex", "wezterm"
             })
 
             -- copy all configuration files
@@ -33,8 +33,8 @@ cmd.add_task {
             cmd.copy("./home/*", "~")
 
             if env.IS_ZSH and not cmd.exists("~/.oh-my-zsh") then
-               cmd.run_url(
-                  "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
+                cmd.run_url(
+                    "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh")
             end
         end
 
@@ -56,26 +56,25 @@ cmd.add_task {
     end
 }
 
-
 cmd.add_task {
     name = "fix-mosh",
     description = "fix mosh permission issues.",
     required_platforms = {"macos"},
     command = function(arg)
-       local firepower = "sudo /usr/libexec/ApplicationFirewall/socketfilterfw"
+        local firepower = "sudo /usr/libexec/ApplicationFirewall/socketfilterfw"
 
-       -- temporarily shut firewall off
-       cmd.run(firepower .. " --setglobalstate off")
+        -- temporarily shut firewall off
+        cmd.run(firepower .. " --setglobalstate off")
 
-       -- add symlinked location to firewall
-       cmd.run(firepower .. " --add $(which mosh-server)")
-       cmd.run(firepower .. " --unblockapp $(which mosh-server)")
+        -- add symlinked location to firewall
+        cmd.run(firepower .. " --add $(which mosh-server)")
+        cmd.run(firepower .. " --unblockapp $(which mosh-server)")
 
-       -- add homebrew location to firewall
-       cmd.run(firepower .. " --add $(realpath $(which mosh-server))")
-       cmd.run(firepower .. " --unblockapp $(realpath $(which mosh-server))")
+        -- add homebrew location to firewall
+        cmd.run(firepower .. " --add $(realpath $(which mosh-server))")
+        cmd.run(firepower .. " --unblockapp $(realpath $(which mosh-server))")
 
-       -- re-enable firewall
-       cmd.run(firepower .. " --setglobalstate on")
+        -- re-enable firewall
+        cmd.run(firepower .. " --setglobalstate on")
     end
 }
