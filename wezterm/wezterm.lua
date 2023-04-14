@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 return {
     font = wezterm.font {
-        family = 'IBM Plex Mono',
+        family = 'Jetbrains Mono',
         stretch = 'Expanded',
         weight = 'Regular',
     },
@@ -14,7 +14,4 @@ return {
     window_padding = {top = 0, left = 0, right = 0, bottom = 0},
     audible_bell = 'Disabled',
     window_decorations = 'TITLE',
-    ssh_domains = {
-        {name = 'gerudo', remote_address = 'gerudo', username = 'goedev'}
-    }
 }
