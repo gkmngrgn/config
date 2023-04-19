@@ -30,4 +30,6 @@ return {
   window_padding = { top = 0, left = 0, right = 0, bottom = 0 },
   audible_bell = 'Disabled',
   window_decorations = 'TITLE|RESIZE',
+  default_cursor_style = 'BlinkingBar',
+  cursor_thickness = '0.1cell'
 }
