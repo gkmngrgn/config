@@ -16,10 +16,7 @@ cmd.add_task {
 
         if arg == "all" or arg == "shell" then
             -- check if all required packages are installed
-            cmd.brew_install({
-                "bat", "exa", "git-lfs", "htop", "nvm", "pyenv", "openssl",
-                "font-jetbrains-mono", "wezterm"
-            })
+            cmd.brew_install({"bat", "exa", "fd", "git-lfs", "htop", "nvm", "pyenv", "openssl", "font-jetbrains-mono", "wezterm"})
 
             -- copy all configuration files
             local config_dirs = cmd.ls(".", {
