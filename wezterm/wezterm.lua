@@ -15,6 +15,12 @@ function colors_for_appearance(appearance)
       foreground = 'black',
       background = 'white',
       ansi = { 'black', 'maroon', 'green', 'olive', 'navy', 'purple', 'teal', 'silver' },
+      tab_bar = {
+        background = '#464646',
+        active_tab = { bg_color = '#f7f7f7', fg_color = '#464646' },
+        inactive_tab = { bg_color = '#747474', fg_color = '#f7f7f7' },
+        new_tab = { bg_color = '#525252', fg_color = '#f7f7f7' },
+      },
     }
   end
 end
@@ -25,8 +31,8 @@ return {
     stretch = 'Expanded',
     weight = 'Regular',
   },
-  colors = colors_for_appearance(get_appearance()),
   font_size = 15,
+  colors = colors_for_appearance(get_appearance()),
   initial_cols = 160,
   initial_rows = 42,
   tab_max_width = 30,
