@@ -16,7 +16,7 @@ function colors_for_appearance(appearance)
       background = 'white',
       ansi = { 'black', 'maroon', 'green', 'olive', 'navy', 'purple', 'teal', 'silver' },
       tab_bar = {
-        background = '#464646',
+        background = '#eee',
         active_tab = { bg_color = '#f7f7f7', fg_color = '#464646' },
         inactive_tab = { bg_color = '#747474', fg_color = '#f7f7f7' },
         new_tab = { bg_color = '#525252', fg_color = '#f7f7f7' },
@@ -36,6 +36,7 @@ return {
   initial_cols = 160,
   initial_rows = 42,
   tab_max_width = 30,
+  tab_bar_at_bottom = true,
   use_fancy_tab_bar = false,
   window_padding = { top = 0, left = 0, right = 0, bottom = 0 },
   audible_bell = 'Disabled',
