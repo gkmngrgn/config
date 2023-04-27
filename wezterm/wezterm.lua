@@ -8,21 +8,24 @@ function get_appearance()
 end
 
 function colors_for_appearance(appearance)
+  local fg, bg
+
   if appearance:find 'Dark' then
-    return {}
+    fg = 'white'
+    bg = 'black'
   else
-    return {
-      foreground = 'black',
-      background = 'white',
-      ansi = { 'black', 'maroon', 'green', 'olive', 'navy', 'purple', 'teal', 'silver' },
-      tab_bar = {
-        background = '#eee',
-        active_tab = { bg_color = '#f7f7f7', fg_color = '#464646' },
-        inactive_tab = { bg_color = '#747474', fg_color = '#f7f7f7' },
-        new_tab = { bg_color = '#525252', fg_color = '#f7f7f7' },
-      },
-    }
+    fg = 'black'
+    bg = 'white'
   end
+
+  return {
+    foreground = fg,
+    background = bg,
+    tab_bar = {
+      background = bg,
+      active_tab = { bg_color = bg, fg_color = fg },
+    }
+  }
 end
 
 return {
