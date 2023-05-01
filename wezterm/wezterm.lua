@@ -1,12 +1,5 @@
 local wezterm = require 'wezterm'
 
-function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
-end
-
 function colors_for_appearance(appearance)
   local fg, bg
 
@@ -35,7 +28,7 @@ return {
     weight = 'Regular',
   },
   font_size = 15,
-  colors = colors_for_appearance(get_appearance()),
+  colors = colors_for_appearance('Dark'),
   initial_cols = 160,
   initial_rows = 42,
   tab_max_width = 30,
