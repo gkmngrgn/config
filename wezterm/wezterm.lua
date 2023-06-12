@@ -26,9 +26,8 @@ function add_display_config(settings, display_name)
     settings.font_size = 15.5
     settings.window_padding = { top = 5, left = 0, right = 0, bottom = 0 }
   elseif display_name == 'external' then
-    settings.font_size = 15
-    settings.line_height = 0.9
-    settings.window_padding = { top = 7, left = 0, right = 0, bottom = 0 }
+    settings.font_size = 14.5
+    settings.window_padding = { top = 2, left = 3, right = 0, bottom = 0 }
   end
 end
 
