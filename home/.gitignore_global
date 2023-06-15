@@ -7,3 +7,5 @@
 .elisp/auto-complete
 .elisp/magit
 .dir_locals.el
+
+pyrightconfig.json
