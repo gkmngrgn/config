@@ -23,8 +23,8 @@ end
 
 function add_display_config(settings, display_name)
   if display_name == 'internal' then
-    settings.font_size = 15.5
-    settings.window_padding = { top = 5, left = 0, right = 0, bottom = 0 }
+    settings.font_size = 14.5
+    settings.window_padding = { top = 5, left = 4.5, right = 0, bottom = 0 }
   elseif display_name == 'external' then
     settings.font_size = 14.5
     settings.window_padding = { top = 2, left = 3, right = 0, bottom = 0 }
