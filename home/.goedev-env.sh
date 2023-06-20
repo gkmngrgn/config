@@ -2,8 +2,7 @@
 
 export COLORTERM="truecolor"
 export DOSH_ENV="development"
-export ALTERNATE_EDITOR="nano"
-export EDITOR="emacsclient -t"
+export EDITOR="nano"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export PATH="$HOME/.local/bin:$PATH"
