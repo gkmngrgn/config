@@ -1,22 +1,3 @@
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_THEME="robbyrussell"
-
-zstyle ':omz:update' mode auto
-zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
-
-export plugins=(
-    cp
-    git
-    git-lfs
-    man
-    pass
-    ripgrep
-    rust
-    tmux
-)
-
-source "$ZSH/oh-my-zsh.sh"
-
 bindkey -e  # emacs style key binding
 
 # HISTORY
@@ -34,3 +15,8 @@ setopt inc_append_history
 
 # this line fixes a problem about emacs tramp:
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
+if command -v starship &> /dev/null
+then
+    eval "$(starship init zsh)"
+fi
