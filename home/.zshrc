@@ -5,6 +5,9 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 export SAVEHIST=10000
 
+autoload -U select-word-style
+select-word-style bash
+
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
