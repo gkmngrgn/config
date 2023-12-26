@@ -32,6 +32,11 @@ function add_display_config(settings, display_name)
 end
 
 wezterm_config = {
+    font = wezterm.font {
+        family = 'Fira Code',
+        stretch = 'Expanded',
+        weight = 'Regular',
+    },
     initial_cols = 160,
     initial_rows = 42,
     tab_max_width = 30,
