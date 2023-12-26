@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "One Dark",
+  "theme": "Gruvbox Dark Hard",
   "buffer_font_family": "Fira Code",
   "project_panel": {
     "dock": "right"
