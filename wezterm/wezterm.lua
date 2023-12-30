@@ -23,7 +23,7 @@ end
 
 wezterm_config = {
     font = wezterm.font {
-        family = 'Iosevka',
+        family = 'Iosevka Term',
         weight = 'Regular',
     },
     font_size = 16,
