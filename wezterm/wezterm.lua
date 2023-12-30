@@ -33,8 +33,7 @@ end
 
 wezterm_config = {
     font = wezterm.font {
-        family = 'Fira Code',
-        stretch = 'Expanded',
+        family = 'Iosevka',
         weight = 'Regular',
     },
     initial_cols = 160,

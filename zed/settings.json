@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "theme": "Gruvbox Dark Hard",
-  "buffer_font_family": "Fira Code",
+  "buffer_font_family": "Iosevka",
   "project_panel": {
     "dock": "right"
   }
