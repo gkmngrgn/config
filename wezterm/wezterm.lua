@@ -21,21 +21,13 @@ function add_colors_for_appearance(settings, appearance)
     }
 end
 
-function add_display_config(settings, display_name)
-    if display_name == 'internal' then
-        settings.font_size = 14.5
-        settings.window_padding = { top = 5, left = 4.5, right = 0, bottom = 0 }
-    elseif display_name == 'external' then
-        settings.font_size = 14.5
-        settings.window_padding = { top = 2, left = 3, right = 0, bottom = 0 }
-    end
-end
-
 wezterm_config = {
     font = wezterm.font {
         family = 'Iosevka',
         weight = 'Regular',
     },
+    font_size = 16,
+    window_padding = { top = 0, left = 0, right = 0, bottom = 0 },
     initial_cols = 160,
     initial_rows = 42,
     tab_max_width = 30,
@@ -48,6 +40,5 @@ wezterm_config = {
 }
 
 add_colors_for_appearance(wezterm_config, 'Dark')
-add_display_config(wezterm_config, 'internal')
 
 return wezterm_config
