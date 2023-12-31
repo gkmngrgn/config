@@ -1,5 +1,6 @@
 # ~/.goedev-env.sh --- GOEDEV terminal environment.
 
+export CLICOLOR=1
 export COLORTERM="truecolor"
 export DOSH_ENV="development"
 export EDITOR="nano"
