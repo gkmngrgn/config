@@ -8,6 +8,8 @@ export SAVEHIST=10000
 autoload -U select-word-style
 select-word-style bash
 
+autoload -Uz compinit && compinit
+
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
