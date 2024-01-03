@@ -26,7 +26,7 @@ config.font = wezterm.font {
    family = 'Iosevka Term',
    weight = 'Regular',
 }
-config.font_size = 16
+config.font_size = 18
 
 -- WINDOW
 config.initial_cols = 160
