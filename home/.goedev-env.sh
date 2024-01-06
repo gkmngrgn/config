@@ -12,4 +12,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export MODULAR_HOME="$HOME/.modular"
 export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
+export NIXPKGS_ALLOW_UNFREE=1
+
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
