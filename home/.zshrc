@@ -9,6 +9,7 @@ autoload -U select-word-style
 select-word-style bash
 
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 setopt append_history
 setopt extended_history
