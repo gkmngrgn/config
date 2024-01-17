@@ -26,17 +26,17 @@ config.font = wezterm.font {
    family = 'Iosevka Term',
    weight = 'Regular',
 }
-config.font_size = 18
+config.font_size = 17
 
 -- WINDOW
 config.initial_cols = 160
 config.initial_rows = 42
 config.window_decorations = 'TITLE|RESIZE'
 config.window_padding = {
-   top = 0,
-   left = 0,
-   right = 0,
-   bottom = 0,
+   top = 5,
+   left = 7,
+   right = 7,
+   bottom = 5,
 }
 config.tab_max_width = 30
 config.tab_bar_at_bottom = true
