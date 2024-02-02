@@ -44,6 +44,7 @@ config.use_fancy_tab_bar = false
 config.audible_bell = 'Disabled'
 config.default_cursor_style = 'BlinkingBlock'
 config.bold_brightens_ansi_colors = false
+config.hide_tab_bar_if_only_one_tab = true
 
 -- THEME
 if appearance:find 'Dark' then
