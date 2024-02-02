@@ -19,3 +19,26 @@ cmd.add_task {
         cmd.copy("./home/*", "~")
     end
 }
+
+cmd.add_task {
+    name = "fix-mosh",
+    description = "fix mosh permission issues.",
+    required_platforms = {"macos"},
+    command = function(arg)
+       local firepower = "sudo /usr/libexec/ApplicationFirewall/socketfilterfw"
+
+       -- temporarily shut firewall off
+       cmd.run(firepower .. " --setglobalstate off")
+
+       -- add symlinked location to firewall
+       cmd.run(firepower .. " --add $(which mosh-server)")
+       cmd.run(firepower .. " --unblockapp $(which mosh-server)")
+
+       -- add homebrew location to firewall
+       cmd.run(firepower .. " --add $(realpath $(which mosh-server))")
+       cmd.run(firepower .. " --unblockapp $(realpath $(which mosh-server))")
+
+       -- re-enable firewall
+       cmd.run(firepower .. " --setglobalstate on")
+    end
+}
