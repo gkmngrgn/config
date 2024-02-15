@@ -1,10 +1,5 @@
 bindkey -e  # emacs style key binding
 
-# HISTORY
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-export SAVEHIST=10000
-
 autoload -U select-word-style
 select-word-style bash
 
@@ -24,5 +19,8 @@ setopt inc_append_history
 
 if command -v starship &> /dev/null
 then
+    export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
     eval "$(starship init zsh)"
 fi
+
+alias emc="emacsclient -c"
