@@ -9,4 +9,4 @@ set tabstospaces
 set trimblanks
 set unix
 
-include ~/.config/nano/nanorc.d/*.nanorc
+# include ~/.config/nano/nanorc.d/*.nanorc
