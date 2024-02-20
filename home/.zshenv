@@ -1,12 +1,12 @@
-CLICOLOR=1
-COLORTERM="truecolor"
-DOSH_ENV="development"
-EDITOR="nano"
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-LANG="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
-PATH="$HOME/.local/bin:$PATH"
-SAVEHIST=10000
+export CLICOLOR=1
+export COLORTERM="truecolor"
+export DOSH_ENV="development"
+export EDITOR="nano"
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=10000
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export PATH="$HOME/.local/bin:$PATH"
+export SAVEHIST=10000
 
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
