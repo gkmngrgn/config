@@ -23,4 +23,12 @@ then
     eval "$(starship init zsh)"
 fi
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 alias emc="emacsclient -c"
