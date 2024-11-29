@@ -14,7 +14,4 @@ quit-after-last-window-closed = true
 macos-titlebar-style = tabs
 
 # Keybindings
-keybind = option+x=esc:x
-keybind = option+b=esc:b
-keybind = option+f=esc:f
-keybind = option+w=esc:w
+macos-option-as-alt = true
