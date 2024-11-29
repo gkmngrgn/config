@@ -1,0 +1,20 @@
+# Theming
+font-family = Iosevka Term
+font-size = 18
+font-thicken = true
+cursor-style = block
+cursor-color = 03A062
+window-padding-y = 0
+window-padding-x = 0
+background = 000000
+palette = 0=#000000
+
+# Config
+quit-after-last-window-closed = true
+macos-titlebar-style = tabs
+
+# Keybindings
+keybind = option+x=esc:x
+keybind = option+b=esc:b
+keybind = option+f=esc:f
+keybind = option+w=esc:w
