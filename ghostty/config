@@ -1,17 +1,22 @@
-# Theming
+shell-integration-features = no-cursor,sudo,title
+
+# Theme
 font-family = Iosevka Term
 font-size = 18
 font-thicken = true
-cursor-style = block
-cursor-color = 03A062
 window-padding-y = 0
 window-padding-x = 0
 background = 000000
 palette = 0=#000000
 
+# Cursor
+cursor-style = block
+cursor-color = 03A062
+cursor-click-to-move = true
+
 # Config
 quit-after-last-window-closed = true
-macos-titlebar-style = tabs
 
-# Keybindings
+# MacOS Settings
+macos-titlebar-style = tabs
 macos-option-as-alt = true
