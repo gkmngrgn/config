@@ -1,8 +1,8 @@
 shell-integration-features = no-cursor,sudo,title
 
 # Theme
-font-family = Iosevka Term
-font-size = 18
+font-family = JetBrains Mono
+font-size = 16
 font-thicken = true
 window-padding-y = 0
 window-padding-x = 0
