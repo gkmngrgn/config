@@ -4,7 +4,7 @@ local config_dir = "~/.config/"
 cmd.add_task {
     name = "setup",
     description = "setup my operating system.",
-    required_platforms = { "macos" },
+    required_platforms = { "macos", "linux" },
     command = function()
         -- copy all configuration folders
         local config_dirs = cmd.ls(".", {
@@ -23,7 +23,7 @@ cmd.add_task {
 cmd.add_task {
     name = "fix-mosh",
     description = "fix mosh permission issues.",
-    required_platforms = {"macos"},
+    required_platforms = { "macos" },
     command = function(arg)
        local firepower = "sudo /usr/libexec/ApplicationFirewall/socketfilterfw"
 
