@@ -32,3 +32,4 @@ then
 fi
 
 alias emc="emacsclient -c"
+alias ls="ls --color=auto"
