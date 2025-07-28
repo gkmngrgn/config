@@ -6,6 +6,8 @@ font-size = 16
 font-thicken = true
 window-padding-y = 0
 window-padding-x = 0
+window-padding-balance = true
+window-padding-color = extend-always
 theme = dark:github-dark-default,light:github-light-default
 
 # Cursor
