@@ -6,8 +6,7 @@ font-size = 16
 font-thicken = true
 window-padding-y = 0
 window-padding-x = 0
-background = 000000
-palette = 0=#000000
+theme = dark:github-dark-default,light:github-light-default
 
 # Cursor
 cursor-style = block
@@ -18,5 +17,4 @@ cursor-click-to-move = true
 quit-after-last-window-closed = true
 
 # MacOS Settings
-macos-titlebar-style = tabs
 macos-option-as-alt = true
