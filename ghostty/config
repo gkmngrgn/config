@@ -9,6 +9,7 @@ window-padding-x = 0
 window-padding-balance = true
 window-padding-color = extend-always
 theme = dark:github-dark-default,light:github-light-default
+palette = 0=#000000
 
 # Cursor
 cursor-style = block
