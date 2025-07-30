@@ -33,3 +33,4 @@ fi
 
 alias emc="emacsclient -c"
 alias ls="ls --color=auto"
+alias claude="~/.claude/local/claude"
