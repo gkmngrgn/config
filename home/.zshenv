@@ -12,4 +12,5 @@ export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALL_UPGRADE=true
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+test -f "$HOME/.zshenv_private" && . "$HOME/.zshenv_private"
 test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"

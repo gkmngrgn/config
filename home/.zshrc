@@ -31,6 +31,8 @@ then
   compinit
 fi
 
+test -f "/usr/share/nvm/init-nvm.sh" && . "/usr/share/nvm/init-nvm.sh"
+
 alias emc="emacsclient -c"
 alias ls="ls --color=auto"
-alias claude="~/.claude/local/claude"
+# alias claude="~/.claude/local/claude"
