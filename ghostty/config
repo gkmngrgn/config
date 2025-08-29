@@ -4,6 +4,7 @@ shell-integration-features = no-cursor,sudo,title
 font-family = JetBrains Mono
 font-size = 14
 font-thicken = true
+font-feature = -calt, -liga, -dlig
 window-padding-y = 0
 window-padding-x = 0
 window-padding-balance = true
