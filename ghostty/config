@@ -2,14 +2,14 @@ shell-integration-features = no-cursor,sudo,title
 
 # Theme
 font-family = JetBrains Mono
-font-size = 14
+font-size = 12
 font-thicken = true
 font-feature = -calt, -liga, -dlig
 window-padding-y = 0
 window-padding-x = 0
 window-padding-balance = true
 window-padding-color = extend
-theme = UltraDark
+theme = Ultra Dark
 palette = 0=#000000
 
 # Cursor
