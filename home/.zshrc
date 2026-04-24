@@ -13,6 +13,7 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
+setopt interactive_comments
 
 # this line fixes a problem about emacs tramp:
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
