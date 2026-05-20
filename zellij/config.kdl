@@ -156,6 +156,10 @@ keybinds clear-defaults=true {
         }
     }
     normal {
+        bind "left" { MoveFocusOrTab "left"; }
+        bind "down" { MoveFocus "down"; }
+        bind "up" { MoveFocus "up"; }
+        bind "right" { MoveFocusOrTab "right"; }
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
