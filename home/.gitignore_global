@@ -12,3 +12,6 @@
 
 pyrightconfig.json
 .antigravitycli/
+.compound_engineering/
+
+**/.claude/settings.local.json
